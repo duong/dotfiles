@@ -59,7 +59,7 @@ DARK_GREY='#282a36'
 
 # optionally define some options
 PURE_CMD_MAX_EXEC_TIME=10
-PURE_PROMPT_SYMBOL='>'
+PURE_PROMPT_SYMBOL='->'
 
 # change the path color
 zstyle :prompt:pure:path color '#55e787'
