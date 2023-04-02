@@ -35,10 +35,11 @@ alias sc="source $HOME/.zshrc"  # reload zsh configuration
 # Conditionally load dotfiles based on OS
 if [[ $(uname) == "Darwin" ]]; then
   source ~/.darwin.zsh
+elif [[ $(uname) == "Linux" ]]; then
+  source ~/.linux.zsh
 fi
 
 # zplug - manage plugins
-source ~/.zplug/init.zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh       # Gets rid of command not found error message
