@@ -38,6 +38,7 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 # zplug - manage plugins
+source ~/.zplug/init.zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh       # Gets rid of command not found error message
@@ -81,6 +82,7 @@ ZSH_THEME_AWS_SUFFIX=' )'
 
 # nvm to path
 export NVM_DIR="$HOME/.nvm"
+source ~/.nvm/nvm.sh
 
 # use nvmrc
 # place this after nvm initialization!
