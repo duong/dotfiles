@@ -9,11 +9,9 @@ plugins=(
   dotenv
   docker
   aws
-  terraform
   yarn
   gh
   kubectl
-  pyenv
   brew
 )
 
