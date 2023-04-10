@@ -8,6 +8,9 @@ source $ZPLUG_HOME/init.zsh
 # brew stuff
 eval $(/opt/homebrew/bin/brew shellenv)
 
+# add brew binaries to path
+export PATH="/opt/homebrew/bin:$PATH"
+
 # more zsh-completions
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -16,8 +19,7 @@ if type brew &>/dev/null; then
 fi
 
 # nvm
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add DBeaver to path
 export PATH="${PATH}:/Applications/DBeaver.app/Contents/MacOS"

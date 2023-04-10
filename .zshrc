@@ -38,14 +38,10 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 # zplug - manage plugins
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/sudo", from:oh-my-zsh
-zplug "plugins/command-not-found", from:oh-my-zsh       # Gets rid of command not found error message
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-completions"
-zplug "junegunn/fzf"
 zplug mafredri/zsh-async, from:github
 zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
