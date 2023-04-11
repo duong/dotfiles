@@ -8,9 +8,9 @@ source $ZPLUG_HOME/init.zsh
 # add brew binaries to path
 export PATH="/opt/homebrew/bin:$PATH"
 
-# more zsh-completions
+# make Homebrew’s completions available in zsh
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
   autoload -Uz compinit
   compinit
 fi
