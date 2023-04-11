@@ -55,14 +55,15 @@ PURE_CMD_MAX_EXEC_TIME=10
 PURE_PROMPT_SYMBOL='->'
 
 # change the path color
-zstyle :prompt:pure:path color '#55e787'
+zstyle :prompt:pure:path color "${LIGHT_GREEN}"
 
 # change the color for both `prompt:success` and `prompt:error`
 zstyle ':prompt:pure:prompt:*' color cyan
 
 # change the username@host
-zstyle ':prompt:pure:user' color '#55c3fb'
-zstyle ':prompt:pure:host' color '#55c3fb'
+# Username and host only displayed when in an SSH session or a container.
+zstyle ':prompt:pure:user' color "${LIGHT_BLUE}"
+zstyle ':prompt:pure:host' color "${LIGHT_BLUE}"
 
 # turn on git stash status
 zstyle :prompt:pure:git:stash show yes
