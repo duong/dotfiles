@@ -5,9 +5,6 @@ export PATH="/opt/homebrew/bin/python3:$PATH"
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
-# brew stuff
-eval $(/opt/homebrew/bin/brew shellenv)
-
 # add brew binaries to path
 export PATH="/opt/homebrew/bin:$PATH"
 
