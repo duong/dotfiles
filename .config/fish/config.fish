@@ -3,10 +3,18 @@ set fish_greeting
 
 # prompt
 set -g __fish_git_prompt_show_informative_status true
+set -g __fish_git_prompt_use_informative_chars
+set -g __fish_git_prompt_showcolorhints true
 set -g __fish_git_prompt_char_upstream_ahead "↑"
 set -g __fish_git_prompt_char_upstream_behind "↓"
+set -g __fish_git_prompt_color_branch grey
 function fish_prompt
-     printf '\n%s%s%s%s%s%s' (set_color $fish_color_cwd) (prompt_pwd) (set_color red) (fish_git_prompt) (set_color normal)\n'-> '
+     echo ''
+     set_color $fish_color_cwd
+     printf '%s' (prompt_pwd)
+     set_color normal
+     printf '%s ' (fish_git_prompt)
+     echo \n'-> '
 end
 
 # add brew stuff to path
