@@ -5,8 +5,12 @@
 - `sudo pacman -Syu zsh zsh-completions ttf-space-mono-nerd`
 - astronvim
 - nvm
-- zplug
-- oh-my-zsh
+- zsh
+    - zplug
+    - oh-my-zsh
+- fish
+    - omf
+
 
 ## Setup
 
