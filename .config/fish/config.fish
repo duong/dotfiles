@@ -10,3 +10,6 @@ end
 # add brew stuff to path
 fish_add_path /opt/homebrew/bin
 
+# set alias
+alias ll="ls -lah"
+
