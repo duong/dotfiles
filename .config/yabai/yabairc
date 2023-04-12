@@ -10,12 +10,24 @@ yabai -m config window_placement first_child
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
 
-# Set all padding and gaps to 0pt (default: 0)
-yabai -m config top_padding    0
-yabai -m config bottom_padding 0
-yabai -m config left_padding   0
-yabai -m config right_padding  0
-yabai -m config window_gap     0
+# Set all padding and gaps to 2pt (default: 0)
+yabai -m config top_padding    2
+yabai -m config bottom_padding 2
+yabai -m config left_padding   2
+yabai -m config right_padding  2
+yabai -m config window_gap     2
+
+# -- mouse settings --
+
+# center mouse on window with focus
+yabai -m config mouse_follows_focus on
+
+# modifier for clicking and dragging with mouse
+yabai -m config mouse_modifier alt
+# set modifier + left-click drag to move window
+yabai -m config mouse_action1 move
+# set modifier + right-click drag to resize window
+yabai -m config mouse_action2 resize
 
 # Override gaps for space 2 only
 yabai -m config --space 2 window_gap 0
@@ -35,4 +47,9 @@ yabai -m config window_shadow float
 yabai -m config window_opacity on
 yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.9
+
+# disable specific apps
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^zoom.us$" manage=off
 
