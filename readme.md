@@ -6,11 +6,11 @@
 - astronvim
 - nvm
 - zsh
-    - zplug
-    - oh-my-zsh
+  - zplug
+  - oh-my-zsh
 - fish
-    - omf
-
+  - omf
+  - starship
 
 ## Setup
 
