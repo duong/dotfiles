@@ -9,9 +9,8 @@ set -g __fish_git_prompt_char_upstream_ahead "↑"
 set -g __fish_git_prompt_char_upstream_behind "↓"
 set -g __fish_git_prompt_color_branch grey
 function fish_prompt
-     echo ''
      set_color $fish_color_cwd
-     printf '%s' (prompt_pwd)
+     printf \n'%s' (prompt_pwd)
      set_color normal
      printf '%s ' (fish_git_prompt)
      echo \n'-> '
