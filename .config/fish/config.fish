@@ -14,4 +14,7 @@ fish_add_path /opt/homebrew/bin
 
 # set alias
 alias ll="ls -lah"
+alias vim="nvim"
 
+# set default editor
+set -gx EDITOR nvim
