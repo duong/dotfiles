@@ -29,3 +29,6 @@ set -gx EDITOR nvim
 # starship prompt
 starship init fish | source
 
+# activate direnv
+direnv hook fish | source
+
