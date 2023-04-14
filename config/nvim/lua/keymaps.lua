@@ -17,7 +17,7 @@ vim.g.mapleader = " "
 
 -- Normal --
 -- Normal file operations
-keymap("n", "<leader>w", "<cmd>w<CR>", opts)
+keymap("n", "<leader>w", "<cmd>w<CR>", { silent = true, desc = "Save buffer" })
 keymap("n", "<leader>q", "<cmd>confirm q<CR>", opts)
 
 -- Better window navigation
@@ -55,13 +55,17 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Plugins --
-
 -- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true, desc = "Toggle explorer" })
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fw", ":Telescope live_grep<CR>", { silent = true, desc = "Find words" })
+keymap("n", "<leader>fW", function()
+  require("telescope.builtin").live_grep {
+    additional_args = function(args) return vim.list_extend(args, { "--hidden", "--no-ignore" }) end,
+  } end
+, { silent = true, desc = "Find words in all files" })
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
