@@ -42,7 +42,6 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug mafredri/zsh-async, from:github
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 # pure theme colors
 PINK='#fa68bd'
@@ -50,24 +49,6 @@ LIGHT_GREEN='#55e787'
 LIGHT_BLUE='#55c3fb'
 DARK_GREY='#282a36'
 
-# optionally define some options
-PURE_CMD_MAX_EXEC_TIME=10
-PURE_PROMPT_SYMBOL='->'
-
-# change the path color
-zstyle :prompt:pure:path color "${LIGHT_GREEN}"
-
-# change the color for both `prompt:success` and `prompt:error`
-zstyle ':prompt:pure:prompt:*' color cyan
-
-# change the username@host
-# Username and host only displayed when in an SSH session or a container.
-zstyle ':prompt:pure:user' color "${LIGHT_BLUE}"
-zstyle ':prompt:pure:host' color "${LIGHT_BLUE}"
-
-# turn on git stash status
-zstyle :prompt:pure:git:stash show yes
-autoload -U promptinit; promptinit
 zplug install
 zplug load --verbose
 
@@ -108,4 +89,7 @@ export AWS_DEFAULT_REGION="ap-southeast-2"
 
 # Created by `pipx` on 2023-03-20 00:34:08
 export PATH="$PATH:/Users/duong/.local/bin"
+
+# starship prompt
+eval "$(starship init zsh)"
 
