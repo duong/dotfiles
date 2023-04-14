@@ -3,6 +3,8 @@ set fish_greeting
 
 # add brew stuff to path
 fish_add_path /opt/homebrew/bin
+fish_add_path ~/.local/bin
+fish_add_path /opt/homebrew/opt/python@3.11/libexec/bin # so you can use python instead of python3
 
 # set alias
 alias ll="ls -lah"
