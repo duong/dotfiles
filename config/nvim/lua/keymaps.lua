@@ -60,6 +60,7 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true, desc = "Toggle 
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fw", ":Telescope live_grep<CR>", { silent = true, desc = "Find words" })
 keymap("n", "<leader>fW", function()
   require("telescope.builtin").live_grep {

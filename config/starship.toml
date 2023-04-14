@@ -18,11 +18,5 @@ disabled = true
 disabled = true
 
 [aws]
-format = 'on [$symbol$region]($style) '
-style = 'bold blue'
-symbol = '🅰 '
-
-[aws.region_aliases]
-ap-southeast-2 = 'au'
-us-east-1 = 'va'
+disabled = true
 
