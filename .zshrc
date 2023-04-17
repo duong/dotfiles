@@ -1,3 +1,7 @@
+# Uncomment for speed testing (see end of file also)
+# run this to time: time zsh -i -c exit
+# zmodload zsh/zprof
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -37,6 +41,9 @@ elif [[ $(uname) == "Linux" ]]; then
   source ~/.linux.zsh
 fi
 
+# Source lazy
+source ~/.lazy.zsh
+
 # zplug - manage plugins
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
@@ -56,34 +63,6 @@ zplug load --verbose
 ZSH_THEME_AWS_PREFIX='( '
 ZSH_THEME_AWS_SUFFIX=' )'
 
-# nvm to path
-export NVM_DIR="$HOME/.nvm"
-source ~/.nvm/nvm.sh
-
-# use nvmrc
-# place this after nvm initialization!
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-export PATH="${HOME}/.pyenv/shims:${PATH}"
-
 # configure aws autocomplete
 export AWS_DEFAULT_REGION="ap-southeast-2"
 
@@ -93,3 +72,5 @@ export PATH="$PATH:/Users/duong/.local/bin"
 # starship prompt
 eval "$(starship init zsh)"
 
+# Uncomment for performance testing (see beginning of file)
+# zprof

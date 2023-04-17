@@ -15,8 +15,8 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-# nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Make python do python3
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 # Add DBeaver to path
 export PATH="${PATH}:/Applications/DBeaver.app/Contents/MacOS"
