@@ -16,7 +16,7 @@ if type brew &>/dev/null; then
 fi
 
 # Make python do python3
-export PATH=/usr/local/opt/python/libexec/bin:$PATH
+# export PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
 
 # Add DBeaver to path
 export PATH="${PATH}:/Applications/DBeaver.app/Contents/MacOS"

@@ -72,5 +72,10 @@ export PATH="$PATH:/Users/duong/.local/bin"
 # starship prompt
 eval "$(starship init zsh)"
 
+# setup pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # Uncomment for performance testing (see beginning of file)
 # zprof
