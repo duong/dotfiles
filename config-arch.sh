@@ -1,5 +1,5 @@
 #!/bin/sh
 
 # Set auto repeat speed
-xset r rate 300 50
+xset r rate 250 50
 
