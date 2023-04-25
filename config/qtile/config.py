@@ -1,27 +1,3 @@
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 from libqtile import bar, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.layout.columns import Columns
@@ -29,9 +5,13 @@ from libqtile.layout.floating import Floating
 from libqtile.layout.max import Max
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from catppuccin import theme
+from colors import colors
 
 mod = "mod4"
 terminal = guess_terminal()
+theme = theme["macchiato"]
+font = "Space Mono Nerd Font"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -137,27 +117,82 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                # Left side
+                widget.GroupBox(
+                    background=theme["lavender"],
+                    other_screen_border=theme["lavender"],
+                    other_current_screen_border=theme["lavender"],
+                    this_screen_border=theme["lavender"],
+                    this_current_screen_border=theme["lavender"],
+                    active=colors["overlay1"],
+                    inactive=colors["text"],
+                    block_highlight_text_color=colors["mantle"],
+                    fontsize=15,
+                    padding_x=15,
+                    font=font,
+                    disable_drag=True,
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.TextBox(
+                    text="",
+                    fontsize=35,
+                    foreground=theme["lavender"],
+                    background=colors["surface0"],
+                    padding=0,
+                ),
+                widget.Spacer(length=20),
+                widget.WindowName(
+                    foreground=colors["text"],
+                    fontsize=18,
+                    font=font,
+                ),
+                widget.Spacer(length=20),
+                # Right side
+                widget.TextBox(
+                    text="",
+                    fontsize=35,
+                    foreground=colors["surface1"],
+                    background=colors["base"],
+                    padding=0,
+                ),
+                widget.Systray(
+                    padding=15,
+                    icon_size=25,
+                    background=colors["surface1"],
+                ),
+                widget.Spacer(length=25, background=colors["surface1"]),
+                widget.TextBox(
+                    text="",
+                    fontsize=35,
+                    foreground=colors["surface0"],
+                    background=colors["surface1"],
+                    padding=0,
+                ),
+                widget.PulseVolume(
+                    background=colors["surface0"],
+                    foreground=colors["text"],
+                    font=font,
+                    fontsize=20,
+                    fmt="墳 {} ",
+                    mouse_callbacks={"Button3": lazy.spawn("pavucontrol -t 4")},
+                ),
+                widget.TextBox(
+                    text="",
+                    fontsize=35,
+                    foreground=colors["mantle"],
+                    background=colors["surface0"],
+                    padding=0,
+                ),
+                widget.Clock(
+                    background=colors["mantle"],
+                    foreground=colors["text"],
+                    format=" %d/%m/%Y  %H:%M ",
+                    font=font,
+                    fontsize=20,
+                    padding=10,
+                ),
             ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            size=35,
+            background=colors["base"],
         ),
     ),
 ]
