@@ -2,12 +2,14 @@
 
 ## Requirements
 
-- `sudo pacman -Syu zsh zsh-completions ttf-space-mono-nerd`
+- `sudo pacman -Syu unzip zsh zsh-completions ttf-space-mono-nerd bottom lazygit`
 - astronvim
 - nvm
+  - with npm installed
 - zsh
   - zplug
   - oh-my-zsh
+  - starship
 - fish
   - omf
   - starship
@@ -21,8 +23,8 @@ cp .zshrc .zprofile .linux.zsh ~
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.zprofile ~/.zprofile
 ln -s ~/dotfiles/.linux.zsh ~/.linux.zsh
+ln -s ~/dotfiles/.lazy.zsh ~/.lazy.zsh
 ln -s ~/dotfiles/config/starship.toml ~/.config/starship.toml
 ln -s ~/dotfiles/config/kitty ~/.config/kitty
 ln -s ~/dotfiles/config/nvim/lua/user ~/.config/nvim/lua/user
 ```
-
