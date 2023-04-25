@@ -17,13 +17,12 @@
 Create symbolic links to use the config
 
 ```bash
-ln -s ~/dotfiles/.config/nvim/lua/user ~/.config/nvim/lua/user
-```
-
-```bash
-ln -s ~/dotfiles/.config/kitty ~/.config/kitty
-```
-
-```bash
 cp .zshrc .zprofile .linux.zsh ~
+ln -s ~/dotfiles/.zshrc ~/.zshrc
+ln -s ~/dotfiles/.zprofile ~/.zprofile
+ln -s ~/dotfiles/.linux.zsh ~/.linux.zsh
+ln -s ~/dotfiles/config/starship.toml ~/.config/starship.toml
+ln -s ~/dotfiles/config/kitty ~/.config/kitty
+ln -s ~/dotfiles/config/nvim/lua/user ~/.config/nvim/lua/user
 ```
+
