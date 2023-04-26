@@ -8,6 +8,6 @@ picom &
 unclutter --jitter 10 --ignore-scrolling --start-hidden --fork
 
 # Nitrogen for wallpaper
-nitrogen --set-zoom-fill ~/Pictures/wallpaper.jpg &
+nitrogen --set-zoom-fill ~/Pictures/yuri-catppuccin.png &
 
 qtile start
