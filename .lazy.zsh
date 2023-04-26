@@ -34,7 +34,7 @@ group_lazy_load() {
 }
 
 export NVM_DIR=~/.nvm
-group_lazy_load $HOME/.nvm/nvm.sh nvm node npm yarn
+group_lazy_load $HOME/.nvm/nvm.sh nvm node npm yarn nvim
 
 unset -f group_lazy_load
 
