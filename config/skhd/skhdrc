@@ -67,8 +67,8 @@ shift + alt - 7 : yabai -m window --space 7;
 
 # start apps
 
-alt - return : index=$(yabai -m query --displays --display | jq .index) && /Applications/Kitty.app/Contents/MacOS/kitty --instance-group=$index --single-instance -d ~
-# alt - f : open -a "/Applications/Firefox Developer Edition.app"
+# alt + fn - return : open -na /Applications/kitty.app
+alt - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
 
 # -- Starting/Stopping/Restarting Yabai --
 
