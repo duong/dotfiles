@@ -9,9 +9,9 @@ truncate_to_repo = false
 read_only = " "
 
 [cmd_duration]
+disabled = true
 min_time = 4
 show_milliseconds = false
-disabled = false
 style = "bold italic red"
 
 [git_branch]
