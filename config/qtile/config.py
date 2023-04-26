@@ -91,7 +91,12 @@ for i in groups:
     )
 
 layouts = [
-    Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4, margin=8),
+    Columns(
+        border_focus=theme["blue"],
+        border_normal=theme["subtext1"],
+        border_width=4,
+        margin=8,
+    ),
     Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
