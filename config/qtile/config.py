@@ -124,14 +124,14 @@ screens = [
             [
                 # Left side
                 widget.GroupBox(
+                    active=colors["overlay1"],
                     background=theme["lavender"],
                     other_screen_border=theme["lavender"],
                     other_current_screen_border=theme["lavender"],
                     this_screen_border=theme["lavender"],
                     this_current_screen_border=theme["lavender"],
-                    active=colors["overlay1"],
-                    inactive=colors["text"],
-                    block_highlight_text_color=colors["mantle"],
+                    inactive=theme["mantle"],
+                    block_highlight_text_color=theme["text"],
                     fontsize=15,
                     padding_x=15,
                     font=font,
