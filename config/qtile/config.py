@@ -92,8 +92,8 @@ for i in groups:
 
 layouts = [
     Columns(
-        border_focus=theme["blue"],
-        border_normal=theme["subtext1"],
+        border_focus=theme["flamingo"],
+        border_normal=theme["base"],
         border_width=4,
         margin=8,
     ),
