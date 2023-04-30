@@ -30,6 +30,3 @@ ln -s ~/dotfiles/config/starship.toml ~/.config/starship.toml
 ln -s ~/dotfiles/config/kitty ~/.config/kitty
 ln -s ~/dotfiles/config/nvim/lua/user ~/.config/nvim/lua/user
 ```
-
-Link chrome (check path)
-ln -s ~/dotfiles/chrome ~/Library/Application\ Support/Firefox/Profiles/7dnmfnon.dev-edition-default-1682518279398/
