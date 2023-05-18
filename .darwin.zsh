@@ -1,7 +1,7 @@
 # Set python path
 export PATH="/opt/homebrew/bin/python3:$PATH"
 
-# zplug brew stuff
+# zplug brew/Users/duong/.pyenv/shims/python stuff
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
