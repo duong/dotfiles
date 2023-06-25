@@ -73,6 +73,9 @@ export PATH="$PATH:/Users/duong/.local/bin"
 # starship prompt
 eval "$(starship init zsh)"
 
+# hook direnv into shell
+eval "$(direnv hook zsh)"
+
 # setup pyenv
 # export PYENV_ROOT="$HOME/.pyenv"
 # command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
