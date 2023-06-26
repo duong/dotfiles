@@ -44,11 +44,11 @@ fi
 
 # zsh-nvm options
 export NVM_AUTO_USE=true
-export NVM_LAZY_LOAD_EXTRA_COMMANDS=('nvim')
 export NVM_LAZY_LOAD=true
+export NVM_LAZY_LOAD_EXTRA_COMMANDS=('nvim')
 
 # zplug - manage plugins
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug mafredri/zsh-async, from:github
