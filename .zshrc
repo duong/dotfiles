@@ -1,6 +1,6 @@
 # Uncomment for speed testing (see end of file also)
-# run this to time: time zsh -i -c exit
 # zmodload zsh/zprof
+# run this to time: time zsh -i -c exit
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -42,14 +42,17 @@ elif [[ $(uname) == "Linux" ]]; then
   source ~/.linux.zsh
 fi
 
-# Source lazy
-source ~/.lazy.zsh
+# zsh-nvm options
+export NVM_AUTO_USE=true
+export NVM_LAZY_LOAD_EXTRA_COMMANDS=('nvim')
+export NVM_LAZY_LOAD=true
 
 # zplug - manage plugins
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug mafredri/zsh-async, from:github
+zplug "lukechilds/zsh-nvm"
 
 # pure theme colors
 PINK='#fa68bd'
