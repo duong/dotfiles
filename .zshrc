@@ -19,7 +19,7 @@ plugins=(
   brew
 )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -61,7 +61,7 @@ LIGHT_BLUE='#55c3fb'
 DARK_GREY='#282a36'
 
 zplug install
-zplug load --verbose
+zplug load
 
 # set aws prompt
 ZSH_THEME_AWS_PREFIX='( '
