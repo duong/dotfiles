@@ -73,6 +73,8 @@ export AWS_DEFAULT_REGION="ap-southeast-2"
 # Created by `pipx` on 2023-03-20 00:34:08
 export PATH="$PATH:/Users/duong/.local/bin"
 
+# Poetry
+export PATH="$HOME/.poetry/bin:$PATH"
 # starship prompt
 eval "$(starship init zsh)"
 
