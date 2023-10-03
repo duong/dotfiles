@@ -32,3 +32,8 @@ source "${HOME}/dotfiles/grc.zsh"
 defaults write -g InitialKeyRepeat -int 14 # normal minimum is 14 (225 ms)
 defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 
+# Manually specify which python version to use. We cannot update 
+# the python version using homebrew until the default mac version of python is updated
+# https://apple.stackexchange.com/questions/450303/how-to-make-python-3-11-my-default-python3-with-brew
+export PATH="$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
+
