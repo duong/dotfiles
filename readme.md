@@ -28,5 +28,5 @@ ln -s ~/dotfiles/.linux.zsh ~/.linux.zsh
 ln -s ~/dotfiles/.lazy.zsh ~/.lazy.zsh
 ln -s ~/dotfiles/config/starship.toml ~/.config/starship.toml
 ln -s ~/dotfiles/config/kitty ~/.config/kitty
-ln -s ~/dotfiles/config/nvim/lua/user ~/.config/nvim/lua/user
+ln -s ~/dotfiles/config/nvim ~/.config/nvim
 ```
