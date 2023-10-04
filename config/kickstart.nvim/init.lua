@@ -280,6 +280,9 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- Hide cmdline when not in use https://www.reddit.com/r/neovim/comments/xb0hs1/is_it_possible_to_hide_command_line_when_it_is/
+vim.o.cmdheight = 0
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
