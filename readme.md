@@ -30,3 +30,9 @@ ln -s ~/dotfiles/config/starship.toml ~/.config/starship.toml
 ln -s ~/dotfiles/config/kitty ~/.config/kitty
 ln -s ~/dotfiles/config/nvim ~/.config/nvim
 ```
+
+Check startup time of neovim
+```bash
+nvim --startuptime somefile
+```
+
