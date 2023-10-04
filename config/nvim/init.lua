@@ -336,8 +336,8 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
+vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -347,12 +347,12 @@ vim.keymap.set('n', '<leader>/', function()
 end, { desc = '[/] Fuzzily search in current buffer' })
 
 -- vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = 'Search Files' })
+vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = 'Search Help' })
+vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = 'Search by Fuzzy' })
+vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = 'Search by Grep' })
+vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = 'Search Diagnostics' })
+vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = 'Search Resume' })
 
 -- [[ Configure Neotree ]]
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
@@ -471,9 +471,9 @@ local on_attach = function(_, bufnr)
   nmap('<leader>lr', vim.lsp.buf.rename, 'Rename')
   nmap('<leader>la', vim.lsp.buf.code_action, 'LSP Actions')
 
-  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-  nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+  nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
+  nmap('gr', require('telescope.builtin').lsp_references, 'Goto References')
+  nmap('gI', require('telescope.builtin').lsp_implementations, 'Goto Implementation')
   nmap('<leader>lD', vim.lsp.buf.type_definition, 'Type Definition')
   nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, 'Symbols')
   nmap('<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
@@ -483,12 +483,12 @@ local on_attach = function(_, bufnr)
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+  nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')
+  nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, 'Workspace Add Folder')
+  nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, 'Workspace Remove Folder')
   nmap('<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace [L]ist Folders')
+  end, 'Workspace List Folders')
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -498,15 +498,15 @@ end
 
 -- document existing key chains
 require('which-key').register({
-  ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+  ['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
+  ['<leader>d'] = { name = 'Document', _ = 'which_key_ignore' },
   ['<leader>l'] = { name = 'LSP options', _ = 'which_key_ignore' },
   ['<leader>g'] = { name = 'Toggleterm options', _ = 'which_key_ignore' },
   ['<leader>gg'] = { name = 'Toggle lazy[g]it', _ = 'which_key_ignore' },
   ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+  ['<leader>r'] = { name = 'Rename', _ = 'which_key_ignore' },
+  ['<leader>f'] = { name = 'Find', _ = 'which_key_ignore' },
+  ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
 })
 
 -- Enable the following language servers
