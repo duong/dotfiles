@@ -152,6 +152,7 @@ require('lazy').setup({
   -- },
   {
     'catppuccin/nvim',
+    lazy = false,
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'catppuccin-macchiato'
@@ -565,11 +566,20 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
+local border_opts = {
+  border = "rounded",
+  winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+}
+
 cmp.setup {
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
+  },
+  window = {
+    completion = cmp.config.window.bordered(border_opts),
+    documentation = cmp.config.window.bordered(border_opts),
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),
