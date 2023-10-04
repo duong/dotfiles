@@ -246,7 +246,8 @@ require('lazy').setup({
 -- Set highlight on search
 vim.o.hlsearch = false
 
--- Make line numbers default
+-- Make hybrid line numbers default
+vim.wo.rnu = true
 vim.wo.number = true
 
 -- Enable mouse mode
