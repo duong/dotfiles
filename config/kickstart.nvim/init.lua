@@ -142,15 +142,21 @@ require('lazy').setup({
     },
   },
 
+  -- {
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    'catppuccin/nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'catppuccin-macchiato'
     end,
   },
-
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -208,6 +214,14 @@ require('lazy').setup({
   },
   { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
   { 'akinsho/toggleterm.nvim', version = "*", config = true },
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      -- add any options here
+    },
+    lazy = false,
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -338,6 +352,9 @@ function _lazygit_toggle()
 end
 
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+
+-- [[ Configure Comment ]]
+require('Comment').setup()
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
