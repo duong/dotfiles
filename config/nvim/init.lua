@@ -167,7 +167,7 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-  { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+  -- { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
   { 'akinsho/toggleterm.nvim', version = "*", config = true },
   {
     'numToStr/Comment.nvim',
@@ -314,8 +314,8 @@ vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = 
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
 
 -- [[ Configure bufferline ]]
-vim.opt.termguicolors = true
-require("bufferline").setup {}
+-- vim.opt.termguicolors = true
+-- require("bufferline").setup {}
 
 -- [[ Configure toggleterm ]]
 require("toggleterm").setup {}
