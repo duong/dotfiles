@@ -176,6 +176,7 @@ require('lazy').setup({
     },
     lazy = false,
   },
+  'ggandor/leap.nvim',
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -287,6 +288,9 @@ require('telescope').setup {
     },
   },
 }
+
+-- [[ Configure leap ]]
+require('leap').add_default_mappings()
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
