@@ -47,6 +47,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+      -- fidget.nvim will soon be completely rewritten. Pin plugin legacy tag to avoid breaking changes.
       { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
@@ -177,6 +178,73 @@ require('lazy').setup({
     lazy = false,
   },
   'ggandor/leap.nvim',
+  'rrethy/vim-illuminate',
+  {
+    'glepnir/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      -- require('dashboard').setup {
+      --   theme = 'doom',
+      --   config = {
+      --     header = {}, --your header
+      --     center = {
+      --       {
+      --         icon = ' ',
+      --         icon_hl = 'Title',
+      --         desc = 'Find File           ',
+      --         desc_hl = 'String',
+      --         key = 'b',
+      --         keymap = 'SPC f f',
+      --         key_hl = 'Number',
+      --         action = 'lua print(2)'
+      --       },
+      --       {
+      --         icon = ' ',
+      --         desc = 'Find Dotfiles',
+      --         key = 'f',
+      --         keymap = 'SPC f d',
+      --         action = 'lua print(3)'
+      --       },
+      --     },
+      --     footer = {
+      --       description = 'my footer'
+      --     } --your footer
+      --   }
+      -- }
+      require('dashboard').setup {
+        theme = 'hyper',
+        config = {
+          week_header = {
+            enable = true,
+          },
+          shortcut = {
+            { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+            {
+              icon = ' ',
+              icon_hl = '@variable',
+              desc = 'Files',
+              group = 'Label',
+              action = 'Telescope find_files',
+              key = 'f',
+            },
+            {
+              desc = ' Apps',
+              group = 'DiagnosticHint',
+              action = 'Telescope app',
+              key = 'a',
+            },
+            {
+              desc = ' dotfiles',
+              group = 'Number',
+              action = 'Telescope dotfiles',
+              key = 'd',
+            },
+          },
+        },
+      }
+    end,
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+  },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
