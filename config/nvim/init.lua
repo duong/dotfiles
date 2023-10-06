@@ -325,7 +325,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 local actions = require "telescope.actions"
 require('telescope').setup {
   defaults = {
-
     path_display = { "truncate" },
     sorting_strategy = "ascending",
     layout_config = {
@@ -366,9 +365,24 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 
 -- vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = 'Search Files' })
+vim.keymap.set('n', '<leader>fF',
+  function()
+    require('telescope.builtin').find_files({ hidden = true })
+  end,
+  { desc = 'Search Files (Hidden)' })
 vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = 'Search Help' })
-vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = 'Search by Fuzzy' })
+vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = 'Search current word' })
+vim.keymap.set('n', '<leader>fW',
+  function()
+    require('telescope.builtin').grep_string({ additional_args = { '--hidden' } })
+  end,
+  { desc = 'Search current word (Hidden)' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = 'Search by Grep' })
+vim.keymap.set('n', '<leader>fG',
+  function()
+    require("telescope.builtin").live_grep({ additional_args = { '--hidden' } })
+  end,
+  { desc = 'Search by Grep (Hidden)' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = 'Search Diagnostics' })
 vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = 'Search Resume' })
 
