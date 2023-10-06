@@ -513,7 +513,7 @@ require('which-key').register({
   ['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
   ['<leader>d'] = { name = 'Document', _ = 'which_key_ignore' },
   ['<leader>l'] = { name = 'LSP options', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = 'Toggleterm options', _ = 'which_key_ignore' },
+  ['<leader>g'] = { name = 'Git options', _ = 'which_key_ignore' },
   ['<leader>gg'] = { name = 'Toggle lazygit', _ = 'which_key_ignore' },
   ['<leader>gl'] = { name = 'Toggle git line blame', _ = 'which_key_ignore' },
   ['<leader>gd'] = { name = 'View git diff', _ = 'which_key_ignore' },
