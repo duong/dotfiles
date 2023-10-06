@@ -100,6 +100,17 @@ require('lazy').setup({
           vim.schedule(function() gs.prev_hunk() end)
           return '<Ignore>'
         end, { expr = true, buffer = bufnr, desc = "Jump to previous hunk" })
+
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
+        end
+
+        -- Actions
+        map('n', '<leader>gl', gs.toggle_current_line_blame)
+        map('n', '<leader>gd', gs.diffthis)
+        map('n', '<leader>gD', function() gs.diffthis('~') end)
       end,
     },
   },
@@ -503,7 +514,10 @@ require('which-key').register({
   ['<leader>d'] = { name = 'Document', _ = 'which_key_ignore' },
   ['<leader>l'] = { name = 'LSP options', _ = 'which_key_ignore' },
   ['<leader>g'] = { name = 'Toggleterm options', _ = 'which_key_ignore' },
-  ['<leader>gg'] = { name = 'Toggle lazy[g]it', _ = 'which_key_ignore' },
+  ['<leader>gg'] = { name = 'Toggle lazygit', _ = 'which_key_ignore' },
+  ['<leader>gl'] = { name = 'Toggle git line blame', _ = 'which_key_ignore' },
+  ['<leader>gd'] = { name = 'View git diff', _ = 'which_key_ignore' },
+  ['<leader>gD'] = { name = 'View git Diff (?) ', _ = 'which_key_ignore' },
   ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
   ['<leader>r'] = { name = 'Rename', _ = 'which_key_ignore' },
   ['<leader>f'] = { name = 'Find', _ = 'which_key_ignore' },
