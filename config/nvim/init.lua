@@ -305,6 +305,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>uw", "<cmd>set wrap!<CR>", { noremap = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -533,6 +534,8 @@ require('which-key').register({
   ['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
   ['<leader>d'] = { name = 'Document', _ = 'which_key_ignore' },
   ['<leader>l'] = { name = 'LSP options', _ = 'which_key_ignore' },
+  ['<leader>u'] = { name = 'UI', _ = 'which_key_ignore' },
+  ['<leader>uw'] = { name = 'Toggle word wrap', _ = 'which_key_ignore' },
   ['<leader>g'] = { name = 'Git options', _ = 'which_key_ignore' },
   ['<leader>gg'] = { name = 'Toggle lazygit', _ = 'which_key_ignore' },
   ['<leader>gl'] = { name = 'Toggle git line blame', _ = 'which_key_ignore' },
@@ -649,6 +652,16 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- [[ Configure catppuccin ]]
+require("catppuccin").setup({
+  integrations = {
+    cmp = true,
+    gitsigns = true,
+    nvimtree = true,
+  }
+})
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
