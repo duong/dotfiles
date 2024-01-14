@@ -150,6 +150,13 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      -- Your config will go here
+    end
+  },
+
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -662,6 +669,31 @@ require("catppuccin").setup({
   }
 })
 
+-- [[ Configure nvim-lint ]] https://www.reddit.com/r/neovim/comments/15pj1oi/using_nvimlint_as_a_nullls_alternative_for_linters/
+local lint = require("lint")
+lint.linters_by_ft = {
+  javascript = {
+    "eslint_d"
+  },
+  typescript = {
+    "eslint_d"
+  },
+  javascriptreact = {
+    "eslint_d"
+  },
+  typescriptreact = {
+    "eslint_d"
+  }
+}
+
+vim.api.nvim_create_autocmd({ "InsertLeave", "BufWritePost" }, {
+  callback = function()
+    local lint_status, lint = pcall(require, "lint")
+    if lint_status then
+      lint.try_lint()
+    end
+  end,
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
