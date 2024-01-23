@@ -195,6 +195,9 @@ require('lazy').setup({
     },
     lazy = false,
   },
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+  },
   'ggandor/leap.nvim',
   'rrethy/vim-illuminate',
   {
@@ -414,7 +417,9 @@ end
 vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
 -- [[ Configure Comment ]]
-require('Comment').setup()
+require('Comment').setup {
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+}
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
