@@ -317,6 +317,10 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>uw", "<cmd>set wrap!<CR>", { noremap = true, silent = true })
 
+-- Remap for dealing with autoformat
+vim.api.nvim_set_keymap("n", "<leader>lf", "<cmd>Format<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>lF", "<cmd>KickstartFormatToggle<CR>", { noremap = true })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -563,6 +567,8 @@ require('which-key').register({
   ['<leader>r'] = { name = 'Rename', _ = 'which_key_ignore' },
   ['<leader>f'] = { name = 'Find', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
+  ['<leader>lf'] = { name = 'Format buffer', _ = 'which_key_ignore' },
+  ['<leader>lF'] = { name = 'Toggle format on save', _ = 'which_key_ignore' },
 })
 
 -- Enable the following language servers
