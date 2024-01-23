@@ -417,6 +417,9 @@ end
 vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
 -- [[ Configure Comment ]]
+require('ts_context_commentstring').setup {
+  enable_autocmd = false,
+}
 require('Comment').setup {
   pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
 }
