@@ -5,7 +5,6 @@
 ## Requirements
 
 - `sudo pacman -Syu unzip zsh zsh-completions ttf-space-mono-nerd bottom lazygit`
-- astronvim
 - nvm
   - with npm installed
 - zsh
