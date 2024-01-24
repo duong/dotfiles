@@ -257,6 +257,22 @@ require('lazy').setup({
       require('dashboard').setup {
         theme = 'hyper',
         config = {
+          -- header is overridden by week_header
+          header = {
+            '                    /  ___  \\ ',
+            '                 /  /  _  \\  \\ ',
+            '               /( /( /(_)\\ )\\ )\\ ',
+            '              (  \\  \\ ___ /  /  )',
+            '              (    \\ _____ /    )',
+            '              /(               )\\ ',
+            '             |  \\             /  |',
+            '             |    \\ _______ /    |',
+            '              \\    / \\   / \\    /',
+            '              \\/    | |    \\/',
+            '                 | | ',
+            '                 | |',
+            '                 | |',
+          },
           week_header = {
             enable = true,
           },
