@@ -382,6 +382,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>uw", "<cmd>set wrap!<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ut", "<cmd>set shiftwidth=2 tabstop=2<CR>", { noremap = true, silent = true })
 
 -- Remap for dealing with autoformat
 vim.api.nvim_set_keymap("n", "<leader>lf", "<cmd>Format<CR>", { noremap = true, silent = true })
