@@ -643,14 +643,6 @@ local on_attach = function(_, bufnr)
   end, 'Workspace List Folders')
 
   -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'OrganizeImports', function(_)
-    vim.lsp.buf.execute_command({
-      command = "_typescript.organizeImports",
-      arguments = { vim.api.nvim_buf_get_name(0) },
-    })
-  end, { desc = 'Organize current buffer imports with LSP' })
-
-  -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
@@ -743,13 +735,24 @@ mason_lspconfig.setup_handlers {
   end,
   -- Next, you can provide a dedicated handler for specific servers.
   -- For example, a handler override for the `tsserver`:
-  -- ["tsserver"] = function()
-  --   require("lspconfig").tsserver.setup {
-  --     handlers = {
-  --       ["textDocument/publishDiagnostics"] = function() end,
-  --     },
-  --   }
-  -- end
+  ["tsserver"] = function()
+    require("lspconfig").tsserver.setup {
+      -- handlers = {
+      --   ["textDocument/publishDiagnostics"] = function() end,
+      -- },
+      commands = {
+        OrganizeImports = {
+          function()
+            vim.lsp.buf.execute_command({
+              command = "_typescript.organizeImports",
+              arguments = { vim.api.nvim_buf_get_name(0) },
+            })
+          end,
+          description = 'Organize current buffer imports with LSP'
+        }
+      }
+    }
+  end
 }
 
 -- [[ Configure nvim-cmp ]]
