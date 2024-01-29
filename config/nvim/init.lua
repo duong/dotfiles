@@ -150,13 +150,12 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
-
-  {
-    "mfussenegger/nvim-lint",
-    config = function()
-      -- Your config will go here
-    end
-  },
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   config = function()
+  --     -- Your config will go here
+  --   end
+  -- },
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
