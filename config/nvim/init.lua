@@ -788,38 +788,38 @@ require("catppuccin").setup({
 })
 
 -- [[ Configure nvim-lint ]] https://www.reddit.com/r/neovim/comments/15pj1oi/using_nvimlint_as_a_nullls_alternative_for_linters/
-local lint = require("lint")
-lint.linters_by_ft = {
-  javascript = {
-    "eslint_d"
-  },
-  typescript = {
-    "eslint_d"
-  },
-  javascriptreact = {
-    "eslint_d"
-  },
-  typescriptreact = {
-    "eslint_d"
-  }
-}
+-- local lint = require("lint")
+-- lint.linters_by_ft = {
+--   javascript = {
+--     "eslint_d"
+--   },
+--   typescript = {
+--     "eslint_d"
+--   },
+--   javascriptreact = {
+--     "eslint_d"
+--   },
+--   typescriptreact = {
+--     "eslint_d"
+--   }
+-- }
 
-vim.api.nvim_create_autocmd({ "InsertLeave", "BufWritePost" }, {
-  callback = function()
-    -- Disable virtual_text for eslint_d
-    local ns = require("lint").get_namespace("eslint_d")
-    vim.diagnostic.config({ virtual_text = false }, ns)
-
-    -- Enable linting
-    local lint_status, lint = pcall(require, "lint")
-    if lint_status then
-      lint.try_lint()
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "InsertLeave", "BufWritePost" }, {
+--   callback = function()
+--     -- Disable virtual_text for eslint_d
+--     local ns = require("lint").get_namespace("eslint_d")
+--     vim.diagnostic.config({ virtual_text = false }, ns)
+--
+--     -- Enable linting
+--     local lint_status, lint = pcall(require, "lint")
+--     if lint_status then
+--       lint.try_lint()
+--     end
+--   end,
+-- })
 
 -- Disable all virtual text lsp + lint
--- vim.diagnostic.config({virtual_text = false})
+-- vim.diagnostic.config({ virtual_text = false })
 
 -- disable all lsp virtual_text
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
