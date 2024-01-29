@@ -387,6 +387,7 @@ vim.api.nvim_set_keymap("n", "<leader>ut", "<cmd>set shiftwidth=2 tabstop=2<CR>"
 -- Remap for dealing with autoformat
 vim.api.nvim_set_keymap("n", "<leader>lf", "<cmd>Format<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>lF", "<cmd>KickstartFormatToggle<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>lo", "<cmd>OrganizeImports<CR>", { noremap = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -636,6 +637,7 @@ require('which-key').register({
   ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
   ['<leader>lf'] = { name = 'Format buffer', _ = 'which_key_ignore' },
   ['<leader>lF'] = { name = 'Toggle format on save', _ = 'which_key_ignore' },
+  ['<leader>lo'] = { name = 'Organize Imports', _ = 'which_key_ignore' },
 })
 
 -- Enable the following language servers
@@ -664,7 +666,7 @@ local servers = {
       format = {
         semicolons = "insert",
       }
-    }
+    },
   },
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
@@ -691,12 +693,33 @@ mason_lspconfig.setup {
 }
 
 mason_lspconfig.setup_handlers {
+  -- The first entry (without a key) will be the default handler
+  -- and will be called for each installed server that doesn't have
+  -- a dedicated handler.
   function(server_name)
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
+    }
+  end,
+  -- Next, you can provide a dedicated handler for specific servers.
+  -- For example, a handler override for the `tsserver`:
+  ["tsserver"] = function()
+    require("lspconfig").tsserver.setup {
+      commands = {
+        OrganizeImports = {
+          function()
+            vim.lsp.buf.execute_command({
+              command = "_typescript.organizeImports",
+              arguments = { vim.api.nvim_buf_get_name(0) },
+              title = ""
+            })
+          end,
+          description = "Organize Imports"
+        }
+      }
     }
   end
 }
