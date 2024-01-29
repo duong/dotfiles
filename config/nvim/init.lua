@@ -386,8 +386,8 @@ vim.api.nvim_set_keymap("n", "<leader>ut", "<cmd>set shiftwidth=2 tabstop=2<CR>"
 
 -- Remap for dealing with autoformat
 vim.api.nvim_set_keymap("n", "<leader>lf", "<cmd>Format<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>lo", "<cmd>OrganizeImports<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>lF", "<cmd>KickstartFormatToggle<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>lo", "<cmd>OrganizeImports<CR>", { noremap = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -614,6 +614,14 @@ local on_attach = function(_, bufnr)
   end, 'Workspace List Folders')
 
   -- Create a command `:Format` local to the LSP buffer
+  vim.api.nvim_buf_create_user_command(bufnr, 'OrganizeImports', function(_)
+    vim.lsp.buf.execute_command({
+      command = "_typescript.organizeImports",
+      arguments = { vim.api.nvim_buf_get_name(0) },
+    })
+  end, { desc = 'Organize current buffer imports with LSP' })
+
+  -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
@@ -706,22 +714,22 @@ mason_lspconfig.setup_handlers {
   end,
   -- Next, you can provide a dedicated handler for specific servers.
   -- For example, a handler override for the `tsserver`:
-  ["tsserver"] = function()
-    require("lspconfig").tsserver.setup {
-      commands = {
-        OrganizeImports = {
-          function()
-            vim.lsp.buf.execute_command({
-              command = "_typescript.organizeImports",
-              arguments = { vim.api.nvim_buf_get_name(0) },
-              title = ""
-            })
-          end,
-          description = "Organize Imports"
-        }
-      }
-    }
-  end
+  -- ["tsserver"] = function()
+  --   require("lspconfig").tsserver.setup {
+  --     commands = {
+  --       OrganizeImports = {
+  --         function()
+  --           vim.lsp.buf.execute_command({
+  --             command = "_typescript.organizeImports",
+  --             arguments = { vim.api.nvim_buf_get_name(0) },
+  --             title = ""
+  --           })
+  --         end,
+  --         description = "Organize Imports"
+  --       }
+  --     }
+  --   }
+  -- end
 }
 
 -- [[ Configure nvim-cmp ]]
