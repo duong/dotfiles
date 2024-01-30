@@ -338,6 +338,22 @@ require('lazy').setup({
       )
     end,
   },
+  -- lazy.nvim
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    }
+  },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -505,6 +521,20 @@ vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = 
 -- [[ Configure Neotree ]]
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle reveal_force_cwd<CR>')
 
+-- [[ Configure Noice ]]
+vim.keymap.set("n", "<leader>nd", function()
+  require("noice").cmd("dismiss")
+end)
+vim.keymap.set("n", "<leader>nf", function()
+  require("noice").cmd("telescope")
+end)
+vim.keymap.set("n", "<leader>nl", function()
+  require("noice").cmd("last")
+end)
+vim.keymap.set("n", "<leader>nh", function()
+  require("noice").cmd("history")
+end)
+
 -- [[ Configure toggleterm ]]
 require("toggleterm").setup {}
 
@@ -663,6 +693,11 @@ require('which-key').register({
   ['<leader>lf'] = { name = 'Format buffer', _ = 'which_key_ignore' },
   ['<leader>lF'] = { name = 'Toggle format on save', _ = 'which_key_ignore' },
   ['<leader>lo'] = { name = 'Organize Imports', _ = 'which_key_ignore' },
+  ['<leader>n'] = { name = 'Noice', _ = 'which_key_ignore' },
+  ['<leader>nd'] = { name = 'Notification dismiss', _ = 'which_key_ignore' },
+  ['<leader>nf'] = { name = 'Notification find', _ = 'which_key_ignore' },
+  ['<leader>nl'] = { name = 'Notification last', _ = 'which_key_ignore' },
+  ['<leader>nh'] = { name = 'Notification history', _ = 'which_key_ignore' },
 })
 
 -- Enable the following language servers
