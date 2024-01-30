@@ -11,9 +11,6 @@
   - zplug
   - oh-my-zsh
   - starship
-- fish
-  - omf
-  - starship
 
 ## Setup
 

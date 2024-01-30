@@ -505,10 +505,6 @@ vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = 
 -- [[ Configure Neotree ]]
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle reveal_force_cwd<CR>')
 
--- [[ Configure bufferline ]]
--- vim.opt.termguicolors = true
--- require("bufferline").setup {}
-
 -- [[ Configure toggleterm ]]
 require("toggleterm").setup {}
 
