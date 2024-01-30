@@ -311,7 +311,7 @@ require('lazy').setup({
 
           {
             event = "file_opened",
-            handler = function(file_path)
+            handler = function()
               -- auto close
               -- vimc.cmd("Neotree close")
               -- OR
@@ -353,6 +353,10 @@ require('lazy').setup({
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     }
+  },
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = 'kevinhwang91/promise-async',
   },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -410,12 +414,6 @@ vim.o.termguicolors = true
 
 -- Hide cmdline when not in use https://www.reddit.com/r/neovim/comments/xb0hs1/is_it_possible_to_hide_command_line_when_it_is/
 vim.o.cmdheight = 0
-
--- Set fold method to by default
-vim.o.foldmethod = "indent"
-
--- But don't have everything folded by default
-vim.o.foldlevelstart = 99
 
 -- [[ Basic Keymaps ]]
 
@@ -745,6 +743,12 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+-- Ensure capabilities for folding
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true
+}
+
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
@@ -785,6 +789,21 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
+
+-- Configure lspconfig for folding with nvim-ufo
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
+local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+for _, ls in ipairs(language_servers) do
+  require('lspconfig')[ls].setup({
+    capabilities = capabilities
+    -- you can add other fields for setting up lsp server in this table
+  })
+end
+require('ufo').setup()
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
