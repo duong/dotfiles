@@ -902,6 +902,7 @@ require('noice').setup {
   },
 }
 
+-- [[ Configure null_ls ]]
 require('mason').setup()
 local null_ls = require 'null-ls'
 null_ls.setup {
