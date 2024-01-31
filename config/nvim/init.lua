@@ -881,6 +881,12 @@ require('catppuccin').setup {
 
 -- [[ Configure noice ]]
 require('noice').setup {
+  cmdline = {
+    format = {
+      conceal = false,
+      cmdline = { pattern = '^:', icon = '：', lang = 'vim' },
+    },
+  },
   views = {
     cmdline_popup = {
       position = {
