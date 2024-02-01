@@ -369,6 +369,10 @@ require('lazy').setup({
     'kevinhwang91/nvim-ufo',
     dependencies = 'kevinhwang91/promise-async',
   },
+  {
+    'nvim-pack/nvim-spectre',
+    dependencies = 'nvim-lua/plenary.nvim',
+  },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -709,6 +713,7 @@ require('which-key').register {
   ['<leader>nf'] = { name = 'Notification find', _ = 'which_key_ignore' },
   ['<leader>nl'] = { name = 'Notification last', _ = 'which_key_ignore' },
   ['<leader>nh'] = { name = 'Notification history', _ = 'which_key_ignore' },
+  ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
 }
 
 -- Enable the following language servers
@@ -950,6 +955,20 @@ require('mason-null-ls').setup {
   ensure_installed = { 'eslint_d', 'stylua', 'prettierd' },
   automatic_installation = true,
 }
+
+-- [[ Configure nvim-spectre ]]
+vim.keymap.set('n', '<leader>ss', '<cmd>lua require("spectre").toggle()<CR>', {
+  desc = 'Toggle Spectre',
+})
+vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+  desc = 'Search current word',
+})
+vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+  desc = 'Search current word',
+})
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+  desc = 'Search on current file',
+})
 
 -- [[ Configure nvim-lint ]] https://www.reddit.com/r/neovim/comments/15pj1oi/using_nvimlint_as_a_nullls_alternative_for_linters/
 -- local lint = require("lint")
