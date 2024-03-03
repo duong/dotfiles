@@ -373,10 +373,25 @@ require('lazy').setup({
     'nvim-pack/nvim-spectre',
     dependencies = 'nvim-lua/plenary.nvim',
   },
+  { -- Autoformat
+    'stevearc/conform.nvim',
+    opts = {
+      notify_on_error = false,
+      formatters_by_ft = {
+        lua = { 'stylua' },
+        -- Conform can also run multiple formatters sequentially
+        -- python = { "isort", "black" },
+        --
+        -- You can use a sub-list to tell conform to run *until* a formatter
+        -- is found.
+        -- javascript = { { "prettierd", "prettier" } },
+        typescript = { 'prettierd' },
+      },
+    },
+  },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
-  require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
 }, {})
 
@@ -445,7 +460,6 @@ vim.api.nvim_set_keymap('n', '<leader>ut', '<cmd>set shiftwidth=2 tabstop=2<CR>'
 -- Remap for dealing with autoformat
 vim.api.nvim_set_keymap('n', '<leader>lf', '<cmd>Format<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>lo', '<cmd>OrganizeImports<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>lF', '<cmd>KickstartFormatToggle<CR>', { noremap = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -637,6 +651,35 @@ vim.keymap.set('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', { desc = 'Go 
 vim.keymap.set('n', '<leader>ld', '<cmd>Lspsaga show_line_diagnostics<CR>', { desc = 'Open floating diagnostic message' })
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+-- [[ Configure conform.nvim ]]
+require('conform').setup {
+  format_on_save = function(bufnr)
+    -- Disable with a global or buffer-local variable
+    if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+      return
+    end
+    return { timeout_ms = 500, lsp_fallback = true }
+  end,
+}
+
+vim.api.nvim_create_user_command('FormatDisable', function(args)
+  if args.bang then
+    -- FormatDisable! will disable formatting just for this buffer
+    vim.b.disable_autoformat = true
+  else
+    vim.g.disable_autoformat = true
+  end
+end, {
+  desc = 'Disable autoformat-on-save',
+  bang = true,
+})
+vim.api.nvim_create_user_command('FormatEnable', function()
+  vim.b.disable_autoformat = false
+  vim.g.disable_autoformat = false
+end, {
+  desc = 'Re-enable autoformat-on-save',
+})
+
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -675,7 +718,7 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, 'Workspace List Folders')
 
-  -- Create a command `:Format` local to the LSP buffer
+  -- Create a command `:OrganizeImports` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'OrganizeImports', function(_)
     vim.lsp.buf.execute_command {
       command = '_typescript.organizeImports',
@@ -706,7 +749,6 @@ require('which-key').register {
   ['<leader>f'] = { name = 'Find', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
   ['<leader>lf'] = { name = 'Format buffer', _ = 'which_key_ignore' },
-  ['<leader>lF'] = { name = 'Toggle format on save', _ = 'which_key_ignore' },
   ['<leader>lo'] = { name = 'Organize Imports', _ = 'which_key_ignore' },
   ['<leader>n'] = { name = 'Noice', _ = 'which_key_ignore' },
   ['<leader>nd'] = { name = 'Notification dismiss', _ = 'which_key_ignore' },
