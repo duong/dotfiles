@@ -16,5 +16,8 @@ xwallpaper --center ~/Pictures/yuri-catppuccin.png &
 # from original
 qtile start
 
+# set auto repeat speed
+xset r rate 250 50
+
 # from qtile website
 #exec qtile start
