@@ -48,7 +48,7 @@ require('lazy').setup({
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       -- fidget.nvim will soon be completely rewritten. Pin plugin legacy tag to avoid breaking changes.
-      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -72,7 +72,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  lazy = true, opts = {} },
+  { 'folke/which-key.nvim', lazy = true, opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -253,7 +253,7 @@ require('lazy').setup({
     end,
     dependencies = {
       'nvim-treesitter/nvim-treesitter', -- optional
-      'nvim-tree/nvim-web-devicons',     -- optional
+      'nvim-tree/nvim-web-devicons', -- optional
     },
   },
   {
@@ -847,7 +847,7 @@ mason_lspconfig.setup_handlers {
 
 -- Configure lspconfig for folding with nvim-ufo
 vim.o.foldcolumn = '0' -- '0' is not bad
-vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
@@ -980,11 +980,11 @@ require('noice').setup {
   },
   -- you can enable a preset for easier configuration
   presets = {
-    bottom_search = false,        -- use a classic bottom cmdline for search
-    command_palette = false,      -- position the cmdline and popupmenu together
+    bottom_search = false, -- use a classic bottom cmdline for search
+    command_palette = false, -- position the cmdline and popupmenu together
     long_message_to_split = true, -- long messages will be sent to a split
-    inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = false,       -- add a border to hover docs and signature help
+    inc_rename = false, -- enables an input dialog for inc-rename.nvim
+    lsp_doc_border = false, -- add a border to hover docs and signature help
   },
 }
 
