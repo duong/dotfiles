@@ -214,7 +214,7 @@ require('lazy').setup({
     lazy = false,
   },
   {
-    'nvimdev/lspsaga.nvim',
+    'nvimdev/lspsaga.nvim', -- fancy popups and lsp niceties, goto definition and peek
     config = function()
       require('lspsaga').setup {
         debug = false,
@@ -588,7 +588,7 @@ require('Comment').setup {
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'c_sharp' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
@@ -792,6 +792,8 @@ local servers = {
       },
     },
   },
+  csharp_ls = {},
+
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
@@ -997,10 +999,11 @@ null_ls.setup {
     null_ls.builtins.diagnostics.eslint_d,
     null_ls.builtins.completion.spell,
     null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.csharpier,
   },
 }
 require('mason-null-ls').setup {
-  ensure_installed = { 'eslint_d', 'stylua', 'prettierd' },
+  ensure_installed = { 'eslint_d', 'stylua', 'prettierd', 'csharpier' },
   automatic_installation = true,
 }
 
