@@ -4,7 +4,7 @@
 
 ## Requirements
 
-- `sudo pacman -Syu unzip zsh zsh-completions ttf-space-mono-nerd bottom lazygit`
+- `sudo pacman -Syu unzip zsh zsh-completions ttf-space-mono-nerd bottom lazygit dotnet-runtime dotnet-sdk`
 - nvm
   - with npm installed
 - zsh
