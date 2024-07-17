@@ -748,29 +748,30 @@ local on_attach = function(_, bufnr)
 end
 
 -- document existing key chains
-require('which-key').register {
-  ['<leader>c'] = { name = 'Code', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = 'Document', _ = 'which_key_ignore' },
-  ['<leader>l'] = { name = 'LSP options', _ = 'which_key_ignore' },
-  ['<leader>u'] = { name = 'UI', _ = 'which_key_ignore' },
-  ['<leader>uw'] = { name = 'Toggle word wrap', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = 'Git options', _ = 'which_key_ignore' },
-  ['<leader>gg'] = { name = 'Toggle lazygit', _ = 'which_key_ignore' },
-  ['<leader>gl'] = { name = 'Toggle git line blame', _ = 'which_key_ignore' },
-  ['<leader>gd'] = { name = 'View git diff', _ = 'which_key_ignore' },
-  ['<leader>gD'] = { name = 'View git Diff (?) ', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = 'Rename', _ = 'which_key_ignore' },
-  ['<leader>f'] = { name = 'Find', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = 'Workspace', _ = 'which_key_ignore' },
-  ['<leader>lf'] = { name = 'Format buffer', _ = 'which_key_ignore' },
-  ['<leader>lo'] = { name = 'Organize Imports', _ = 'which_key_ignore' },
-  ['<leader>n'] = { name = 'Noice', _ = 'which_key_ignore' },
-  ['<leader>nd'] = { name = 'Notification dismiss', _ = 'which_key_ignore' },
-  ['<leader>nf'] = { name = 'Notification find', _ = 'which_key_ignore' },
-  ['<leader>nl'] = { name = 'Notification last', _ = 'which_key_ignore' },
-  ['<leader>nh'] = { name = 'Notification history', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = 'Search', _ = 'which_key_ignore' },
+local wk = require 'which-key'
+wk.add {
+  { '<leader>c', desc = 'Code' },
+  { '<leader>d', desc = 'Document' },
+  { '<leader>l', desc = 'LSP options' },
+  { '<leader>u', desc = 'UI' },
+  { '<leader>uw', desc = 'Toggle word wrap' },
+  { '<leader>g', desc = 'Git options' },
+  { '<leader>gg', desc = 'Toggle lazygit' },
+  { '<leader>gl', desc = 'Toggle git line blame' },
+  { '<leader>gd', desc = 'View git diff' },
+  { '<leader>gD', desc = 'View git Diff (?) ' },
+  { '<leader>h', desc = 'More git' },
+  { '<leader>r', desc = 'Rename' },
+  { '<leader>f', desc = 'Find' },
+  { '<leader>w', desc = 'Workspace' },
+  { '<leader>lf', desc = 'Format buffer' },
+  { '<leader>lo', desc = 'Organize Imports' },
+  { '<leader>n', desc = 'Noice' },
+  { '<leader>nd', desc = 'Notification dismiss' },
+  { '<leader>nf', desc = 'Notification find' },
+  { '<leader>nl', desc = 'Notification last' },
+  { '<leader>nh', desc = 'Notification history' },
+  { '<leader>s', desc = 'Search' },
 }
 
 -- Enable the following language servers
