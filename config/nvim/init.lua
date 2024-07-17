@@ -728,6 +728,7 @@ end
 
 -- document existing key chains
 local wk = require 'which-key'
+
 wk.add {
   { '<leader>c', desc = 'Code' },
   { '<leader>d', desc = 'Document' },
@@ -775,6 +776,13 @@ wk.add {
     desc = 'Notification history',
   },
   { '<leader>s', desc = 'Search' },
+  {
+    mode = { 'n' },
+    { '<leader>ss', '<cmd>lua require("spectre").toggle()<CR>', desc = 'Toggle Spectre' },
+    { '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', desc = 'Search current word' },
+    { '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', desc = 'Search on current file' },
+  },
+  { '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', desc = 'Search current word', mode = 'n' },
 }
 
 -- Enable the following language servers
@@ -1019,20 +1027,6 @@ require('mason-null-ls').setup {
   ensure_installed = { 'eslint_d', 'stylua', 'prettierd', 'csharpier' },
   automatic_installation = true,
 }
-
--- [[ Configure nvim-spectre ]]
-vim.keymap.set('n', '<leader>ss', '<cmd>lua require("spectre").toggle()<CR>', {
-  desc = 'Toggle Spectre',
-})
-vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-  desc = 'Search current word',
-})
-vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-  desc = 'Search current word',
-})
-vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-  desc = 'Search on current file',
-})
 
 -- [[ Configure nvim-lint ]] https://www.reddit.com/r/neovim/comments/15pj1oi/using_nvimlint_as_a_nullls_alternative_for_linters/
 -- local lint = require("lint")
