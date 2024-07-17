@@ -549,9 +549,6 @@ end, { desc = 'Search by Grep (Hidden)' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = 'Search Diagnostics' })
 vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = 'Search Resume' })
 
--- [[ Configure Neotree ]]
-vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle reveal_force_cwd<CR>')
-
 -- [[ Configure toggleterm ]]
 require('toggleterm').setup {}
 
@@ -639,12 +636,6 @@ vim.defer_fn(function()
   }
 end, 0)
 
--- Diagnostic keymaps
-vim.keymap.set('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>ld', '<cmd>Lspsaga show_line_diagnostics<CR>', { desc = 'Open floating diagnostic message' })
--- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
-
 -- [[ Configure conform.nvim ]]
 require('conform').setup {
   format_on_save = function(bufnr)
@@ -728,7 +719,6 @@ end
 
 -- document existing key chains
 local wk = require 'which-key'
-
 wk.add {
   { '<leader>c', desc = 'Code' },
   { '<leader>d', desc = 'Document' },
@@ -783,6 +773,16 @@ wk.add {
     { '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', desc = 'Search on current file' },
   },
   { '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', desc = 'Search current word', mode = 'n' },
+  { '<C-b>', '<Cmd>Neotree toggle reveal_force_cwd<CR>', mode = 'n' },
+
+  -- Diagnostic keymaps
+  {
+    mode = { 'n' },
+    { '[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>', desc = 'Go to previous diagnostic message' },
+    { ']d', '<cmd>Lspsaga diagnostic_jump_next<cr>', desc = 'Go to next diagnostic message' },
+    { '<leader>ld', '<cmd>Lspsaga show_line_diagnostics<CR>', desc = 'Open floating diagnostic message' },
+    { '<leader>q', vim.diagnostic.setloclist, desc = 'Open diagnostics list' },
+  },
 }
 
 -- Enable the following language servers
