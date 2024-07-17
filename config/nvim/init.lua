@@ -468,7 +468,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>uw', '<cmd>set wrap!<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ut2', '<cmd>set shiftwidth=2 tabstop=2<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ut4', '<cmd>set shiftwidth=4 tabstop=4<CR>', { noremap = true, silent = true })
 
@@ -557,20 +556,6 @@ vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = 
 -- [[ Configure Neotree ]]
 vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle reveal_force_cwd<CR>')
 
--- [[ Configure Noice ]]
-vim.keymap.set('n', '<leader>nd', function()
-  require('noice').cmd 'dismiss'
-end)
-vim.keymap.set('n', '<leader>nf', function()
-  require('noice').cmd 'telescope'
-end)
-vim.keymap.set('n', '<leader>nl', function()
-  require('noice').cmd 'last'
-end)
-vim.keymap.set('n', '<leader>nh', function()
-  require('noice').cmd 'history'
-end)
-
 -- [[ Configure toggleterm ]]
 require('toggleterm').setup {}
 
@@ -580,8 +565,6 @@ local lazygit = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'floa
 function _lazygit_toggle()
   lazygit:toggle()
 end
-
-vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>lua _lazygit_toggle()<CR>', { noremap = true, silent = true })
 
 -- [[ Configure Comment ]]
 require('ts_context_commentstring').setup {
@@ -754,9 +737,9 @@ wk.add {
   { '<leader>d', desc = 'Document' },
   { '<leader>l', desc = 'LSP options' },
   { '<leader>u', desc = 'UI' },
-  { '<leader>uw', desc = 'Toggle word wrap' },
+  { '<leader>uw', '<cmd>set wrap!<CR>', desc = 'Toggle word wrap' },
   { '<leader>g', desc = 'Git options' },
-  { '<leader>gg', desc = 'Toggle lazygit' },
+  { '<leader>gg', '<cmd>lua _lazygit_toggle()<CR>', desc = 'Toggle lazygit' },
   { '<leader>gl', desc = 'Toggle git line blame' },
   { '<leader>gd', desc = 'View git diff' },
   { '<leader>gD', desc = 'View git Diff (?) ' },
@@ -767,10 +750,34 @@ wk.add {
   { '<leader>lf', desc = 'Format buffer' },
   { '<leader>lo', desc = 'Organize Imports' },
   { '<leader>n', desc = 'Noice' },
-  { '<leader>nd', desc = 'Notification dismiss' },
-  { '<leader>nf', desc = 'Notification find' },
-  { '<leader>nl', desc = 'Notification last' },
-  { '<leader>nh', desc = 'Notification history' },
+  {
+    '<leader>nd',
+    function()
+      require('noice').cmd 'dismiss'
+    end,
+    desc = 'Notification dismiss',
+  },
+  {
+    '<leader>nf',
+    function()
+      require('noice').cmd 'telescope'
+    end,
+    desc = 'Notification find',
+  },
+  {
+    '<leader>nl',
+    function()
+      require('noice').cmd 'last'
+    end,
+    desc = 'Notification last',
+  },
+  {
+    '<leader>nh',
+    function()
+      require('noice').cmd 'history'
+    end,
+    desc = 'Notification history',
+  },
   { '<leader>s', desc = 'Search' },
 }
 
