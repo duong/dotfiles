@@ -471,10 +471,6 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.api.nvim_set_keymap('n', '<leader>ut2', '<cmd>set shiftwidth=2 tabstop=2<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ut4', '<cmd>set shiftwidth=4 tabstop=4<CR>', { noremap = true, silent = true })
 
--- Remap for dealing with autoformat
-vim.api.nvim_set_keymap('n', '<leader>lf', '<cmd>Format<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>lo', '<cmd>OrganizeImports<CR>', { noremap = true, silent = true })
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -747,8 +743,8 @@ wk.add {
   { '<leader>r', desc = 'Rename' },
   { '<leader>f', desc = 'Find' },
   { '<leader>w', desc = 'Workspace' },
-  { '<leader>lf', desc = 'Format buffer' },
-  { '<leader>lo', desc = 'Organize Imports' },
+  { '<leader>lf', '<cmd>Format<CR>', desc = 'Format buffer' },
+  { '<leader>lo', '<cmd>OrganizeImports<CR>', desc = 'Organize Imports' },
   { '<leader>n', desc = 'Noice' },
   {
     '<leader>nd',
