@@ -70,8 +70,6 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
   {
     'jay-babu/mason-null-ls.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
@@ -235,24 +233,6 @@ require('ts_context_commentstring').setup {
 require('Comment').setup {
   pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
 }
-
-vim.api.nvim_create_user_command('FormatDisable', function(args)
-  if args.bang then
-    -- FormatDisable! will disable formatting just for this buffer
-    vim.b.disable_autoformat = true
-  else
-    vim.g.disable_autoformat = true
-  end
-end, {
-  desc = 'Disable autoformat-on-save',
-  bang = true,
-})
-vim.api.nvim_create_user_command('FormatEnable', function()
-  vim.b.disable_autoformat = false
-  vim.g.disable_autoformat = false
-end, {
-  desc = 'Re-enable autoformat-on-save',
-})
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
@@ -483,6 +463,10 @@ require('mason-null-ls').setup {
   ensure_installed = { 'eslint_d', 'stylua', 'prettierd', 'csharpier' },
   automatic_installation = true,
 }
+
+-- Require some commands from these files
+require 'commands.format-enable'
+require 'commands.format-disable'
 
 -- [[ Configure nvim-lint ]] https://www.reddit.com/r/neovim/comments/15pj1oi/using_nvimlint_as_a_nullls_alternative_for_linters/
 -- local lint = require("lint")
