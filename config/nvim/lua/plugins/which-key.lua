@@ -5,8 +5,9 @@ return {
   opts = {
     preset = 'modern',
   },
-  config = function()
+  config = function(_, opts)
     -- document existing key chains
+    require('which-key').setup(opts)
     local wk = require 'which-key'
     wk.add {
       { '<leader>c', desc = 'Code' },
