@@ -91,10 +91,6 @@ require('lazy').setup({
   },
   'ggandor/leap.nvim',
   'rrethy/vim-illuminate',
-  {
-    'nvim-pack/nvim-spectre',
-    dependencies = 'nvim-lua/plenary.nvim',
-  },
   -- Uncomment to require specific config from kickstart
   -- require 'kickstart.plugins.debug',
 
@@ -116,16 +112,7 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.api.nvim_set_keymap('n', '<leader>ut2', '<cmd>set shiftwidth=2 tabstop=2<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ut4', '<cmd>set shiftwidth=4 tabstop=4<CR>', { noremap = true, silent = true })
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
+require 'commands.highlight-yank'
 
 -- [[ Configure indent-blankline ]]
 -- require("ibl").setup()
