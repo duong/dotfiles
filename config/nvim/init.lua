@@ -81,13 +81,6 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
-  -- {
-  --   "mfussenegger/nvim-lint",
-  --   config = function()
-  --     -- Your config will go here
-  --   end
-  -- },
-  -- Fuzzy Finder (files, lsp, etc)
   {
     'jay-babu/mason-null-ls.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
@@ -130,7 +123,6 @@ require('lazy').setup({
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
   },
-  -- lazy.nvim
   {
     'kevinhwang91/nvim-ufo',
     dependencies = 'kevinhwang91/promise-async',
