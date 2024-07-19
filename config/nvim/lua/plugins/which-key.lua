@@ -72,6 +72,9 @@ return {
         { '<leader>ld', '<cmd>Lspsaga show_line_diagnostics<CR>', desc = 'Open floating diagnostic message' },
         { '<leader>q', vim.diagnostic.setloclist, desc = 'Open diagnostics list' },
       },
+      { '<leader>ut', desc = 'Set spaces' },
+      { '<leader>ut2', '<cmd>set shiftwidth=2 tabstop=2<CR>', desc = 'Set spaces 2' },
+      { '<leader>ut4', '<cmd>set shiftwidth=4 tabstop=4<CR>', desc = 'Set spaces 4' },
     }
   end,
 }
