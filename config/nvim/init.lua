@@ -79,9 +79,6 @@ require('lazy').setup({
     },
   },
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
-  {
-    'JoosepAlviste/nvim-ts-context-commentstring',
-  },
   'ggandor/leap.nvim',
   'rrethy/vim-illuminate',
   -- Uncomment to require specific config from kickstart
@@ -106,11 +103,6 @@ local lazygit = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'floa
 function _LAZYGIT_TOGGLE()
   lazygit:toggle()
 end
-
--- [[ Configure Comment ]]
-require('ts_context_commentstring').setup {
-  enable_autocmd = false,
-}
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
