@@ -15,7 +15,7 @@ return {
       { '<leader>u', group = 'UI' },
       { '<leader>uw', '<cmd>set wrap!<CR>', desc = 'Toggle word wrap' },
       { '<leader>g', group = 'Git options' },
-      { '<leader>gg', '<cmd>lua _lazygit_toggle()<CR>', desc = 'Toggle lazygit' },
+      { '<leader>gg', '<cmd>lua _LAZYGIT_TOGGLE()<CR>', desc = 'Toggle lazygit' },
       { '<leader>gl', desc = 'Toggle git line blame' },
       { '<leader>gd', desc = 'View git diff' },
       { '<leader>gD', desc = 'View git Diff (?) ' },
