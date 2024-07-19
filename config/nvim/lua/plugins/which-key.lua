@@ -24,7 +24,7 @@ return {
       { '<leader>r', desc = 'Rename' },
       { '<leader>f', desc = 'Find' },
       { '<leader>w', desc = 'Workspace' },
-      { '<leader>lf', '<cmd>Format<CR>', desc = 'Format buffer' },
+      { '<leader>lf', vim.lsp.buf.format, desc = 'Format buffer' },
       { '<leader>lo', '<cmd>OrganizeImports<CR>', desc = 'Organize Imports' },
       { '<leader>n', desc = 'Noice' },
       {
