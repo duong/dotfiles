@@ -80,14 +80,6 @@ require('lazy').setup({
     },
   },
   {
-    'catppuccin/nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'catppuccin-macchiato'
-    end,
-  },
-  {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -685,15 +677,6 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-  },
-}
-
--- [[ Configure catppuccin ]]
-require('catppuccin').setup {
-  integrations = {
-    cmp = true,
-    gitsigns = true,
-    nvimtree = true,
   },
 }
 
