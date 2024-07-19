@@ -72,9 +72,13 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', lazy = true, opts = {
-    preset = 'modern',
-  } },
+  {
+    'folke/which-key.nvim',
+    lazy = true,
+    opts = {
+      preset = 'modern',
+    },
+  },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -383,32 +387,11 @@ require('lazy').setup({
     'nvim-pack/nvim-spectre',
     dependencies = 'nvim-lua/plenary.nvim',
   },
-  { -- Autoformat
-    'stevearc/conform.nvim',
-    opts = {
-      notify_on_error = false,
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
-        typescript = { { 'prettierd', 'prettier' } },
-        typescriptreact = { { 'prettierd', 'prettier' } },
-        javascript = { { 'prettierd', 'prettier' } },
-        javascriptreact = { { 'prettierd', 'prettier' } },
-        json = { { 'prettierd', 'prettier' } },
-        html = { { 'prettierd', 'prettier' } },
-        css = { { 'prettierd', 'prettier' } },
-      },
-    },
-  },
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
+  -- Uncomment to require specific config from kickstart
   -- require 'kickstart.plugins.debug',
+
+  -- import all plugins from ./lua/plugins/*.lua
+  { import = 'plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -637,17 +620,6 @@ vim.defer_fn(function()
     },
   }
 end, 0)
-
--- [[ Configure conform.nvim ]]
-require('conform').setup {
-  format_on_save = function(bufnr)
-    -- Disable with a global or buffer-local variable
-    if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-      return
-    end
-    return { timeout_ms = 500, lsp_fallback = true }
-  end,
-}
 
 vim.api.nvim_create_user_command('FormatDisable', function(args)
   if args.bang then
