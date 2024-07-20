@@ -303,14 +303,20 @@ local null_ls = require 'null-ls'
 null_ls.setup {
   sources = {
     null_ls.builtins.formatting.stylua,
-    require 'none-ls.diagnostics.eslint_d',
+    -- require 'none-ls.diagnostics.eslint_d',
     null_ls.builtins.completion.spell,
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.csharpier,
   },
 }
 require('mason-null-ls').setup {
-  ensure_installed = { 'eslint_d', 'stylua', 'prettierd', 'csharpier' },
+  ensure_installed = {
+    -- 'eslint_d',
+    'eslint-lsp',
+    'stylua',
+    'prettierd',
+    'csharpier',
+  },
   automatic_installation = true,
 }
 
