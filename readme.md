@@ -4,7 +4,7 @@
 
 ## Requirements
 
-- `sudo pacman -Syu unzip zsh zsh-completions ttf-space-mono-nerd bottom lazygit dotnet-runtime dotnet-sdk`
+- `sudo pacman -Syu unzip zsh zsh-completions ttf-space-mono-nerd bottom lazygit dotnet-runtime dotnet-sdk ripgrep`
 - nvm
   - with npm installed
 - zsh
@@ -29,7 +29,7 @@ ln -s ~/dotfiles/config/discord/settings.json ~/.config/discord/settings.json
 ```
 
 Check startup time of neovim
+
 ```bash
 nvim --startuptime somefile
 ```
-
