@@ -182,7 +182,7 @@ screens = [
                     foreground=colors["text"],
                     font=font,
                     fontsize=20,
-                    fmt="墳 {} ",
+                    fmt="🕪 {} ",
                     mouse_callbacks={"Button3": lazy.spawn("pavucontrol -t 4")},
                 ),
                 widget.TextBox(
@@ -258,7 +258,7 @@ screens = [
                     foreground=colors["text"],
                     font=font,
                     fontsize=20,
-                    fmt="墳 {} ",
+                    fmt="🕪 {} ",
                     mouse_callbacks={"Button3": lazy.spawn("pavucontrol -t 4")},
                 ),
                 widget.TextBox(
