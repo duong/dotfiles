@@ -64,7 +64,7 @@ return {
       -- Spectre search
       { '<leader>s', desc = 'Search' },
       {
-        mode = { 'n' },
+        mode = { 'n', 'v' },
         { '<leader>ss', '<cmd>lua require("spectre").toggle()<CR>', desc = 'Toggle Spectre' },
         { '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', desc = 'Search current word' },
         { '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', desc = 'Search on current file' },
@@ -86,6 +86,12 @@ return {
       { '<leader>ut2', '<cmd>set shiftwidth=2 tabstop=2<CR>', desc = 'Set spaces 2' },
       { '<leader>ut4', '<cmd>set shiftwidth=4 tabstop=4<CR>', desc = 'Set spaces 4' },
       { '<leader>ur', '<cmd>set rnu!<CR>', desc = 'Toggle relative line numbers' },
+
+      -- Move between splits
+      { '<C-h>', '<Cmd>wincmd h<CR>', mode = 'n' },
+      { '<C-j>', '<Cmd>wincmd j<CR>', mode = 'n' },
+      { '<C-k>', '<Cmd>wincmd k<CR>', mode = 'n' },
+      { '<C-l>', '<Cmd>wincmd l<CR>', mode = 'n' },
     }
   end,
 }
