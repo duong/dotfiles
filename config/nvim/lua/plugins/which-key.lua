@@ -29,6 +29,7 @@ return {
       { '<leader>w', desc = 'Workspace' },
       { '<leader>lf', '<cmd>Format<CR>', desc = 'Format buffer' },
       { '<leader>lo', '<cmd>OrganizeImports<CR>', desc = 'Organize Imports' },
+      { '<leader>lW', '<cmd>noa w<CR>', desc = 'Write without formatting' },
 
       -- Noice
       { '<leader>n', desc = 'Noice' },
