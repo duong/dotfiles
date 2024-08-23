@@ -99,7 +99,7 @@ return {
         name = 'launch - netcoredbg',
         request = 'launch',
         program = function()
-          return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/Orchestrator/bin/Debug/net8.0/Orchestrator.dll', 'file')
+          return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug', 'file')
         end,
       },
     }
