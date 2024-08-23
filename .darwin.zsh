@@ -37,3 +37,6 @@ defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 # https://apple.stackexchange.com/questions/450303/how-to-make-python-3-11-my-default-python3-with-brew
 export PATH="$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
 
+# Add .NET Core SDK tools
+export PATH="$PATH:/Users/duong/.dotnet/tools"
+
