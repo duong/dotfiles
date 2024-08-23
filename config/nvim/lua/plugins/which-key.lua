@@ -11,7 +11,7 @@ return {
     local wk = require 'which-key'
     wk.add {
       { '<leader>c', desc = 'Code' },
-      { '<leader>d', desc = 'Document' },
+      { '<leader>d', desc = 'Debugger' },
       { '<leader>l', desc = 'LSP options' },
       { '<leader>u', group = 'UI' },
       { '<leader>uw', '<cmd>set wrap!<CR>', desc = 'Toggle word wrap' },
@@ -30,6 +30,17 @@ return {
       { '<leader>lf', '<cmd>Format<CR>', desc = 'Format buffer' },
       { '<leader>lo', '<cmd>OrganizeImports<CR>', desc = 'Organize Imports' },
       { '<leader>lW', '<cmd>noa w<CR>', desc = 'Write without formatting' },
+
+      -- Debugger
+      {
+        mode = { 'n' },
+        -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
+        -- { '<leader>dd', '<cmd>DapToggleRepl<CR>', desc = 'Debug: Toggle UI' },
+        { '<leader>dc', '<cmd>DapContinue<CR>', desc = 'Debug: Start/Continue' },
+        { '<leader>di', '<cmd>DapStepInto<CR>', desc = 'Debug: Step Into' },
+        { '<leader>dv', '<cmd>DapStepOver<CR>', desc = 'Debug: Step Over' },
+        { '<leader>do', '<cmd>DapStepOut<CR>', desc = 'Debug: Step Out' },
+      },
 
       -- Noice
       { '<leader>n', desc = 'Noice' },

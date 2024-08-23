@@ -82,8 +82,11 @@ require('lazy').setup({
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
   'ggandor/leap.nvim',
   'rrethy/vim-illuminate',
-  -- Uncomment to require specific config from kickstart
-  -- require 'kickstart.plugins.debug',
+  -- Since the official netcoredbg repo has no native macOS arm64 build
+  {
+    'Cliffback/netcoredbg-macOS-arm64.nvim',
+    dependencies = { 'mfussenegger/nvim-dap' },
+  },
 
   -- import all plugins from ./lua/plugins/*.lua
   { import = 'plugins' },

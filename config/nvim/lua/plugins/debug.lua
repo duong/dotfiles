@@ -13,6 +13,7 @@ return {
   dependencies = {
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
+    'nvim-neotest/nvim-nio',
 
     -- Installs the debug adapters for you
     'williamboman/mason.nvim',
@@ -39,16 +40,17 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        -- 'coreclr',
       },
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function()
+    vim.keymap.set('n', 'dc', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', 'di', dap.step_into, { desc = 'Debug: Step Into' })
+    vim.keymap.set('n', 'dv', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', 'do', dap.step_out, { desc = 'Debug: Step Out' })
+    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+    vim.keymap.set('n', '<leader>dB', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
 
@@ -83,5 +85,23 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
+
+    -- Configure and install adapters for cs
+    dap.adapters.coreclr = {
+      type = 'executable',
+      command = '/Users/duong/.local/share/nvim/lazy/netcoredbg-macOS-arm64.nvim/netcoredbg/netcoredbg',
+      args = { '--interpreter=vscode' },
+    }
+
+    dap.configurations.cs = {
+      {
+        type = 'coreclr',
+        name = 'launch - netcoredbg',
+        request = 'launch',
+        program = function()
+          return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/Orchestrator/bin/Debug/net8.0/Orchestrator.dll', 'file')
+        end,
+      },
+    }
   end,
 }
