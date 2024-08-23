@@ -7,6 +7,8 @@ return {
       cmp = true,
       gitsigns = true,
       nvimtree = true,
+      dap = true,
+      dap_ui = true,
     },
   },
   config = function(_, opts)

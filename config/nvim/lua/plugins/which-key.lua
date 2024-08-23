@@ -40,6 +40,7 @@ return {
         { '<leader>di', '<cmd>DapStepInto<CR>', desc = 'Debug: Step Into' },
         { '<leader>dv', '<cmd>DapStepOver<CR>', desc = 'Debug: Step Over' },
         { '<leader>do', '<cmd>DapStepOut<CR>', desc = 'Debug: Step Out' },
+        { '<leader>dt', '<cmd>DapTerminate<CR>', desc = 'Debug: Terminate' },
       },
 
       -- Noice
