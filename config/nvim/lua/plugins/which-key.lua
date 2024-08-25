@@ -43,6 +43,16 @@ return {
         { '<leader>dt', '<cmd>DapTerminate<CR>', desc = 'Debug: Terminate' },
       },
 
+      -- Dadbod (database)
+      {
+        mode = { 'n' },
+        { '<leader>b', group = 'Database' },
+        { '<leader>bb', '<cmd>DBUIToggle<CR>', desc = 'Toggle UI' },
+        { '<leader>ba', '<cmd>DBUIAddConnection<CR>', desc = 'Add Connection' },
+        { '<leader>bf', '<cmd>DBUIFindBuffer<CR>', desc = 'Find Buffer' },
+        { '<leader>bd', '<cmd>DbProjectDelete<CR>', desc = 'Project Delete' },
+      },
+
       -- Noice
       { '<leader>n', desc = 'Noice' },
       {
