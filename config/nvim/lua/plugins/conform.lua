@@ -6,7 +6,7 @@ return { -- Autoformat
       lua = { 'stylua' },
       -- Conform will run multiple formatters sequentially
       python = { 'isort', 'black' },
-      -- csharp = { 'csharpier' },
+      csharp = { 'csharpier' },
       -- javascript = { "prettierd", "prettier", stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
