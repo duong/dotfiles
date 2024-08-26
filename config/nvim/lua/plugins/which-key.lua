@@ -11,7 +11,6 @@ return {
     local wk = require 'which-key'
     wk.add {
       { '<leader>c', desc = 'Code' },
-      { '<leader>d', desc = 'Debugger' },
       { '<leader>l', desc = 'LSP options' },
       { '<leader>u', group = 'UI' },
       { '<leader>uw', '<cmd>set wrap!<CR>', desc = 'Toggle word wrap' },
@@ -35,7 +34,8 @@ return {
       {
         mode = { 'n' },
         -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-        -- { '<leader>dd', '<cmd>DapToggleRepl<CR>', desc = 'Debug: Toggle UI' },
+        { '<leader>d', group = 'Debugger' },
+        { '<leader>dd', '<cmd>DapToggleRepl<CR>', desc = 'Debug: Toggle UI' },
         { '<leader>dc', '<cmd>DapContinue<CR>', desc = 'Debug: Start/Continue' },
         { '<leader>di', '<cmd>DapStepInto<CR>', desc = 'Debug: Step Into' },
         { '<leader>dv', '<cmd>DapStepOver<CR>', desc = 'Debug: Step Over' },
