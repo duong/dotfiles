@@ -34,6 +34,7 @@ alias grep='grep --color=auto'
 alias ec="$EDITOR $HOME/.zshrc" # edit .zshrc
 alias sc="source $HOME/.zshrc"  # reload zsh configuration
 alias gl='git log --all --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)"'
+alias docker-compose='docker compose'
 
 # Conditionally load dotfiles based on OS
 if [[ $(uname) == "Darwin" ]]; then
