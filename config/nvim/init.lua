@@ -173,7 +173,7 @@ local servers = {
   -- gopls = {},
   pyright = {},
   -- rust_analyzer = {},
-  tsserver = {
+  ts_ls = {
     completions = {
       completeFunctionCalls = true,
     },
