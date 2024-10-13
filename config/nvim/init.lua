@@ -309,8 +309,7 @@ null_ls.setup {
     -- require 'none-ls.diagnostics.eslint_d',
     -- null_ls.builtins.completion.spell,
     null_ls.builtins.formatting.prettierd,
-    null_ls.builtins.formatting.csharpier,
-    null_ls.builtins.formatting.fixjson, -- mostly compatible with vscode's json language features
+    -- null_ls.builtins.formatting.csharpier, -- using conform instead
   },
 }
 require('mason-null-ls').setup {
@@ -319,8 +318,7 @@ require('mason-null-ls').setup {
     'eslint-lsp',
     'stylua',
     'prettierd',
-    'csharpier',
-    'fixjson',
+    -- 'csharpier',
   },
   automatic_installation = true,
 }
