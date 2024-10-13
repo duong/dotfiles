@@ -6,13 +6,14 @@ return { -- Autoformat
       lua = { 'stylua' },
       -- Conform will run multiple formatters sequentially
       python = { 'isort', 'black' },
-      csharp = {}, -- could add 'csharpier' but looks like csharp_ls has it's own formatter
+      cs = { 'csharpier', 'csharp_ls', stop_after_first = true },
       -- javascript = { "prettierd", "prettier", stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
       javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-      json = { 'fixjson', 'prettierd', 'prettier', stop_after_first = true },
+      json = { 'fixjson', 'prettierd', 'prettier', stop_after_first = true }, -- fixjson is more compatible with vscode "JSON Language Features" formatter
+      yaml = { 'prettierd', 'prettier', stop_after_first = true },
       html = { 'prettierd', 'prettier', stop_after_first = true },
       css = { 'prettierd', 'prettier', stop_after_first = true },
     },

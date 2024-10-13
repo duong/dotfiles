@@ -300,28 +300,7 @@ cmp.setup {
   },
 }
 
--- [[ Configure null_ls ]]
 require('mason').setup()
-local null_ls = require 'null-ls'
-null_ls.setup {
-  sources = {
-    null_ls.builtins.formatting.stylua,
-    -- require 'none-ls.diagnostics.eslint_d',
-    -- null_ls.builtins.completion.spell,
-    null_ls.builtins.formatting.prettierd,
-    -- null_ls.builtins.formatting.csharpier, -- using conform instead
-  },
-}
-require('mason-null-ls').setup {
-  ensure_installed = {
-    -- 'eslint_d',
-    'eslint-lsp',
-    'stylua',
-    'prettierd',
-    -- 'csharpier',
-  },
-  automatic_installation = true,
-}
 
 -- Require some commands from these files
 require 'commands.format-enable'
