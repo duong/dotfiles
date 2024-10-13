@@ -7,7 +7,6 @@ return { -- Autoformat
       -- Conform will run multiple formatters sequentially
       python = { 'isort', 'black' },
       cs = { 'csharpier', 'csharp_ls', stop_after_first = true },
-      -- javascript = { "prettierd", "prettier", stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
