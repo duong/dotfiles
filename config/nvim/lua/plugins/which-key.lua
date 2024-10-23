@@ -36,6 +36,7 @@ return {
         -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
         { '<leader>d', group = 'Debugger' },
         { '<leader>dd', '<cmd>DapToggleRepl<CR>', desc = 'Debug: Toggle UI' },
+        { '<leader>db', '<cmd>DapToggleBreakpoint<CR>', desc = 'Debug: Toggle Breakpoint' },
         { '<leader>dc', '<cmd>DapContinue<CR>', desc = 'Debug: Start/Continue' },
         { '<leader>di', '<cmd>DapStepInto<CR>', desc = 'Debug: Step Into' },
         { '<leader>dv', '<cmd>DapStepOver<CR>', desc = 'Debug: Step Over' },
