@@ -15,6 +15,12 @@ return {
       { '<leader>u', group = 'UI' },
       { '<leader>uw', '<cmd>set wrap!<CR>', desc = 'Toggle word wrap' },
 
+      -- Markdown Preview
+      { '<leader>um', group = 'Markdown' },
+      { '<leader>ump', '<cmd>MarkdownPreview<CR>', desc = 'Open Markdown Preview' },
+      { '<leader>ums', '<cmd>MarkdownPreviewStop<CR>', desc = 'Stop Markdown Preview' },
+      { '<leader>umm', '<cmd>MarkdownPreviewToggle<CR>', desc = 'Toggle Markdown Preview' },
+
       -- Git options
       { '<leader>g', group = 'Git options' },
       { '<leader>gg', '<cmd>lua _LAZYGIT_TOGGLE()<CR>', desc = 'Toggle lazygit' },
