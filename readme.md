@@ -14,6 +14,7 @@
 
 Install stuff with brew
 ```bash
+xargs brew tap < brew.taps
 xargs brew install < brew.list
 xargs brew install --cask < brew.list.casks
 ```
