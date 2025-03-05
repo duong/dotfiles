@@ -12,6 +12,12 @@
   - oh-my-zsh
   - starship
 
+Install stuff with brew
+```bash
+xargs brew install < brew.list
+xargs brew install --cask < brew.list.casks
+```
+
 ## Setup
 
 Create symbolic links to use the config

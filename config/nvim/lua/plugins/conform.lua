@@ -1,3 +1,4 @@
+-- Formatter format
 return { -- Autoformat
   'stevearc/conform.nvim',
   opts = {
