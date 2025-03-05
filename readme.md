@@ -40,3 +40,10 @@ Check startup time of neovim
 ```bash
 nvim --startuptime somefile
 ```
+
+Macos extra steps
+
+1. Set keyboard shortcuts for switching between desktops
+2. set Reduce Motion in display accessibility settings
+
+
