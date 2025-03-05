@@ -87,6 +87,11 @@ require('lazy').setup({
     'Cliffback/netcoredbg-macOS-arm64.nvim',
     dependencies = { 'mfussenegger/nvim-dap' },
   },
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
 
   -- import all plugins from ./lua/plugins/*.lua
   { import = 'plugins' },
