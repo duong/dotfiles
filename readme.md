@@ -43,7 +43,10 @@ nvim --startuptime somefile
 
 Macos extra steps
 
-1. Set keyboard shortcuts for switching between desktops
-2. set Reduce Motion in display accessibility settings
+1. Install developer tools
+2. Set keyboard shortcuts for switching between desktops
+3. Set Reduce Motion in display accessibility settings
+4. Install fonts with brew --cask
+5. Disable security for yabai and skhd
 
 
