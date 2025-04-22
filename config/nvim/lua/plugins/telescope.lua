@@ -78,7 +78,9 @@ return {
     vim.keymap.set('n', '<leader>fG', function()
       require('telescope.builtin').live_grep { additional_args = { '--hidden' } }
     end, { desc = 'Search by Grep (Hidden)' })
-    vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = 'Search Diagnostics' })
+    vim.keymap.set('n', '<leader>fd', function()
+      require('telescope.builtin').diagnostics { severity_bound = 0 }
+    end, { desc = 'Search Diagnostics' })
     vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = 'Search Resume' })
   end,
 }
