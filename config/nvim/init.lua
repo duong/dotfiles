@@ -35,6 +35,9 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  'mason-org/mason.nvim',
+  'mason-org/mason-lspconfig.nvim',
+  'neovim/nvim-lspconfig',
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -42,8 +45,8 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
+      { 'mason-org/mason.nvim', config = true },
+      { 'mason-org/mason-lspconfig.nvim' },
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -74,7 +77,7 @@ require('lazy').setup({
     'jay-babu/mason-null-ls.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      'williamboman/mason.nvim',
+      'mason-org/mason.nvim',
       'nvimtools/none-ls.nvim',
       'nvimtools/none-ls-extras.nvim',
     },
@@ -115,13 +118,13 @@ end
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
+-- NOTE: Remember that lua is a real programming language, and as such it is possible
+-- to define small helper and utility functions so you don't have to repeat yourself
+-- many times.
+--
+-- In this case, we create a function that lets us more easily define mappings specific
+-- for LSP related items. It sets the mode, buffer and description for us each time.
 local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -150,60 +153,7 @@ local on_attach = function(_, bufnr)
   nmap('<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, 'Workspace List Folders')
-
-  -- Create a command `:OrganizeImports` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'OrganizeImports', function(_)
-    vim.lsp.buf.execute_command {
-      command = '_typescript.organizeImports',
-      arguments = { vim.api.nvim_buf_get_name(0) },
-    }
-  end, { desc = 'Organize current buffer imports with LSP' })
-
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
 end
-
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
-local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  pyright = {},
-  -- rust_analyzer = {},
-  ts_ls = {
-    completions = {
-      completeFunctionCalls = true,
-    },
-    javascript = {
-      format = {
-        semicolons = 'insert',
-      },
-    },
-    typescript = {
-      format = {
-        semicolons = 'insert',
-      },
-    },
-  },
-  csharp_ls = {},
-
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
-  lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
-}
 
 -- Setup neovim lua configuration
 require('lazydev').setup()
@@ -218,34 +168,57 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
--- Ensure the servers above are installed
-local mason_lspconfig = require 'mason-lspconfig'
+local lspconfig = require 'lspconfig'
+-- Setup ts_ls
+local organize_imports = function()
+  local client = vim.lsp.get_clients({ name = 'ts_ls', bufnr = 0 })[1]
 
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
+  client:exec_cmd({
+    title = 'organize_imports',
+    command = '_typescript.organizeImports',
+    arguments = {
+      vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()),
+    },
+  }, { bufnr = vim.api.nvim_get_current_buf() })
+end
+
+lspconfig.ts_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  commands = {
+    OrganizeImports = {
+      organize_imports,
+      description = 'Organize Imports',
+    },
+  },
 }
 
-mason_lspconfig.setup_handlers {
-  -- The first entry (without a key) will be the default handler
-  -- and will be called for each installed server that doesn't have
-  -- a dedicated handler.
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end,
-  -- Next, you can provide a dedicated handler for specific servers.
-  -- For example, a handler override for the `tsserver`:
-  -- ["tsserver"] = function()
-  --   require("lspconfig").tsserver.setup {
-  --     handlers = {
-  --       ["textDocument/publishDiagnostics"] = function() end,
-  --     },
-  --   }
-  -- end
+-- Setup csharp_ls
+lspconfig.csharp_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- Setup lua_ls
+lspconfig.lua_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- Setup Mason
+vim.lsp.config('*', {
+  capabilities = vim.lsp.protocol.make_client_capabilities(),
+})
+
+require('mason').setup()
+-- Note: `nvim-lspconfig` needs to be in 'runtimepath' by the time you set up mason-lspconfig.nvim
+require('mason-lspconfig').setup {
+  ensure_installed = {
+    'ts_ls',
+    'lua_ls',
+    'csharp_ls',
+  },
+  automatic_enable = true,
 }
 
 -- [[ Configure nvim-cmp ]]
@@ -304,8 +277,6 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
-require('mason').setup()
 
 -- Require some commands from these files
 require 'commands.format-enable'
