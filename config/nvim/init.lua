@@ -281,3 +281,5 @@ cmp.setup {
 -- Require some commands from these files
 require 'commands.format-enable'
 require 'commands.format-disable'
+require 'commands.copy-full-path'
+require 'commands.copy-relative-path'
