@@ -88,7 +88,6 @@ require('lazy').setup {
         'nvimtools/none-ls-extras.nvim',
       },
     },
-    'rrethy/vim-illuminate',
     -- Since the official netcoredbg repo has no native macOS arm64 build
     {
       'Cliffback/netcoredbg-macOS-arm64.nvim',
