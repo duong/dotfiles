@@ -89,7 +89,6 @@ require('lazy').setup {
       },
     },
     { 'akinsho/toggleterm.nvim', version = '*', config = true },
-    'ggandor/leap.nvim',
     'rrethy/vim-illuminate',
     -- Since the official netcoredbg repo has no native macOS arm64 build
     {
@@ -111,9 +110,6 @@ require('lazy').setup {
 
 require 'config'
 require 'commands.highlight-yank'
-
--- [[ Configure leap ]]
-require('leap').add_default_mappings()
 
 -- [[ Configure toggleterm ]]
 require('toggleterm').setup {}
