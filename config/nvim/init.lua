@@ -94,11 +94,6 @@ require('lazy').setup {
       'Cliffback/netcoredbg-macOS-arm64.nvim',
       dependencies = { 'mfussenegger/nvim-dap' },
     },
-    {
-      'nvim-telescope/telescope.nvim',
-      tag = '0.1.8',
-      dependencies = { 'nvim-lua/plenary.nvim' },
-    },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
