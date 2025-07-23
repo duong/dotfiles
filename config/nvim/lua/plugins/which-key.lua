@@ -116,6 +116,8 @@ return {
       { '<leader>ut2', '<cmd>set shiftwidth=2 tabstop=2<CR>', desc = 'Set spaces 2' },
       { '<leader>ut4', '<cmd>set shiftwidth=4 tabstop=4<CR>', desc = 'Set spaces 4' },
       { '<leader>ur', '<cmd>set rnu!<CR>', desc = 'Toggle relative line numbers' },
+      { '<leader>uf', '<cmd>CopyRelativePath<CR>', desc = 'Copy Relative Filepath to Clipboard' },
+      { '<leader>uF', '<cmd>CopyFullPath<CR>', desc = 'Copy Full Filepath to Clipboard' },
 
       -- Move between splits
       { '<C-h>', '<Cmd>wincmd h<CR>', mode = 'n' },
