@@ -88,7 +88,6 @@ require('lazy').setup {
         'nvimtools/none-ls-extras.nvim',
       },
     },
-    { 'akinsho/toggleterm.nvim', version = '*', config = true },
     'rrethy/vim-illuminate',
     -- Since the official netcoredbg repo has no native macOS arm64 build
     {
@@ -110,9 +109,6 @@ require('lazy').setup {
 
 require 'config'
 require 'commands.highlight-yank'
-
--- [[ Configure toggleterm ]]
-require('toggleterm').setup {}
 
 local Terminal = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'float' }
