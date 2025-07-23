@@ -1,11 +1,15 @@
 -- Useful plugin to show you pending keybinds.
 return {
   'folke/which-key.nvim',
-  lazy = false,
+  lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  priority = 1000, -- make sure to load this before all the other start plugins
   opts = {
     preset = 'modern',
   },
   config = function(_, opts)
+    -- load the colorscheme here
+    vim.cmd [[colorscheme catppuccin-macchiato]]
+
     -- document existing key chains
     require('which-key').setup(opts)
     local wk = require 'which-key'
