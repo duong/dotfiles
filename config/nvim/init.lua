@@ -4,101 +4,116 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Install package manager
---    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
+-- Install package manager - https://lazy.folke.io/installation
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  }
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
+      { out, 'WarningMsg' },
+      { '\nPress any key to exit...' },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
+
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
 
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
-require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
+require('lazy').setup {
+  spec = {
+    -- import all plugins from ./lua/plugins/*.lua
+    { import = 'plugins' },
 
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+    -- NOTE: First, some plugins that don't require any configuration
 
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+    -- Git related plugins
+    'tpope/vim-fugitive',
+    'tpope/vim-rhubarb',
 
-  'mason-org/mason.nvim',
-  'mason-org/mason-lspconfig.nvim',
-  'neovim/nvim-lspconfig',
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
-  {
-    -- LSP Configuration & Plugins
+    -- Detect tabstop and shiftwidth automatically
+    'tpope/vim-sleuth',
+
+    'mason-org/mason.nvim',
+    'mason-org/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      { 'mason-org/mason.nvim', config = true },
-      { 'mason-org/mason-lspconfig.nvim' },
+    -- NOTE: This is where your plugins related to LSP can be installed.
+    --  The configuration is done below. Search for lspconfig to find it below.
+    {
+      -- LSP Configuration & Plugins
+      'neovim/nvim-lspconfig',
+      dependencies = {
+        -- Automatically install LSPs to stdpath for neovim
+        { 'mason-org/mason.nvim', config = true },
+        { 'mason-org/mason-lspconfig.nvim' },
 
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      -- fidget.nvim will soon be completely rewritten. Pin plugin legacy tag to avoid breaking changes.
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+        -- Useful status updates for LSP
+        -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+        -- fidget.nvim will soon be completely rewritten. Pin plugin legacy tag to avoid breaking changes.
+        { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/lazydev.nvim',
-      'nvimdev/lspsaga.nvim',
+        -- Additional lua configuration, makes nvim stuff amazing!
+        'folke/lazydev.nvim',
+        'nvimdev/lspsaga.nvim',
+      },
+    },
+    {
+      -- Autocompletion
+      'hrsh7th/nvim-cmp',
+      dependencies = {
+        -- Snippet Engine & its associated nvim-cmp source
+        'L3MON4D3/LuaSnip',
+        'saadparwaiz1/cmp_luasnip',
+
+        -- Adds LSP completion capabilities
+        'hrsh7th/cmp-nvim-lsp',
+
+        -- Adds a number of user-friendly snippets
+        'rafamadriz/friendly-snippets',
+      },
+    },
+    {
+      'jay-babu/mason-null-ls.nvim',
+      event = { 'BufReadPre', 'BufNewFile' },
+      dependencies = {
+        'mason-org/mason.nvim',
+        'nvimtools/none-ls.nvim',
+        'nvimtools/none-ls-extras.nvim',
+      },
+    },
+    { 'akinsho/toggleterm.nvim', version = '*', config = true },
+    'ggandor/leap.nvim',
+    'rrethy/vim-illuminate',
+    -- Since the official netcoredbg repo has no native macOS arm64 build
+    {
+      'Cliffback/netcoredbg-macOS-arm64.nvim',
+      dependencies = { 'mfussenegger/nvim-dap' },
+    },
+    {
+      'nvim-telescope/telescope.nvim',
+      tag = '0.1.8',
+      dependencies = { 'nvim-lua/plenary.nvim' },
     },
   },
-  {
-    -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-
-      -- Adds LSP completion capabilities
-      'hrsh7th/cmp-nvim-lsp',
-
-      -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
-    },
-  },
-  {
-    'jay-babu/mason-null-ls.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = {
-      'mason-org/mason.nvim',
-      'nvimtools/none-ls.nvim',
-      'nvimtools/none-ls-extras.nvim',
-    },
-  },
-  { 'akinsho/toggleterm.nvim', version = '*', config = true },
-  'ggandor/leap.nvim',
-  'rrethy/vim-illuminate',
-  -- Since the official netcoredbg repo has no native macOS arm64 build
-  {
-    'Cliffback/netcoredbg-macOS-arm64.nvim',
-    dependencies = { 'mfussenegger/nvim-dap' },
-  },
-  {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-  },
-
-  -- import all plugins from ./lua/plugins/*.lua
-  { import = 'plugins' },
-}, {})
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = {},
+  -- automatically check for plugin updates
+  checker = { enabled = true },
+}
 
 require 'config'
 require 'commands.highlight-yank'
