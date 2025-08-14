@@ -7,6 +7,7 @@ return {
     devicon = true,
     lightbulb = {
       enable = true,
+      sign = false,
     },
     finder = {
       keys = {
