@@ -21,10 +21,14 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+
+    -- utils
+    'niuiic/dap-utils.nvim',
   },
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
+    local utils = require 'dap.utils'
 
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
@@ -41,6 +45,7 @@ return {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
         -- 'coreclr',
+        'js-debug-adapter',
       },
     }
 
@@ -94,11 +99,112 @@ return {
       },
     }
 
+    for _, adapterType in ipairs { 'node', 'chrome', 'msedge' } do
+      local pwaType = 'pwa-' .. adapterType
+
+      dap.adapters[pwaType] = {
+        type = 'server',
+        host = 'localhost',
+        port = '${port}',
+        executable = {
+          command = 'node',
+          args = {
+            vim.fn.stdpath 'data' .. '/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js',
+            '${port}',
+          },
+        },
+      }
+
+      -- this allow us to handle launch.json configurations
+      -- which specify type as "node" or "chrome" or "msedge"
+      dap.adapters[adapterType] = function(cb, config)
+        local nativeAdapter = dap.adapters[pwaType]
+
+        config.type = pwaType
+
+        if type(nativeAdapter) == 'function' then
+          nativeAdapter(cb, config)
+        else
+          cb(nativeAdapter)
+        end
+      end
+    end
+
+    local enter_launch_url = function()
+      local co = coroutine.running()
+      return coroutine.create(function()
+        vim.ui.input({ prompt = 'Enter URL: ', default = 'http://localhost:' }, function(url)
+          if url == nil or url == '' then
+            return
+          else
+            coroutine.resume(co, url)
+          end
+        end)
+      end)
+    end
+
+    for _, language in ipairs { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' } do
+      dap.configurations[language] = {
+        {
+          type = 'pwa-node',
+          request = 'launch',
+          name = 'Launch file using Node.js (nvim-dap)',
+          program = '${file}',
+          cwd = '${workspaceFolder}',
+        },
+        {
+          -- Source: https://github.com/mfussenegger/nvim-dap/issues/1492
+          -- Jest: node --inspect ./node_modules/jest/bin/jest.js --runInBand --watchAll
+          -- Vitest: node ./node_modules/vitest/vitest.mjs --inspect-brk --test-timeout=0 --no-file-parallelism
+          name = 'Attach Debugger to Jest/Vitest',
+          type = 'pwa-node',
+          request = 'attach',
+          resolveSourceMapLocations = { '${workspaceFolder}/**', '!**/node_modules/**' }, -- Needed for jest
+          port = 9229,
+          cwd = '${workspaceFolder}',
+        },
+        {
+          type = 'pwa-node',
+          request = 'attach',
+          name = 'Attach to process using Node.js (nvim-dap)',
+          processId = utils.pick_process,
+          cwd = '${workspaceFolder}',
+        },
+        -- requires ts-node to be installed globally or locally
+        {
+          type = 'pwa-node',
+          request = 'launch',
+          name = 'Launch file using Node.js with ts-node/register (nvim-dap)',
+          program = '${file}',
+          cwd = '${workspaceFolder}',
+          runtimeArgs = { '-r', 'ts-node/register' },
+        },
+        {
+          type = 'pwa-chrome',
+          request = 'launch',
+          name = 'Launch Chrome (nvim-dap)',
+          url = enter_launch_url,
+          webRoot = '${workspaceFolder}',
+          sourceMaps = true,
+        },
+        {
+          type = 'pwa-msedge',
+          request = 'launch',
+          name = 'Launch Edge (nvim-dap)',
+          url = enter_launch_url,
+          webRoot = '${workspaceFolder}',
+          sourceMaps = true,
+        },
+      }
+    end
+
     -- Define signs
     local sign = vim.fn.sign_define
 
     sign('DapBreakpoint', { text = '●', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
     sign('DapBreakpointCondition', { text = '●', texthl = 'DapBreakpointCondition', linehl = '', numhl = '' })
     sign('DapLogPoint', { text = '◆', texthl = 'DapLogPoint', linehl = '', numhl = '' })
+    sign('DapStopped', { text = '→', texthl = 'SignColumn', linehl = 'debugPC', numhl = '' })
+    sign('DapBreakpointRejected', { text = '⬜', texthl = '', linehl = '', numhl = '' })
   end,
 }
