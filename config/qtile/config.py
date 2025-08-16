@@ -1,4 +1,4 @@
-from libqtile import bar, widget
+from libqtile import bar, widget, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.layout.columns import Columns
 from libqtile.layout.floating import Floating
@@ -199,6 +199,18 @@ screens = [
                     font=font,
                     fontsize=20,
                     padding=10,
+                ),
+                widget.TextBox(
+                    text="↺",  # Unicode character for restart symbol
+                    fontsize=20,
+                    padding=10,
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('reboot')}
+                ),
+                widget.TextBox(
+                    text="⏻",  # Unicode character for power symbol
+                    fontsize=20,
+                    padding=10,
+                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn('shutdown now')}
                 ),
             ],
             size=35,
