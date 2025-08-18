@@ -177,7 +177,7 @@ screens = [
                     background=colors["surface1"],
                     padding=0,
                 ),
-                widget.PulseVolume(
+                widget.Volume(
                     background=colors["surface0"],
                     foreground=colors["text"],
                     font=font,
@@ -265,7 +265,7 @@ screens = [
                     background=colors["surface1"],
                     padding=0,
                 ),
-                widget.PulseVolume(
+                widget.Volume(
                     background=colors["surface0"],
                     foreground=colors["text"],
                     font=font,
