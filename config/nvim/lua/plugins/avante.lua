@@ -11,6 +11,7 @@ return {
     -- add any opts here
     -- for example
     provider = 'copilot',
+    mode = 'legacy', -- https://github.com/yetone/avante.nvim/issues/2100
     providers = {
       copilot = {
         endpoint = 'https://api.githubcopilot.com',
@@ -18,7 +19,7 @@ return {
         proxy = nil, -- [protocol://]host[:port] Use this proxy
         allow_insecure = false, -- Allow insecure server connections
         timeout = 30000, -- Timeout in milliseconds
-        max_completion_tokens = 1000000,
+        max_completion_tokens = 8192,
         extra_request_body = {
           temperature = 0.75,
           max_tokens = 20480,
