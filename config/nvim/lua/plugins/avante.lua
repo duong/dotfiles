@@ -11,7 +11,7 @@ return {
     -- add any opts here
     -- for example
     provider = 'copilot',
-    mode = 'legacy', -- https://github.com/yetone/avante.nvim/issues/2100
+    -- mode = 'legacy', -- https://github.com/yetone/avante.nvim/issues/2100
     providers = {
       copilot = {
         endpoint = 'https://api.githubcopilot.com',
