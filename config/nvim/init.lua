@@ -77,6 +77,10 @@ require('lazy').setup {
 
         -- Adds a number of user-friendly snippets
         'rafamadriz/friendly-snippets',
+
+        -- tailwind
+        'onsails/lspkind-nvim',
+        'tailwind-tools',
       },
     },
     {
@@ -212,6 +216,7 @@ require('mason-lspconfig').setup {
     'ts_ls',
     'lua_ls',
     'csharp_ls',
+    'tailwindcss',
   },
   automatic_enable = true,
 }
@@ -237,6 +242,11 @@ cmp.setup {
   window = {
     completion = cmp.config.window.bordered(border_opts),
     documentation = cmp.config.window.bordered(border_opts),
+  },
+  formatting = {
+    format = require('lspkind').cmp_format {
+      before = require('tailwind-tools.cmp').lspkind_format,
+    },
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),

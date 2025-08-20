@@ -128,6 +128,11 @@ return {
       { '<C-j>', '<Cmd>wincmd j<CR>', mode = 'n' },
       { '<C-k>', '<Cmd>wincmd k<CR>', mode = 'n' },
       { '<C-l>', '<Cmd>wincmd l<CR>', mode = 'n' },
+
+      -- Telescope
+      { '<leader>ft', group = 'Telescope tailwind' },
+      { '<leader>ftc', '<cmd>Telescope tailwind classes<CR>', desc = 'Find tailwind classes' },
+      { '<leader>ftu', '<cmd>Telescope tailwind utilities<CR>', desc = 'Find tailwind utilities' },
     }
   end,
 }
