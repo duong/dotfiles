@@ -17,13 +17,7 @@ return {
       { '<leader>c', desc = 'Code' },
       { '<leader>l', desc = 'LSP options' },
       { '<leader>u', group = 'UI' },
-      { '<leader>uw', '<cmd>set wrap!<CR>', desc = 'Toggle word wrap' },
-
-      -- Markdown Preview
-      { '<leader>um', group = 'Markdown' },
-      { '<leader>ump', '<cmd>MarkdownPreview<CR>', desc = 'Open Markdown Preview' },
-      { '<leader>ums', '<cmd>MarkdownPreviewStop<CR>', desc = 'Stop Markdown Preview' },
-      { '<leader>umm', '<cmd>MarkdownPreviewToggle<CR>', desc = 'Toggle Markdown Preview' },
+      -- { '<leader>uw', '<cmd>set wrap!<CR>', desc = 'Toggle word wrap' }, -- handled by snacks
 
       -- Git options
       { '<leader>g', group = 'Git options' },
@@ -64,37 +58,6 @@ return {
         { '<leader>bd', '<cmd>DbProjectDelete<CR>', desc = 'Project Delete' },
       },
 
-      -- Noice
-      { '<leader>n', desc = 'Noice' },
-      {
-        '<leader>nd',
-        function()
-          require('noice').cmd 'dismiss'
-        end,
-        desc = 'Notification dismiss',
-      },
-      {
-        '<leader>nf',
-        function()
-          require('noice').cmd 'telescope'
-        end,
-        desc = 'Notification find',
-      },
-      {
-        '<leader>nl',
-        function()
-          require('noice').cmd 'last'
-        end,
-        desc = 'Notification last',
-      },
-      {
-        '<leader>nh',
-        function()
-          require('noice').cmd 'history'
-        end,
-        desc = 'Notification history',
-      },
-
       -- Spectre search
       { '<leader>s', desc = 'Search' },
       {
@@ -104,7 +67,7 @@ return {
         { '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', desc = 'Search on current file' },
       },
       { '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', desc = 'Search current word', mode = 'n' },
-      { '<C-b>', '<Cmd>Neotree toggle reveal_force_cwd<CR>', mode = 'n' },
+      -- { '<C-b>', '<Cmd>Neotree toggle reveal_force_cwd<CR>', mode = 'n' },
 
       -- Diagnostic keymaps
       {
@@ -119,7 +82,7 @@ return {
       { '<leader>ut', desc = 'Set spaces' },
       { '<leader>ut2', '<cmd>set shiftwidth=2 tabstop=2<CR>', desc = 'Set spaces 2' },
       { '<leader>ut4', '<cmd>set shiftwidth=4 tabstop=4<CR>', desc = 'Set spaces 4' },
-      { '<leader>ur', '<cmd>set rnu!<CR>', desc = 'Toggle relative line numbers' },
+      -- { '<leader>ur', '<cmd>set rnu!<CR>', desc = 'Toggle relative line numbers' }, -- handled by snacks.nvim
       { '<leader>uf', '<cmd>CopyRelativePath<CR>', desc = 'Copy relative filepath to clipboard' },
       { '<leader>uF', '<cmd>CopyFullPath<CR>', desc = 'Copy full filepath to clipboard' },
 
