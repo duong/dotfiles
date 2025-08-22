@@ -13,7 +13,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
-      { out, 'WarningMsg' },
+      { out,                            'WarningMsg' },
       { '\nPress any key to exit...' },
     }, true, {})
     vim.fn.getchar()
@@ -51,13 +51,13 @@ require('lazy').setup {
       'neovim/nvim-lspconfig',
       dependencies = {
         -- Automatically install LSPs to stdpath for neovim
-        { 'mason-org/mason.nvim', config = true },
+        { 'mason-org/mason.nvim',          config = true },
         { 'mason-org/mason-lspconfig.nvim' },
 
         -- Useful status updates for LSP
         -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
         -- fidget.nvim will soon be completely rewritten. Pin plugin legacy tag to avoid breaking changes.
-        { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+        { 'j-hui/fidget.nvim',             tag = 'legacy', opts = {} },
 
         -- Additional lua configuration, makes nvim stuff amazing!
         'folke/lazydev.nvim',
@@ -192,18 +192,6 @@ lspconfig.ts_ls.setup {
   },
 }
 
--- Setup csharp_ls
-lspconfig.csharp_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
--- Setup lua_ls
-lspconfig.lua_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
 -- Setup Mason
 vim.lsp.config('*', {
   capabilities = vim.lsp.protocol.make_client_capabilities(),
@@ -218,7 +206,11 @@ require('mason-lspconfig').setup {
     'csharp_ls',
     'tailwindcss',
   },
-  automatic_enable = true,
+  automatic_enable = {
+    exclude = {
+      "ts_ls" -- disabled because it conflicts with the `lspconfig` setup above
+    }
+  }
 }
 
 -- [[ Configure nvim-cmp ]]
