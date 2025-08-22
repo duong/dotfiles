@@ -1,3 +1,4 @@
+---@module 'snacks'
 return {
   'folke/snacks.nvim',
   priority = 1000,
@@ -13,7 +14,7 @@ return {
       enabled = true,
       timeout = 3000,
     },
-    picker = { enabled = true, sources = { explorer = { auto_close = true } } },
+    picker = { enabled = false, sources = { explorer = { auto_close = true } } },
     quickfile = { enabled = true },
     scope = { enabled = true },
     scroll = { enabled = false },
