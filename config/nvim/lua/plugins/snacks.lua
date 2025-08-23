@@ -12,7 +12,7 @@ return {
     input = { enabled = true },
     notifier = {
       enabled = true,
-      timeout = 3000,
+      timeout = 5000,
     },
     picker = { enabled = false, sources = { explorer = { auto_close = true } } },
     quickfile = { enabled = true },
