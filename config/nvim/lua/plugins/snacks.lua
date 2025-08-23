@@ -30,14 +30,14 @@ return {
   keys = {
     -- Top Pickers & Explorer
     {
-      '<leader><space>',
+      '<leader>ff',
       function()
         Snacks.picker.smart()
       end,
       desc = 'Smart Find Files',
     },
     {
-      '<leader>,',
+      '<leader><space>',
       function()
         Snacks.picker.buffers()
       end,
@@ -86,12 +86,19 @@ return {
       end,
       desc = 'Find Config File',
     },
+    -- {
+    --   '<leader>ff',
+    --   function()
+    --     Snacks.picker.files()
+    --   end,
+    --   desc = 'Find Files',
+    -- },
     {
-      '<leader>ff',
+      '<leader>fF',
       function()
-        Snacks.picker.files()
+        Snacks.picker.files { hidden = true, ignored = true }
       end,
-      desc = 'Find Files',
+      desc = 'Find Hidden Files',
     },
     {
       '<leader>fg',
@@ -166,28 +173,35 @@ return {
     },
     -- Grep
     {
-      '<leader>sb',
+      '<leader>fb',
       function()
         Snacks.picker.lines()
       end,
       desc = 'Buffer Lines',
     },
     {
-      '<leader>sB',
+      '<leader>fB',
       function()
         Snacks.picker.grep_buffers()
       end,
       desc = 'Grep Open Buffers',
     },
     {
-      '<leader>sg',
+      '<leader>fg',
       function()
         Snacks.picker.grep()
       end,
       desc = 'Grep',
     },
     {
-      '<leader>sw',
+      '<leader>fG',
+      function()
+        Snacks.picker.grep { hidden = true, ignored = true }
+      end,
+      desc = 'Grep Hidden',
+    },
+    {
+      '<leader>fw',
       function()
         Snacks.picker.grep_word()
       end,
@@ -196,140 +210,140 @@ return {
     },
     -- search
     {
-      '<leader>s"',
+      '<leader>f"',
       function()
         Snacks.picker.registers()
       end,
       desc = 'Registers',
     },
     {
-      '<leader>s/',
+      '<leader>f/',
       function()
         Snacks.picker.search_history()
       end,
       desc = 'Search History',
     },
     {
-      '<leader>sa',
+      '<leader>fa',
       function()
         Snacks.picker.autocmds()
       end,
       desc = 'Autocmds',
     },
     {
-      '<leader>sb',
+      '<leader>fb',
       function()
         Snacks.picker.lines()
       end,
       desc = 'Buffer Lines',
     },
     {
-      '<leader>sc',
+      '<leader>fc',
       function()
         Snacks.picker.command_history()
       end,
       desc = 'Command History',
     },
     {
-      '<leader>sC',
+      '<leader>fC',
       function()
         Snacks.picker.commands()
       end,
       desc = 'Commands',
     },
     {
-      '<leader>sd',
+      '<leader>fd',
       function()
         Snacks.picker.diagnostics()
       end,
       desc = 'Diagnostics',
     },
     {
-      '<leader>sD',
+      '<leader>fD',
       function()
         Snacks.picker.diagnostics_buffer()
       end,
       desc = 'Buffer Diagnostics',
     },
     {
-      '<leader>sh',
+      '<leader>fh',
       function()
         Snacks.picker.help()
       end,
       desc = 'Help Pages',
     },
     {
-      '<leader>sH',
+      '<leader>fH',
       function()
         Snacks.picker.highlights()
       end,
       desc = 'Highlights',
     },
     {
-      '<leader>si',
+      '<leader>fi',
       function()
         Snacks.picker.icons()
       end,
       desc = 'Icons',
     },
     {
-      '<leader>sj',
+      '<leader>fj',
       function()
         Snacks.picker.jumps()
       end,
       desc = 'Jumps',
     },
     {
-      '<leader>sk',
+      '<leader>fk',
       function()
         Snacks.picker.keymaps()
       end,
       desc = 'Keymaps',
     },
     {
-      '<leader>sl',
+      '<leader>fl',
       function()
         Snacks.picker.loclist()
       end,
       desc = 'Location List',
     },
     {
-      '<leader>sm',
+      '<leader>fm',
       function()
         Snacks.picker.marks()
       end,
       desc = 'Marks',
     },
     {
-      '<leader>sM',
+      '<leader>fM',
       function()
         Snacks.picker.man()
       end,
       desc = 'Man Pages',
     },
     {
-      '<leader>sp',
+      '<leader>fp',
       function()
         Snacks.picker.lazy()
       end,
       desc = 'Search for Plugin Spec',
     },
     {
-      '<leader>sq',
+      '<leader>fq',
       function()
         Snacks.picker.qflist()
       end,
       desc = 'Quickfix List',
     },
     {
-      '<leader>sR',
+      '<leader>fR',
       function()
         Snacks.picker.resume()
       end,
       desc = 'Resume',
     },
     {
-      '<leader>su',
+      '<leader>fu',
       function()
         Snacks.picker.undo()
       end,
@@ -380,14 +394,14 @@ return {
       desc = 'Goto T[y]pe Definition',
     },
     {
-      '<leader>ss',
+      '<leader>fs',
       function()
         Snacks.picker.lsp_symbols()
       end,
       desc = 'LSP Symbols',
     },
     {
-      '<leader>sS',
+      '<leader>fS',
       function()
         Snacks.picker.lsp_workspace_symbols()
       end,
