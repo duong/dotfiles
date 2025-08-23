@@ -32,7 +32,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Highlight entire line for errors
 -- Highlight the line number for warnings
-local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+local signs = { Error = '⊗', Warn = ' ', Hint = '⍰', Info = ' ' }
 vim.diagnostic.config {
   signs = {
     text = {
@@ -40,12 +40,6 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.WARN] = signs.Warn,
       [vim.diagnostic.severity.HINT] = signs.Hint,
       [vim.diagnostic.severity.INFO] = signs.Info,
-    },
-    linehl = {
-      [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-    },
-    numhl = {
-      [vim.diagnostic.severity.WARN] = 'WarningMsg',
     },
   },
 }
