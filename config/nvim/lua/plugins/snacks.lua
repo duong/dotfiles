@@ -10,10 +10,7 @@ return {
     explorer = { enabled = true, replace_netrw = true },
     indent = { enabled = false },
     input = { enabled = true },
-    notifier = {
-      enabled = true,
-      timeout = 5000,
-    },
+    notifier = { enabled = true, timeout = 5000 },
     picker = {
       enabled = false,
       sources = { explorer = { auto_close = true } },
@@ -542,6 +539,13 @@ return {
           },
         }
       end,
+    },
+    {
+      '<leader>ps',
+      function()
+        Snacks.profiler.scratch()
+      end,
+      desc = 'Profiler Scratch Bufer',
     },
   },
   init = function()
