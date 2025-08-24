@@ -14,7 +14,23 @@ return {
       enabled = true,
       timeout = 5000,
     },
-    picker = { enabled = false, sources = { explorer = { auto_close = true } } },
+    picker = {
+      enabled = false,
+      sources = { explorer = { auto_close = true } },
+      win = {
+        input = {
+          keys = {
+            ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+            ['<Space>'] = { 'select_and_next', mode = { 'i', 'n' } },
+            ['<c-Space>'] = { 'select_and_prev', mode = { 'i', 'n' } },
+            ['<Tab>'] = { 'list_down', mode = { 'i', 'n' } },
+            ['<S-Tab>'] = { 'list_up', mode = { 'i', 'n' } },
+            ['<c-j>'] = { 'list_down', mode = { 'i', 'n' } },
+            ['<c-k>'] = { 'list_up', mode = { 'i', 'n' } },
+          },
+        },
+      },
+    },
     quickfile = { enabled = true },
     scope = { enabled = true },
     scroll = { enabled = false },
