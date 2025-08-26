@@ -17,7 +17,9 @@ return {
       win = {
         input = {
           keys = {
-            ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+            -- ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+            ["<c-h>"] = "toggle_hidden",
+            ["<c-i>"] = "toggle_ignored",
           },
         },
       },
@@ -203,7 +205,7 @@ return {
     {
       '<leader>fG',
       function()
-        Snacks.picker.grep { hidden = true, ignored = true }
+        Snacks.picker.grep { hidden = true }
       end,
       desc = 'Grep Hidden',
     },
