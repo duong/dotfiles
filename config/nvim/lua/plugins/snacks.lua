@@ -18,8 +18,8 @@ return {
         input = {
           keys = {
             -- ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
-            ["<c-h>"] = "toggle_hidden",
-            ["<c-i>"] = "toggle_ignored",
+            ['<c-h>'] = 'toggle_hidden',
+            ['<c-i>'] = 'toggle_ignored',
           },
         },
       },
@@ -38,13 +38,13 @@ return {
   },
   keys = {
     -- Top Pickers & Explorer
-    {
-      '<leader>ff',
-      function()
-        Snacks.picker.smart()
-      end,
-      desc = 'Smart Find Files',
-    },
+    -- {
+    --   '<leader>ff',
+    --   function()
+    --     Snacks.picker.smart()
+    --   end,
+    --   desc = 'Smart Find Files',
+    -- },
     {
       '<leader><space>',
       function()
@@ -95,13 +95,13 @@ return {
       end,
       desc = 'Find Config File',
     },
-    -- {
-    --   '<leader>ff',
-    --   function()
-    --     Snacks.picker.files()
-    --   end,
-    --   desc = 'Find Files',
-    -- },
+    {
+      '<leader>ff',
+      function()
+        Snacks.picker.files()
+      end,
+      desc = 'Find Files',
+    },
     {
       '<leader>fF',
       function()
