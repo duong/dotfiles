@@ -181,6 +181,7 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
+local lspconfig = require 'lspconfig'
 -- Setup ts_ls
 local organize_imports = function()
   local client = vim.lsp.get_clients({ name = 'ts_ls', bufnr = 0 })[1]
@@ -194,7 +195,7 @@ local organize_imports = function()
   }, { bufnr = vim.api.nvim_get_current_buf() })
 end
 
-vim.lsp.config('ts_ls', {
+lspconfig.ts_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   commands = {
@@ -203,7 +204,7 @@ vim.lsp.config('ts_ls', {
       description = 'Organize Imports',
     },
   },
-})
+}
 
 -- Setup Mason
 vim.lsp.config('*', {
