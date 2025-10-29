@@ -83,6 +83,7 @@ pcre2
 pipx
 pixman
 pkgconf
+pngpaste
 poetry
 postgresql@13
 postgresql@14
