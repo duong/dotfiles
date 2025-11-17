@@ -71,7 +71,7 @@ return {
       function()
         Snacks.picker.notifications()
       end,
-      desc = 'Notification History',
+      desc = 'Notifications',
     },
     {
       '<leader>e',
@@ -446,7 +446,7 @@ return {
       desc = 'Select Scratch Buffer',
     },
     {
-      '<leader>n',
+      '<leader>nh',
       function()
         Snacks.notifier.show_history()
       end,
@@ -482,7 +482,7 @@ return {
       desc = 'Lazygit',
     },
     {
-      '<leader>un',
+      '<leader>nd',
       function()
         Snacks.notifier.hide()
       end,
