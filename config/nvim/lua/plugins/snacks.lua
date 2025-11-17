@@ -10,7 +10,18 @@ return {
     explorer = { enabled = true, replace_netrw = true },
     indent = { enabled = false },
     input = { enabled = true },
-    notifier = { enabled = true, timeout = 5000 },
+    notifier = {
+      enabled = true,
+      timeout = 5000,
+      -- Dont show 'No information available' notifications
+      filter = function(notification)
+        if notification.msg == 'No information available' then
+          return false
+        else
+          return true
+        end
+      end,
+    },
     picker = {
       enabled = false,
       sources = { explorer = { auto_close = true } },
