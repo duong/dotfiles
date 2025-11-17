@@ -27,7 +27,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
-      { out, 'WarningMsg' },
+      { out,                            'WarningMsg' },
       { '\nPress any key to exit...' },
     }, true, {})
     vim.fn.getchar()
@@ -65,13 +65,13 @@ require('lazy').setup {
       'neovim/nvim-lspconfig',
       dependencies = {
         -- Automatically install LSPs to stdpath for neovim
-        { 'mason-org/mason.nvim', config = true },
+        { 'mason-org/mason.nvim',          config = true },
         { 'mason-org/mason-lspconfig.nvim' },
 
         -- Useful status updates for LSP
         -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
         -- fidget.nvim will soon be completely rewritten. Pin plugin legacy tag to avoid breaking changes.
-        { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+        { 'j-hui/fidget.nvim',             tag = 'legacy', opts = {} },
 
         -- Additional lua configuration, makes nvim stuff amazing!
         'folke/lazydev.nvim',
@@ -217,7 +217,6 @@ require('mason-lspconfig').setup {
   ensure_installed = {
     'ts_ls',
     'lua_ls',
-    'csharp_ls',
     'tailwindcss',
   },
   automatic_enable = {
