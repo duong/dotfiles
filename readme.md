@@ -4,6 +4,9 @@
 
 ## Requirements
 
+1. Install brew https://brew.sh/
+2. Install dependencies
+
 - `sudo pacman -Syu unzip zsh zsh-completions ttf-space-mono-nerd bottom lazygit dotnet-runtime dotnet-sdk ripgrep`
 - nvm
   - with npm installed
@@ -12,7 +15,7 @@
   - oh-my-zsh
   - starship
 
-Install stuff with brew
+3. Install stuff with brew
 ```bash
 xargs brew tap < brew.taps
 xargs brew install < brew.list
@@ -24,7 +27,6 @@ xargs brew install --cask < brew.list.casks
 Create symbolic links to use the config
 
 ```bash
-cp .zshrc .zprofile .linux.zsh ~
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.zprofile ~/.zprofile
 ln -s ~/dotfiles/.linux.zsh ~/.linux.zsh
