@@ -195,7 +195,9 @@ local organize_imports = function()
 end
 
 -- https://www.reddit.com/r/neovim/comments/1nmh99k/beware_the_old_nvimlspconfig_setup_api_is/
-vim.lsp.config('ts_ls', {
+local lspconfig = require 'lspconfig'
+lspconfig.ts_ls.setup {
+  -- vim.lsp.config('ts_ls', {
   on_attach = on_attach,
   capabilities = capabilities,
   commands = {
@@ -204,10 +206,10 @@ vim.lsp.config('ts_ls', {
       description = 'Organize Imports',
     },
   },
-})
-vim.lsp.enable { 'ts_ls' }
-vim.lsp.enable { 'lua_ls' }
-vim.lsp.enable { 'tailwindcss' }
+}
+-- vim.lsp.enable { 'ts_ls' }
+-- vim.lsp.enable { 'lua_ls' }
+-- vim.lsp.enable { 'tailwindcss' }
 
 -- Setup Mason
 vim.lsp.config('*', {
