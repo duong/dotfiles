@@ -8,10 +8,10 @@ return { -- Autoformat
       -- Conform will run multiple formatters sequentially
       python = { 'isort', 'black' },
       cs = { 'csharpier', 'csharp_ls', stop_after_first = true },
-      typescript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      typescript = { 'dprint', 'prettierd', 'prettier', stop_after_first = true },
+      typescriptreact = { 'dprint', 'prettierd', 'prettier', stop_after_first = true },
+      javascript = { 'dprint', 'prettierd', 'prettier', stop_after_first = true },
+      javascriptreact = { 'dprint', 'prettierd', 'prettier', stop_after_first = true },
       json = { 'fixjson', 'prettierd', 'prettier', stop_after_first = true }, -- fixjson is more compatible with vscode "JSON Language Features" formatter
       yaml = { 'prettierd', 'prettier', stop_after_first = true },
       html = { 'prettierd', 'prettier', stop_after_first = true },
