@@ -92,3 +92,6 @@ export PATH="$PATH:/Users/duong/bin"
 # Uncomment for performance testing (see beginning of file)
 # zprof
 
+
+# License Vault URL for activation of Jetbrains products at Canva
+export JETBRAINS_LICENSE_SERVER=https://canva.fls.jetbrains.com/
