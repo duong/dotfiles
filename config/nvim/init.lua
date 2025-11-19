@@ -27,7 +27,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
-      { out,                            'WarningMsg' },
+      { out, 'WarningMsg' },
       { '\nPress any key to exit...' },
     }, true, {})
     vim.fn.getchar()
@@ -65,13 +65,13 @@ require('lazy').setup {
       'neovim/nvim-lspconfig',
       dependencies = {
         -- Automatically install LSPs to stdpath for neovim
-        { 'mason-org/mason.nvim',          config = true },
+        { 'mason-org/mason.nvim', config = true },
         { 'mason-org/mason-lspconfig.nvim' },
 
         -- Useful status updates for LSP
         -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
         -- fidget.nvim will soon be completely rewritten. Pin plugin legacy tag to avoid breaking changes.
-        { 'j-hui/fidget.nvim',             tag = 'legacy', opts = {} },
+        { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
         -- Additional lua configuration, makes nvim stuff amazing!
         'folke/lazydev.nvim',
@@ -181,7 +181,6 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
-local lspconfig = require 'lspconfig'
 -- Setup ts_ls
 local organize_imports = function()
   local client = vim.lsp.get_clients({ name = 'ts_ls', bufnr = 0 })[1]
@@ -195,7 +194,8 @@ local organize_imports = function()
   }, { bufnr = vim.api.nvim_get_current_buf() })
 end
 
-lspconfig.ts_ls.setup {
+-- https://www.reddit.com/r/neovim/comments/1nmh99k/beware_the_old_nvimlspconfig_setup_api_is/
+vim.lsp.config('ts_ls', {
   on_attach = on_attach,
   capabilities = capabilities,
   commands = {
@@ -204,7 +204,10 @@ lspconfig.ts_ls.setup {
       description = 'Organize Imports',
     },
   },
-}
+})
+vim.lsp.enable { 'ts_ls' }
+vim.lsp.enable { 'lua_ls' }
+vim.lsp.enable { 'tailwindcss' }
 
 -- Setup Mason
 vim.lsp.config('*', {
