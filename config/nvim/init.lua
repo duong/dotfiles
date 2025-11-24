@@ -181,9 +181,9 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
--- Setup ts_ls
+-- Setup organize imports
 local organize_imports = function()
-  local client = vim.lsp.get_clients({ name = 'ts_ls', bufnr = 0 })[1]
+  local client = vim.lsp.get_clients({ name = 'tsgo', bufnr = 0 })[1]
 
   client:exec_cmd({
     title = 'organize_imports',
@@ -195,9 +195,27 @@ local organize_imports = function()
 end
 
 -- https://www.reddit.com/r/neovim/comments/1nmh99k/beware_the_old_nvimlspconfig_setup_api_is/
-local lspconfig = require 'lspconfig'
-lspconfig.ts_ls.setup {
-  -- vim.lsp.config('ts_ls', {
+-- local lspconfig = require 'lspconfig'
+-- lspconfig.ts_ls.setup {
+-- vim.lsp.config('ts_ls', {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   commands = {
+--     OrganizeImports = {
+--       organize_imports,
+--       description = 'Organize Imports',
+--     },
+--   },
+-- })
+vim.lsp.config('tsgo', {
+  settings = {
+    typescript = {
+      tsserver = {
+        enabled = true,
+        maxTsServerMemory = 16384,
+      },
+    },
+  },
   on_attach = on_attach,
   capabilities = capabilities,
   commands = {
@@ -206,10 +224,14 @@ lspconfig.ts_ls.setup {
       description = 'Organize Imports',
     },
   },
-}
--- vim.lsp.enable { 'ts_ls' }
--- vim.lsp.enable { 'lua_ls' }
--- vim.lsp.enable { 'tailwindcss' }
+})
+vim.lsp.config('eslint', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    autoFixOnSave = true,
+  },
+})
 
 -- Setup Mason
 vim.lsp.config('*', {
@@ -220,14 +242,14 @@ require('mason').setup()
 -- Note: `nvim-lspconfig` needs to be in 'runtimepath' by the time you set up mason-lspconfig.nvim
 require('mason-lspconfig').setup {
   ensure_installed = {
-    'ts_ls',
+    'tsgo',
+    'eslint',
     'lua_ls',
     'tailwindcss',
   },
   automatic_enable = {
-    exclude = {
-      'ts_ls', -- disabled because it conflicts with the `lspconfig` setup above
-    },
+    'tsgo',
+    'lua_ls',
   },
 }
 
