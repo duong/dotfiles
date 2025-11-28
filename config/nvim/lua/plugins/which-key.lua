@@ -62,6 +62,7 @@ return {
       {
         mode = { 'n' },
         { '<leader>m', group = 'MCPHub' },
+        { '<leader>mm', '<cmd>MCPHub<CR>', desc = 'Toggle UI' },
       },
 
       -- Spectre search
