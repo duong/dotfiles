@@ -182,8 +182,9 @@ capabilities.textDocument.foldingRange = {
 }
 
 -- Setup organize imports
+-- https://www.reddit.com/r/neovim/comments/1azofv9/how_to_organize_imports_on_save_using_tsserver/
 local organize_imports = function()
-  local client = vim.lsp.get_clients({ name = 'tsgo', bufnr = 0 })[1]
+  local client = vim.lsp.get_clients({ name = 'ts_ls', bufnr = 0 })[1]
 
   client:exec_cmd({
     title = 'organize_imports',
@@ -193,21 +194,10 @@ local organize_imports = function()
     },
   }, { bufnr = vim.api.nvim_get_current_buf() })
 end
+vim.api.nvim_create_user_command('OrganizeImports', organize_imports, {})
 
--- https://www.reddit.com/r/neovim/comments/1nmh99k/beware_the_old_nvimlspconfig_setup_api_is/
--- local lspconfig = require 'lspconfig'
--- lspconfig.ts_ls.setup {
--- vim.lsp.config('ts_ls', {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   commands = {
---     OrganizeImports = {
---       organize_imports,
---       description = 'Organize Imports',
---     },
---   },
--- })
-vim.lsp.config('tsgo', {
+-- Setup TypeScript lsp
+vim.lsp.config('ts_ls', {
   settings = {
     typescript = {
       tsserver = {
@@ -218,19 +208,6 @@ vim.lsp.config('tsgo', {
   },
   on_attach = on_attach,
   capabilities = capabilities,
-  commands = {
-    OrganizeImports = {
-      organize_imports,
-      description = 'Organize Imports',
-    },
-  },
-})
-vim.lsp.config('eslint', {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    autoFixOnSave = true,
-  },
 })
 
 -- Setup Mason
@@ -242,13 +219,12 @@ require('mason').setup()
 -- Note: `nvim-lspconfig` needs to be in 'runtimepath' by the time you set up mason-lspconfig.nvim
 require('mason-lspconfig').setup {
   ensure_installed = {
-    'tsgo',
-    'eslint',
+    'ts_ls',
     'lua_ls',
     'tailwindcss',
   },
   automatic_enable = {
-    'tsgo',
+    'ts_ls',
     'lua_ls',
   },
 }
