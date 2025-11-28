@@ -149,11 +149,11 @@ local on_attach = function(_, bufnr)
   nmap('<leader>lr', '<cmd>Lspsaga rename<cr>', 'Rename')
   nmap('<leader>la', '<cmd>Lspsaga code_action<cr>', 'LSP Actions')
 
-  nmap('gd', '<cmd>Lspsaga goto_definition<cr>', 'Goto Definition')
-  nmap('gr', require('telescope.builtin').lsp_references, 'Goto References')
-  nmap('gI', require('telescope.builtin').lsp_implementations, 'Goto Implementation')
-  nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, 'Symbols')
-  nmap('<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+  -- nmap('gd', '<cmd>Lspsaga goto_definition<cr>', 'Goto Definition')
+  -- nmap('gr', require('telescope.builtin').lsp_references, 'Goto References')
+  -- nmap('gI', require('telescope.builtin').lsp_implementations, 'Goto Implementation')
+  -- nmap('<leader>ls', require('telescope.builtin').lsp_document_symbols, 'Symbols')
+  -- nmap('<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
 
   -- See `:help K` for why this keymap
   nmap('K', '<cmd>Lspsaga hover_doc<cr>', 'Hover Documentation')
