@@ -33,10 +33,10 @@ return {
         proxy = nil, -- [protocol://]host[:port] Use this proxy
         allow_insecure = false, -- Allow insecure server connections
         timeout = 30000, -- Timeout in milliseconds
-        max_completion_tokens = 8192,
+        max_completion_tokens = 16384,
         extra_request_body = {
           temperature = 0.75,
-          max_tokens = 20480,
+          max_tokens = 40960,
         },
       },
       -- claude = {
