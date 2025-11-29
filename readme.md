@@ -50,4 +50,5 @@ Macos extra steps
 3. Set Reduce Motion in display accessibility settings
 4. Install fonts with brew --cask
 5. Disable security for yabai and skhd
+6. brew services start borders
 

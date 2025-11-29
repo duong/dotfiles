@@ -1,40 +1,67 @@
 #!/bin/bash
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12" "13" "14" "15")
+
+SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9")
+
+sketchybar --add event aerospace_workspace_change
+
+# for sid in $(aerospace list-workspaces --all); do
+for sid in $(aerospace list-workspaces --all); do
+    sketchybar --add item space.$sid left \
+        --subscribe space.$sid aerospace_workspace_change \
+        --set space.$sid \
+        icon="$sid" \
+        icon.padding_left=10 \
+        icon.padding_right=12 \
+        padding_left=2 \
+        padding_right=2 \
+        icon.highlight_color=$RED \
+        icon.color=$GREY \
+        icon.highlight_color=$WHITE \
+        icon.font="sketchybar-app-font:Regular:16.0" \
+        icon.y_offset=-1 \
+        label.drawing=off \
+        click_script="aerospace workspace $sid" \
+        background.color=$BACKGROUND_1 \
+        background.border_color=$BACKGROUND_2 \
+        background.drawing=off \
+        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+done
+
 
 # Destroy space on right click, focus space on left click.
 # New space by left clicking separator (>)
 
-sid=0
-spaces=()
-for i in "${!SPACE_ICONS[@]}"
-do
-  sid=$(($i+1))
-
-  space=(
-    associated_space=$sid
-    icon="${SPACE_ICONS[i]}"
-    icon.padding_left=10
-    icon.padding_right=10
-    padding_left=2
-    padding_right=2
-    label.padding_right=20
-    icon.highlight_color=$RED
-    label.color=$GREY
-    label.highlight_color=$WHITE
-    label.font="sketchybar-app-font:Regular:16.0"
-    label.y_offset=-1
-    background.color=$BACKGROUND_1
-    background.border_color=$BACKGROUND_2
-    background.drawing=off
-    label.drawing=off
-    script="$PLUGIN_DIR/space.sh"
-  )
-
-  sketchybar --add space space.$sid left    \
-             --set space.$sid "${space[@]}" \
-             --subscribe space.$sid mouse.clicked
-done
+# sid=0
+# spaces=()
+# for i in "${!SPACE_ICONS[@]}"
+# do
+#   sid=$(($i+1))
+#
+#   space=(
+#     associated_space=$sid
+#     icon="${SPACE_ICONS[i]}"
+#     icon.padding_left=10
+#     icon.padding_right=10
+#     padding_left=2
+#     padding_right=2
+#     label.padding_right=20
+#     icon.highlight_color=$RED
+#     label.color=$GREY
+#     label.highlight_color=$WHITE
+#     label.font="sketchybar-app-font:Regular:16.0"
+#     label.y_offset=-1
+#     background.color=$BACKGROUND_1
+#     background.border_color=$BACKGROUND_2
+#     background.drawing=off
+#     label.drawing=off
+#     script="$PLUGIN_DIR/space.sh"
+#   )
+#
+#   sketchybar --add space space.$sid left    \
+#              --set space.$sid "${space[@]}" \
+#              --subscribe space.$sid mouse.clicked
+# done
 
 spaces_bracket=(
   background.color=$BACKGROUND_1
@@ -48,7 +75,7 @@ separator=(
   padding_right=8
   label.drawing=off
   associated_display=active
-  click_script='yabai -m space --create && sketchybar --trigger space_change'
+  click_script='sketchybar --trigger space_change'
   icon.color=$WHITE
 )
 
