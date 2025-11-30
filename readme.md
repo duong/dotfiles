@@ -5,7 +5,7 @@
 ## Requirements
 
 1. Install brew https://brew.sh/
-2. Install dependencies
+1. Install dependencies
 
 - `sudo pacman -Syu unzip zsh zsh-completions ttf-space-mono-nerd bottom lazygit dotnet-runtime dotnet-sdk ripgrep`
 - nvm
@@ -35,6 +35,7 @@ ln -s ~/dotfiles/config/starship.toml ~/.config/starship.toml
 ln -s ~/dotfiles/config/kitty ~/.config/kitty
 ln -s ~/dotfiles/config/nvim ~/.config/nvim
 ln -s ~/dotfiles/config/discord/settings.json ~/.config/discord/settings.json
+ln -s ~/dotfiles/config/aerospace ~/.config/aerospace
 ```
 
 Check startup time of neovim
@@ -46,9 +47,8 @@ nvim --startuptime somefile
 Macos extra steps
 
 1. Install developer tools
-2. Set keyboard shortcuts for switching between desktops (keyboard -> keyboard shortcuts -> mission control)
-3. Set Reduce Motion in display accessibility settings
-4. Install fonts with brew --cask
-5. Disable security for yabai and skhd
-6. brew services start borders
+1. Set keyboard shortcuts for switching between desktops (keyboard -> keyboard shortcuts -> mission control)
+1. Set Reduce Motion in display accessibility settings
+1. Install fonts with brew --cask
+1. brew services start borders
 
