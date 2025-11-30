@@ -1,0 +1,315 @@
+{
+  "__VERSION__": "219",
+  "Main": {
+    "Controls": [
+      {
+        "Calibration": [
+          [
+            40,
+            0
+          ],
+          [
+            50,
+            596
+          ],
+          [
+            60,
+            890
+          ],
+          [
+            70,
+            1190
+          ],
+          [
+            80,
+            1484
+          ],
+          [
+            90,
+            1790
+          ],
+          [
+            100,
+            2080
+          ]
+        ],
+        "Enable": true,
+        "ForceApply": false,
+        "Identifier": "NVApiWrapper/0-GA104-A/control/0",
+        "IsHidden": false,
+        "ManualControl": false,
+        "ManualControlValue": 50,
+        "MinimumPercent": 0,
+        "Name": "Control 1 - NVIDIA GeForce RTX 3060 Ti",
+        "NickName": "Control 1 - NVIDIA GeForce RTX 3060 Ti",
+        "PairedFanSensor": {
+          "Identifier": "NVApiWrapper/0-GA104-A/fan/0",
+          "IsHidden": false,
+          "Name": "Fan 1 - NVIDIA GeForce RTX 3060 Ti",
+          "NickName": "Control 1 - NVIDIA GeForce RTX 3060 Ti"
+        },
+        "SelectedCommandStepDown": 8.0,
+        "SelectedCommandStepUp": 8.0,
+        "SelectedFanCurve": {
+          "CommandMode": 0,
+          "IgnoreHysteresisAtLimits": true,
+          "IsHidden": false,
+          "MaximumCommand": 100,
+          "MaximumTemperature": 120.0,
+          "MinimumTemperature": 20.0,
+          "Name": "GPU Graph",
+          "OneWayHysteresis": false,
+          "Points": [
+            "40,20",
+            "80,89.9208888888889"
+          ],
+          "SelectedHysteresis": 2.0,
+          "SelectedResponseTime": 1,
+          "SelectedTempSource": {
+            "Identifier": "NVApiWrapper/0-GA104-A/sensor/0",
+            "IsHidden": false,
+            "Name": "GPU",
+            "NickName": "GPU"
+          }
+        },
+        "SelectedOffset": 0,
+        "SelectedStart": 55,
+        "SelectedStop": 46
+      },
+      {
+        "Calibration": [
+          [
+            30,
+            0
+          ],
+          [
+            40,
+            298
+          ],
+          [
+            50,
+            596
+          ],
+          [
+            60,
+            889
+          ],
+          [
+            70,
+            1187
+          ],
+          [
+            80,
+            1486
+          ],
+          [
+            90,
+            1784
+          ],
+          [
+            100,
+            2074
+          ]
+        ],
+        "Enable": true,
+        "ForceApply": false,
+        "Identifier": "NVApiWrapper/0-GA104-A/control/1",
+        "IsHidden": false,
+        "ManualControl": false,
+        "ManualControlValue": 50,
+        "MinimumPercent": 0,
+        "Name": "Control 2 - NVIDIA GeForce RTX 3060 Ti",
+        "NickName": "Control 2 - NVIDIA GeForce RTX 3060 Ti",
+        "PairedFanSensor": {
+          "Identifier": "NVApiWrapper/0-GA104-A/fan/1",
+          "IsHidden": false,
+          "Name": "Fan 2 - NVIDIA GeForce RTX 3060 Ti",
+          "NickName": "Control 2 - NVIDIA GeForce RTX 3060 Ti"
+        },
+        "SelectedCommandStepDown": 8.0,
+        "SelectedCommandStepUp": 8.0,
+        "SelectedFanCurve": {
+          "CommandMode": 0,
+          "IgnoreHysteresisAtLimits": true,
+          "IsHidden": false,
+          "MaximumCommand": 100,
+          "MaximumTemperature": 120.0,
+          "MinimumTemperature": 20.0,
+          "Name": "GPU Graph",
+          "OneWayHysteresis": false,
+          "Points": [
+            "40,20",
+            "80,89.9208888888889"
+          ],
+          "SelectedHysteresis": 2.0,
+          "SelectedResponseTime": 1,
+          "SelectedTempSource": {
+            "Identifier": "NVApiWrapper/0-GA104-A/sensor/0",
+            "IsHidden": false,
+            "Name": "GPU",
+            "NickName": "GPU"
+          }
+        },
+        "SelectedOffset": 0,
+        "SelectedStart": 54,
+        "SelectedStop": 36
+      }
+    ],
+    "CustomSensors": [
+      {
+        "Identifier": "Mix/System Average",
+        "IsHidden": false,
+        "Name": "System Average",
+        "SelectedMixFunction": 0,
+        "SelectedSensors": [
+          {
+            "Identifier": "/lpc/nct6795d/temperature/1"
+          },
+          {
+            "Identifier": "/lpc/nct6795d/temperature/2"
+          },
+          {
+            "Identifier": "/lpc/nct6795d/temperature/3"
+          },
+          {
+            "Identifier": "/lpc/nct6795d/temperature/5"
+          }
+        ]
+      }
+    ],
+    "Fahrenheit": false,
+    "FanCurves": [
+      {
+        "CommandMode": 0,
+        "IgnoreHysteresisAtLimits": true,
+        "IsHidden": false,
+        "MaximumCommand": 100,
+        "MaximumTemperature": 120.0,
+        "MinimumTemperature": 20.0,
+        "Name": "Cpu Graph",
+        "OneWayHysteresis": false,
+        "Points": [
+          "40,20",
+          "79.8,89.9208888888889"
+        ],
+        "SelectedHysteresis": 2.0,
+        "SelectedResponseTime": 1,
+        "SelectedTempSource": {
+          "Identifier": "/amdcpu/0/temperature/2",
+          "IsHidden": false,
+          "Name": "Core (Tctl/Tdie)",
+          "NickName": "Core (Tctl/Tdie)"
+        }
+      },
+      {
+        "CommandMode": 0,
+        "IgnoreHysteresisAtLimits": true,
+        "IsHidden": false,
+        "MaximumCommand": 100,
+        "MaximumTemperature": 120.0,
+        "MinimumTemperature": 20.0,
+        "Name": "GPU Graph",
+        "OneWayHysteresis": false,
+        "Points": [
+          "40,20",
+          "80,89.9208888888889"
+        ],
+        "SelectedHysteresis": 2.0,
+        "SelectedResponseTime": 1,
+        "SelectedTempSource": {
+          "Identifier": "NVApiWrapper/0-GA104-A/sensor/0",
+          "IsHidden": false,
+          "Name": "GPU",
+          "NickName": "GPU"
+        }
+      },
+      {
+        "CommandMode": 0,
+        "IgnoreHysteresisAtLimits": true,
+        "IsHidden": false,
+        "MaximumCommand": 100,
+        "MaximumTemperature": 120.0,
+        "MinimumTemperature": 20.0,
+        "Name": "System Graph",
+        "OneWayHysteresis": false,
+        "Points": [
+          "42.1287548259518,0",
+          "43.4,29.9208888888889",
+          "69.9074045010829,79.7875555555555"
+        ],
+        "SelectedHysteresis": 2.0,
+        "SelectedResponseTime": 1,
+        "SelectedTempSource": {
+          "Identifier": "Mix/System Average",
+          "IsHidden": false,
+          "Name": "System Average",
+          "SelectedMixFunction": 0,
+          "SelectedSensors": [
+            {
+              "Identifier": "/lpc/nct6795d/temperature/1"
+            },
+            {
+              "Identifier": "/lpc/nct6795d/temperature/2"
+            },
+            {
+              "Identifier": "/lpc/nct6795d/temperature/3"
+            },
+            {
+              "Identifier": "/lpc/nct6795d/temperature/5"
+            }
+          ]
+        }
+      }
+    ],
+    "FanSensors": [
+      {
+        "Identifier": "NVApiWrapper/0-GA104-A/fan/0",
+        "IsHidden": false,
+        "Name": "Fan 1 - NVIDIA GeForce RTX 3060 Ti",
+        "NickName": "Control 1 - NVIDIA GeForce RTX 3060 Ti"
+      },
+      {
+        "Identifier": "NVApiWrapper/0-GA104-A/fan/1",
+        "IsHidden": false,
+        "Name": "Fan 2 - NVIDIA GeForce RTX 3060 Ti",
+        "NickName": "Control 2 - NVIDIA GeForce RTX 3060 Ti"
+      }
+    ],
+    "HideCalibration": false,
+    "HideFanSpeedCards": true,
+    "HorizontalUIOrientation": false,
+    "PrimaryColor": "#FF607D8B",
+    "SecondaryColor": "#FFC6FF00",
+    "SelectedTheme": "",
+    "ShowHiddenCards": false,
+    "SyncThemeWithWindows": true,
+    "SyncTrayIconColorWithWindows": true,
+    "TemperatureSensors": [],
+    "TrayIconColor": null,
+    "TrayIcons": []
+  },
+  "Sensors": {
+    "AdlxWrapperSettings": {
+      "Enabled": true
+    },
+    "DisabledPlugins": [],
+    "DisableStorageSensors": true,
+    "LibreHardwareMonitorSettings": {
+      "Controller": false,
+      "CPU": true,
+      "EmbeddedEC": true,
+      "GPU": true,
+      "InpOut": false,
+      "Memory": false,
+      "Motherboard": true,
+      "PSU": false,
+      "Storage": false,
+      "ZeroRPMOverride": false
+    },
+    "NvAPIWrapperSettings": {
+      "Enabled": true,
+      "ZeroRPMOverride": false
+    },
+    "SensorCount": 6
+  }
+}
