@@ -137,6 +137,8 @@ on-mode-changed = []
     # See: https://nikitabobko.github.io/AeroSpace/commands#resize
     alt-ctrl-h = 'resize smart -50'
     alt-ctrl-l = 'resize smart +50'
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-1 = 'workspace 1'
@@ -212,7 +214,7 @@ on-mode-changed = []
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
 
-    ctrl-alt-cmd-semicolon =  'balance-sizes'
+    ctrl-alt-cmd-semicolon = 'balance-sizes'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
