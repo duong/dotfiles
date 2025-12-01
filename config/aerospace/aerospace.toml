@@ -76,12 +76,37 @@ on-mode-changed = []
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+[workspace-to-monitor-force-assignment]
+
+1 = 'main'
+
+2 = 'main'
+
+3 = 'main'
+
+4 = ['secondary', 'main']
+
+5 = ['secondary', 'main']
+
+6 = ['secondary', 'main']
+
+7 = ['secondary', 'main']
+
+8 = ['secondary', 'main']
+
+9 = ['secondary', 'main']
+
 [gaps]
     inner.horizontal = 8
     inner.vertical =   8
     outer.left =       8
     outer.bottom =     8
-    outer.top =        16
+    # Example for different top gaps
+    outer.top = [
+      { monitor."built-in" = 16 },  # Laptop screen with notch
+      { monitor."main" = 48 },      # External monitor
+      48                            # Default gap for other monitors
+    ]
     outer.right =      8
 
 # 'main' binding mode declaration
