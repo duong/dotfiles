@@ -86,9 +86,9 @@ return {
     {
       '<leader>ac',
       function()
-        require('sidekick.cli').toggle { name = 'claude', focus = true }
+        require('sidekick.cli').toggle { name = 'otter', focus = true }
       end,
-      desc = 'Sidekick Toggle Claude',
+      desc = 'Sidekick Toggle Otter Claude',
     },
   },
 }
