@@ -103,6 +103,21 @@ return {
       { '<leader>ft', group = 'Telescope tailwind' },
       { '<leader>ftc', '<cmd>Telescope tailwind classes<CR>', desc = 'Find tailwind classes' },
       { '<leader>ftu', '<cmd>Telescope tailwind utilities<CR>', desc = 'Find tailwind utilities' },
+
+      -- Amp (AI coding agent)
+      { '<leader>a', group = 'Amp' },
+      { '<leader>aa', '<cmd>AmpStart<CR>', desc = 'Start Amp' },
+      { '<leader>ax', '<cmd>AmpStop<CR>', desc = 'Stop Amp' },
+      { '<leader>ai', '<cmd>AmpStatus<CR>', desc = 'Amp status' },
+      { '<leader>at', '<cmd>AmpTest<CR>', desc = 'Test Amp connection' },
+      { '<leader>as', '<cmd>AmpSend<CR>', desc = 'Send message to Amp' },
+      { '<leader>ab', '<cmd>AmpSendBuffer<CR>', desc = 'Send buffer to Amp' },
+      { '<leader>al', '<cmd>AmpLog<CR>', desc = 'View Amp log' },
+      {
+        mode = { 'n', 'v' },
+        { '<leader>ar', '<cmd>AmpPromptRef<CR>', desc = 'Add file ref to prompt' },
+        { '<leader>ap', ":'<,'>AmpPromptSelection<CR>", desc = 'Add selection to prompt' },
+      },
     }
   end,
 }
