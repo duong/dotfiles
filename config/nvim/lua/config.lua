@@ -78,4 +78,3 @@ vim.keymap.set('n', '<C-\\>', '<cmd>AmpTerminal<CR>', { desc = 'Toggle Amp termi
 vim.keymap.set('t', '<C-\\>', '<C-\\><C-n><C-w>p', { desc = 'Jump from Amp terminal to previous window' })
 vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Move to left pane from terminal' })
 vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move to right pane from terminal' })
-

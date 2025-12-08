@@ -16,11 +16,23 @@ end, { desc = 'Close Amp terminal cleanly' })
 
 -- Open Amp in a terminal split
 return vim.api.nvim_create_user_command('AmpTerminal', function(opts)
-  -- Toggle: if amp buffer exists and is visible, focus it
+  -- If amp buffer exists and is valid
   if amp_buf and vim.api.nvim_buf_is_valid(amp_buf) then
     local win = vim.fn.bufwinid(amp_buf)
     if win ~= -1 then
-      vim.api.nvim_set_current_win(win)
+      -- Visible: hide it
+      vim.api.nvim_win_hide(win)
+      return
+    else
+      -- Hidden: show it in a split
+      local direction = opts.args ~= '' and opts.args or 'vertical'
+      local size = 80
+      if direction == 'vertical' or direction == 'v' then
+        vim.cmd('rightbelow ' .. size .. 'vsplit')
+      else
+        vim.cmd('rightbelow ' .. (size / 4) .. 'split')
+      end
+      vim.api.nvim_set_current_buf(amp_buf)
       vim.cmd 'startinsert'
       return
     end
@@ -56,3 +68,4 @@ end, {
     return { 'vertical', 'horizontal', 'v', 'h' }
   end,
 })
+
