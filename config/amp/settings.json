@@ -1,0 +1,16 @@
+{
+  "amp.mcpServers": {
+    "otter": {
+      "command": "otter",
+      "args": [
+        "mcp",
+        "serve"
+      ]
+    },
+    "canva": {
+      "type": "http",
+      "url": "https://mcp.canva.com/mcp"
+    }
+  },
+  "amp.dangerouslyAllowAll": true
+}

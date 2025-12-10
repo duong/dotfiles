@@ -1,0 +1,11 @@
+---
+description: Use this guide for local testing, linting, building and running the project.
+alwaysApply: false
+---
+# Local development commands
+
+1. `pnpm fin` runs a final check e.g. for linting, type checking, and test coverage
+1. `pnpm lint:deps:fix` fixes dependency and import issues and regenerates tsconfig.json files
+1. `pnpm test` runs all unit tests and you can also add a path to run specific tests
+1. `taz check` runs all linters and formatters
+
