@@ -36,6 +36,7 @@ ln -s ~/dotfiles/config/kitty ~/.config/kitty
 ln -s ~/dotfiles/config/nvim ~/.config/nvim
 ln -s ~/dotfiles/config/discord/settings.json ~/.config/discord/settings.json
 ln -s ~/dotfiles/config/aerospace ~/.config/aerospace
+ln -s ~/dotfiles/config/lazygit ~/.config/lazygit
 ```
 
 Check startup time of neovim
