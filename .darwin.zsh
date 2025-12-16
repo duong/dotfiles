@@ -40,3 +40,6 @@ export PATH="$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
 # Add .NET Core SDK tools
 export PATH="$PATH:/Users/duong/.dotnet/tools"
 
+# Set XDG_CONFIG_HOME to .config for mac
+export XDG_CONFIG_HOME="$HOME/.config"
+
