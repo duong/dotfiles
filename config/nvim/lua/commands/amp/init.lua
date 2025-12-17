@@ -1,0 +1,6 @@
+require 'commands.amp.amp-log'
+require 'commands.amp.amp-prompt-ref'
+require 'commands.amp.amp-prompt-selection'
+require 'commands.amp.amp-send-buffer'
+require 'commands.amp.amp-send'
+require 'commands.amp.amp-terminal'
