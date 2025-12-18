@@ -1,48 +1,58 @@
 # duong's dotfiles
 
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](/screenshot.png)
+![Screenshot](/screenshot.png)
 
-## Requirements
-
-1. Install brew https://brew.sh/
-1. Install dependencies
-
-- `sudo pacman -Syu unzip zsh zsh-completions ttf-space-mono-nerd bottom lazygit dotnet-runtime dotnet-sdk ripgrep`
-- nvm
-  - with npm installed
-- zsh
-  - zplug
-  - oh-my-zsh
-  - starship
-
-3. Install stuff with brew
-```bash
-xargs brew tap < brew.taps
-xargs brew install < brew.list
-xargs brew install --cask < brew.list.casks
-```
-
-## Setup
-
-Run the install script to create symbolic links:
+## Quick Start
 
 ```bash
+git clone git@github.com:duong/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 ./install.sh
 ```
 
-This will symlink all config files to the appropriate locations, backing up any existing files.
+The install script will:
+- Create symlinks for all configs (with backups of existing files)
+- Detect OS and install platform-specific configs (aerospace for macOS, qtile/rofi for Linux)
+- Create `~/.env.local` for machine-specific secrets
 
-Check startup time of neovim
+## Requirements
 
-```bash
-nvim --startuptime somefile
+| Tool | Install |
+|------|---------|
+| zsh | Default on macOS, `pacman -S zsh` on Arch |
+| [oh-my-zsh](https://ohmyz.sh/) | `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` |
+| [zplug](https://github.com/zplug/zplug) | `brew install zplug` or see repo |
+| [starship](https://starship.rs/) | `brew install starship` or `curl -sS https://starship.rs/install.sh \| sh` |
+| [nvm](https://github.com/nvm-sh/nvm) | `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh \| bash` |
+
+## What's Included
+
+```
+~/.zshrc          → shell config
+~/.config/nvim    → neovim
+~/.config/kitty   → terminal
+~/.config/lazygit → git TUI
+~/.config/amp     → amp AI
+~/.config/starship.toml → prompt
+~/.ssh/config     → ssh hosts
+~/.env.local      → secrets (not tracked)
 ```
 
-Macos extra steps
+## Secrets
 
-1. Install developer tools
-1. Set keyboard shortcuts for switching between desktops (keyboard -> keyboard shortcuts -> mission control)
-1. Set Reduce Motion in display accessibility settings
-1. Install fonts with brew --cask
-1. brew services start borders
+Add machine-specific secrets to `~/.env.local` (created from `.env.template`):
 
+```bash
+export OPENAI_API_KEY="..."
+export GITHUB_TOKEN="..."
+```
+
+## macOS Extras
+
+```bash
+xcode-select --install
+brew services start borders
+```
+
+- Set keyboard shortcuts: System Settings → Keyboard → Shortcuts → Mission Control
+- Enable Reduce Motion: System Settings → Accessibility → Display

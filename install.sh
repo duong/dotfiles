@@ -50,4 +50,10 @@ fi
 # SSH config
 create_symlink "$DOTFILES/ssh/config" "$HOME/.ssh/config"
 
+# Create .env.local from template if it doesn't exist
+if [ ! -f "$HOME/.env.local" ]; then
+  cp "$DOTFILES/.env.template" "$HOME/.env.local"
+  echo "Created ~/.env.local from template - add your secrets there"
+fi
+
 echo "Done! Dotfiles installed successfully."

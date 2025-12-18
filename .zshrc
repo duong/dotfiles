@@ -43,6 +43,9 @@ elif [[ $(uname) == "Linux" ]]; then
   source ~/.linux.zsh
 fi
 
+# Load machine-specific secrets (not committed to git)
+[[ -f ~/.env.local ]] && source ~/.env.local
+
 # zsh-nvm options
 export NVM_AUTO_USE=true
 export NVM_LAZY_LOAD=true
@@ -54,12 +57,6 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug mafredri/zsh-async, from:github
 zplug "lukechilds/zsh-nvm"
-
-# pure theme colors
-PINK='#fa68bd'
-LIGHT_GREEN='#55e787'
-LIGHT_BLUE='#55c3fb'
-DARK_GREY='#282a36'
 
 if ! zplug check; then
   zplug install
@@ -78,16 +75,28 @@ export PATH="$PATH:$HOME/.local/bin"
 
 # Poetry
 export PATH="$HOME/.poetry/bin:$PATH"
-# starship prompt
-eval "$(starship init zsh)"
+# starship prompt (cache init for speed)
+if [[ ! -f ~/.cache/starship-init.zsh ]] || [[ $(which starship) -nt ~/.cache/starship-init.zsh ]]; then
+  mkdir -p ~/.cache
+  starship init zsh > ~/.cache/starship-init.zsh
+fi
+source ~/.cache/starship-init.zsh
 
-# hook direnv into shell
-eval "$(direnv hook zsh)"
+# direnv (cache init for speed)
+if [[ ! -f ~/.cache/direnv-hook.zsh ]] || [[ $(which direnv) -nt ~/.cache/direnv-hook.zsh ]]; then
+  mkdir -p ~/.cache
+  direnv hook zsh > ~/.cache/direnv-hook.zsh
+fi
+source ~/.cache/direnv-hook.zsh
 
-# setup pyenv
+# pyenv (lazy load)
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if [[ ! -f ~/.cache/pyenv-init.zsh ]] || [[ $(which pyenv) -nt ~/.cache/pyenv-init.zsh ]]; then
+  mkdir -p ~/.cache
+  pyenv init - > ~/.cache/pyenv-init.zsh
+fi
+source ~/.cache/pyenv-init.zsh
 
 export PATH="$PATH:$HOME/bin"
 
@@ -95,13 +104,13 @@ export PATH="$PATH:$HOME/bin"
 # zprof
 
 
-# License Vault URL for activation of Jetbrains products at Canva
-export JETBRAINS_LICENSE_SERVER=https://canva.fls.jetbrains.com/
-
 # pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
+if [[ $(uname) == "Darwin" ]]; then
+  export PNPM_HOME="$HOME/Library/pnpm"
+else
+  export PNPM_HOME="$HOME/.local/share/pnpm"
+fi
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end

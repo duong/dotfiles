@@ -1,7 +1,7 @@
 # Set python path
 export PATH="/opt/homebrew/bin/python3:$PATH"
 
-# zplug brew/Users/duong/.pyenv/shims/python stuff
+# zplug setup
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
@@ -38,7 +38,7 @@ defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 export PATH="$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
 
 # Add .NET Core SDK tools
-export PATH="$PATH:/Users/duong/.dotnet/tools"
+export PATH="$PATH:$HOME/.dotnet/tools"
 
 # Set XDG_CONFIG_HOME to .config for mac
 export XDG_CONFIG_HOME="$HOME/.config"
