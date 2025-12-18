@@ -50,7 +50,6 @@ return {
       end
 
       -- Actions
-      map('n', '<leader>gl', gs.toggle_current_line_blame)
       map('n', '<leader>gd', gs.diffthis)
       map('n', '<leader>gD', function()
         gs.diffthis '~'

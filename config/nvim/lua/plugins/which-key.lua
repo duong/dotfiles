@@ -22,7 +22,10 @@ return {
       -- Git options
       { '<leader>g', group = 'Git options' },
       { '<leader>gg', function() Snacks.lazygit() end, desc = 'Toggle lazygit' },
-      { '<leader>gl', desc = 'Toggle git line blame' },
+      { '<leader>gl', '<cmd>GitBlameToggle<CR>', desc = 'Toggle git line blame' },
+      { '<leader>go', '<cmd>GitBlameOpenCommitURL<CR>', desc = 'Open commit in browser' },
+      { '<leader>gc', '<cmd>GitBlameCopySHA<CR>', desc = 'Copy commit SHA' },
+      { '<leader>gC', '<cmd>GitBlameCopyCommitURL<CR>', desc = 'Copy commit URL' },
       { '<leader>gd', desc = 'View git diff' },
       { '<leader>gD', desc = 'View git Diff (?) ' },
 
@@ -109,4 +112,3 @@ return {
     }
   end,
 }
-
