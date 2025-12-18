@@ -214,7 +214,6 @@ require('mason-lspconfig').setup {
   ensure_installed = {
     'ts_ls',
     'lua_ls',
-    'tailwindcss',
   },
   automatic_enable = {
     'ts_ls',
