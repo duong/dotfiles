@@ -10,8 +10,8 @@ cd ~/dotfiles
 ./install.sh
 ```
 
-The install script will:
-- Create symlinks for all configs (with backups of existing files)
+The install script is **idempotent** (safe to run multiple times) and will:
+- Create symlinks for all configs (backs up existing files once)
 - Detect OS and install platform-specific configs (aerospace for macOS, qtile/rofi for Linux)
 - Create `~/.env.local` for machine-specific secrets
 
@@ -54,5 +54,3 @@ xcode-select --install
 brew services start borders
 ```
 
-- Set keyboard shortcuts: System Settings → Keyboard → Shortcuts → Mission Control
-- Enable Reduce Motion: System Settings → Accessibility → Display

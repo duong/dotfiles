@@ -8,11 +8,15 @@ create_symlink() {
   local dest="$2"
   
   if [ -L "$dest" ]; then
-    echo "Removing existing symlink: $dest"
     rm "$dest"
   elif [ -e "$dest" ]; then
-    echo "Backing up existing file: $dest -> $dest.backup"
-    mv "$dest" "$dest.backup"
+    if [ ! -e "$dest.backup" ]; then
+      echo "Backing up existing file: $dest -> $dest.backup"
+      mv "$dest" "$dest.backup"
+    else
+      echo "Skipping backup (already exists): $dest.backup"
+      rm -rf "$dest"
+    fi
   fi
   
   mkdir -p "$(dirname "$dest")"
