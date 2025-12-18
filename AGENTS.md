@@ -25,6 +25,7 @@ time zsh -i -c exit   # Test shell startup time
 │   ├── nvim/           # Neovim config (lazy.nvim)
 │   ├── kitty/          # Kitty terminal
 │   ├── aerospace/      # macOS window manager
+│   ├── sketchybar/     # macOS status bar
 │   ├── lazygit/        # Git TUI
 │   └── amp/            # Amp AI config
 └── ssh/config          # SSH hosts

@@ -12,7 +12,7 @@ cd ~/dotfiles
 
 The install script is **idempotent** (safe to run multiple times) and will:
 - Create symlinks for all configs (backs up existing files once)
-- Detect OS and install platform-specific configs (aerospace for macOS, qtile/rofi for Linux)
+- Detect OS and install platform-specific configs (aerospace/sketchybar for macOS, qtile/rofi for Linux)
 - Create `~/.env.local` for machine-specific secrets
 
 ## Requirements

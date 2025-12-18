@@ -43,6 +43,7 @@ create_symlink "$DOTFILES/config/amp" "$HOME/.config/amp"
 # macOS-only configs
 if [ "$OS" = "Darwin" ]; then
   create_symlink "$DOTFILES/config/aerospace" "$HOME/.config/aerospace"
+  create_symlink "$DOTFILES/config/sketchybar" "$HOME/.config/sketchybar"
 fi
 
 # Linux-only configs
