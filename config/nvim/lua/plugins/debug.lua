@@ -84,7 +84,7 @@ return {
     -- Configure and install adapters for cs
     dap.adapters.coreclr = {
       type = 'executable',
-      command = '/Users/duong/.local/share/nvim/lazy/netcoredbg-macOS-arm64.nvim/netcoredbg/netcoredbg',
+      command = vim.fn.stdpath 'data' .. '/lazy/netcoredbg-macOS-arm64.nvim/netcoredbg/netcoredbg',
       args = { '--interpreter=vscode' },
     }
 
