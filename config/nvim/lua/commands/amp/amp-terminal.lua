@@ -1,5 +1,10 @@
 local amp_buf = nil
 
+local config = {
+  vertical_size = 80,
+  horizontal_size = 20,
+}
+
 vim.api.nvim_create_user_command('AmpTerminalClose', function()
   if amp_buf and vim.api.nvim_buf_is_valid(amp_buf) then
     local job_id = vim.b[amp_buf].terminal_job_id
@@ -26,11 +31,10 @@ return vim.api.nvim_create_user_command('AmpTerminal', function(opts)
     else
       -- Hidden: show it in a split
       local direction = opts.args ~= '' and opts.args or 'vertical'
-      local size = 80
       if direction == 'vertical' or direction == 'v' then
-        vim.cmd('rightbelow ' .. size .. 'vsplit')
+        vim.cmd('rightbelow ' .. config.vertical_size .. 'vsplit')
       else
-        vim.cmd('rightbelow ' .. (size / 4) .. 'split')
+        vim.cmd('rightbelow ' .. config.horizontal_size .. 'split')
       end
       vim.api.nvim_set_current_buf(amp_buf)
       vim.cmd 'startinsert'
@@ -39,12 +43,11 @@ return vim.api.nvim_create_user_command('AmpTerminal', function(opts)
   end
 
   local direction = opts.args ~= '' and opts.args or 'vertical'
-  local size = 80 -- default width for vertical, height for horizontal
 
   if direction == 'vertical' or direction == 'v' then
-    vim.cmd('rightbelow ' .. size .. 'vsplit | terminal amp --ide')
+    vim.cmd('rightbelow ' .. config.vertical_size .. 'vsplit | terminal amp --ide')
   elseif direction == 'horizontal' or direction == 'h' then
-    vim.cmd('rightbelow ' .. (size / 4) .. 'split | terminal amp --ide')
+    vim.cmd('rightbelow ' .. config.horizontal_size .. 'split | terminal amp --ide')
   else
     vim.notify('Usage: AmpTerminal [vertical|horizontal|v|h]', vim.log.levels.WARN)
     return
@@ -68,4 +71,3 @@ end, {
     return { 'vertical', 'horizontal', 'v', 'h' }
   end,
 })
-

@@ -24,20 +24,13 @@ xargs brew install --cask < brew.list.casks
 
 ## Setup
 
-Create symbolic links to use the config
+Run the install script to create symbolic links:
 
 ```bash
-ln -s ~/dotfiles/.zshrc ~/.zshrc
-ln -s ~/dotfiles/.zprofile ~/.zprofile
-ln -s ~/dotfiles/.linux.zsh ~/.linux.zsh
-ln -s ~/dotfiles/.lazy.zsh ~/.lazy.zsh
-ln -s ~/dotfiles/config/starship.toml ~/.config/starship.toml
-ln -s ~/dotfiles/config/kitty ~/.config/kitty
-ln -s ~/dotfiles/config/nvim ~/.config/nvim
-ln -s ~/dotfiles/config/discord/settings.json ~/.config/discord/settings.json
-ln -s ~/dotfiles/config/aerospace ~/.config/aerospace
-ln -s ~/dotfiles/config/lazygit ~/.config/lazygit
+./install.sh
 ```
+
+This will symlink all config files to the appropriate locations, backing up any existing files.
 
 Check startup time of neovim
 

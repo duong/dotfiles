@@ -61,7 +61,9 @@ LIGHT_GREEN='#55e787'
 LIGHT_BLUE='#55c3fb'
 DARK_GREY='#282a36'
 
-zplug install
+if ! zplug check; then
+  zplug install
+fi
 zplug load
 
 # set aws prompt
@@ -72,7 +74,7 @@ ZSH_THEME_AWS_SUFFIX=' )'
 export AWS_DEFAULT_REGION="ap-southeast-2"
 
 # Created by `pipx` on 2023-03-20 00:34:08
-export PATH="$PATH:/Users/duong/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Poetry
 export PATH="$HOME/.poetry/bin:$PATH"
@@ -87,7 +89,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-export PATH="$PATH:/Users/duong/bin"
+export PATH="$PATH:$HOME/bin"
 
 # Uncomment for performance testing (see beginning of file)
 # zprof
@@ -97,7 +99,7 @@ export PATH="$PATH:/Users/duong/bin"
 export JETBRAINS_LICENSE_SERVER=https://canva.fls.jetbrains.com/
 
 # pnpm
-export PNPM_HOME="/Users/duong/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
