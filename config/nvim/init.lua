@@ -92,9 +92,7 @@ require('lazy').setup {
         -- Adds a number of user-friendly snippets
         'rafamadriz/friendly-snippets',
 
-        -- tailwind
         'onsails/lspkind-nvim',
-        'tailwind-tools',
       },
     },
     {
@@ -122,12 +120,7 @@ require('lazy').setup {
 require 'config'
 require 'commands.highlight-yank'
 
-local Terminal = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'float' }
 
-function _LAZYGIT_TOGGLE()
-  lazygit:toggle()
-end
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
@@ -252,9 +245,7 @@ cmp.setup {
     documentation = cmp.config.window.bordered(border_opts),
   },
   formatting = {
-    format = require('lspkind').cmp_format {
-      before = require('tailwind-tools.cmp').lspkind_format,
-    },
+    format = require('lspkind').cmp_format(),
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-n>'] = cmp.mapping.select_next_item(),

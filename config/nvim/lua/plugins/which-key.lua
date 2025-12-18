@@ -21,7 +21,7 @@ return {
 
       -- Git options
       { '<leader>g', group = 'Git options' },
-      { '<leader>gg', '<cmd>lua _LAZYGIT_TOGGLE()<CR>', desc = 'Toggle lazygit' },
+      { '<leader>gg', function() Snacks.lazygit() end, desc = 'Toggle lazygit' },
       { '<leader>gl', desc = 'Toggle git line blame' },
       { '<leader>gd', desc = 'View git diff' },
       { '<leader>gD', desc = 'View git Diff (?) ' },

@@ -93,20 +93,6 @@ return {
     },
     -- find
     {
-      '<leader>fb',
-      function()
-        Snacks.picker.buffers()
-      end,
-      desc = 'Buffers',
-    },
-    {
-      '<leader>fc',
-      function()
-        Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
-      end,
-      desc = 'Find Config File',
-    },
-    {
       '<leader>ff',
       function()
         Snacks.picker.files()
@@ -193,7 +179,7 @@ return {
     },
     -- Grep
     {
-      '<leader>fb',
+      '<leader>fl',
       function()
         Snacks.picker.lines()
       end,
@@ -205,13 +191,6 @@ return {
         Snacks.picker.grep_buffers()
       end,
       desc = 'Grep Open Buffers',
-    },
-    {
-      '<leader>fg',
-      function()
-        Snacks.picker.grep()
-      end,
-      desc = 'Grep',
     },
     {
       '<leader>fG',
@@ -253,16 +232,16 @@ return {
     {
       '<leader>fb',
       function()
-        Snacks.picker.lines()
+        Snacks.picker.buffers()
       end,
-      desc = 'Buffer Lines',
+      desc = 'Buffers',
     },
     {
       '<leader>fc',
       function()
-        Snacks.picker.command_history()
+        Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
       end,
-      desc = 'Command History',
+      desc = 'Find Config File',
     },
     {
       '<leader>fC',
