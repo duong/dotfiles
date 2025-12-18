@@ -28,14 +28,18 @@ The install script is **idempotent** (safe to run multiple times) and will:
 ## What's Included
 
 ```
-~/.zshrc          → shell config
-~/.config/nvim    → neovim
-~/.config/kitty   → terminal
-~/.config/lazygit → git TUI
-~/.config/amp     → amp AI
+~/.zshrc                → shell config
+~/.config/nvim          → neovim
+~/.config/kitty         → terminal
+~/.config/lazygit       → git TUI
+~/.config/amp           → amp AI
 ~/.config/starship.toml → prompt
-~/.ssh/config     → ssh hosts
-~/.env.local      → secrets (not tracked)
+~/.config/aerospace     → window manager (macOS)
+~/.config/sketchybar    → status bar (macOS)
+~/.config/qtile         → window manager (Linux)
+~/.config/rofi          → launcher (Linux)
+~/.ssh/config           → ssh hosts
+~/.env.local            → secrets (not tracked)
 ```
 
 ## Secrets

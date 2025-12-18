@@ -24,10 +24,13 @@ time zsh -i -c exit   # Test shell startup time
 ├── config/
 │   ├── nvim/           # Neovim config (lazy.nvim)
 │   ├── kitty/          # Kitty terminal
+│   ├── lazygit/        # Git TUI
+│   ├── amp/            # Amp AI config
+│   ├── starship.toml   # Prompt config
 │   ├── aerospace/      # macOS window manager
 │   ├── sketchybar/     # macOS status bar
-│   ├── lazygit/        # Git TUI
-│   └── amp/            # Amp AI config
+│   ├── qtile/          # Linux window manager
+│   └── rofi/           # Linux launcher
 └── ssh/config          # SSH hosts
 ```
 
