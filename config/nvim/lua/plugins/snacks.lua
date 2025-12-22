@@ -66,7 +66,7 @@ return {
     {
       '<leader>/',
       function()
-        Snacks.picker.grep()
+        Snacks.picker.grep { cwd = Snacks.git.get_root() }
       end,
       desc = 'Grep',
     },
@@ -109,9 +109,9 @@ return {
     {
       '<leader>fg',
       function()
-        Snacks.picker.git_files()
+        Snacks.picker.grep()
       end,
-      desc = 'Find Git Files',
+      desc = 'Grep',
     },
     {
       '<leader>fp',
