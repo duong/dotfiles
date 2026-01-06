@@ -30,7 +30,10 @@ Avoid "average" code found on the internet.
 *   **Design Systems:** If a design system or component library exists, use it. Do not invent new styles unless requested
 *   **Review:** Verify your own code against these rules before outputting it.
 
-## 5. Commands
+## 5. File References
+*   **Use Relative Paths:** When referring to files, always use relative paths from the workspace root (e.g., `src/components/Button/index.tsx`) instead of just filenames (e.g., `index.tsx`). Many files share common names like `create.tsx`, `install.tsx`, `index.ts`, etc.
+
+## 6. Commands
 1. `pnpm fin` runs a11y storybook tests, jest tests, lint files with taz and typechecking
 1. `pnpm lint:deps:fix` fixes dependency and import issues and regenerates tsconfig.json files
 1. `pnpm test` runs all unit tests and you can also add a path to run specific tests
