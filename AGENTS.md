@@ -42,6 +42,27 @@ time zsh -i -c exit   # Test shell startup time
 - Neovim uses lazy.nvim with plugins in `config/nvim/lua/plugins/`
 - Kitty includes OS-specific configs via `${KITTY_OS}.conf`
 
+## Dependency Injection Best Practices
+
+- **"New is glue"**: Avoid using `new` to create dependencies inside classes/functions. Instead, inject dependencies via constructor or function parameters
+- **Invert control when complexity grows**: Start simple, refactor to DI when code evolves and tight coupling causes maintenance issues
+- **Use interfaces**: Accept interface types rather than concrete implementations to allow swapping implementations (real vs fake/mock)
+- **Flatten call trees**: Don't pass parameters through multiple layers; inject pre-built dependencies at the call site
+- **Avoid React Context**: It's an anti-pattern at Canva. Use `React.children` or inject components as props instead
+- **Hybrid React pattern**: Inject required components as props (e.g., `<Section Header={headerImpl}>`) rather than prop drilling
+
+```typescript
+// ❌ Tightly coupled
+class Presenter {
+  private service = new HttpClient();
+}
+
+// ✅ Dependency injection
+class Presenter {
+  constructor(private readonly service: ServiceInterface) {}
+}
+```
+
 ## Testing Changes
 
 ```bash
