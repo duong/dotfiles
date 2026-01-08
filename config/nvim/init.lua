@@ -175,7 +175,7 @@ capabilities.textDocument.foldingRange = {
 -- Setup organize imports
 -- https://www.reddit.com/r/neovim/comments/1azofv9/how_to_organize_imports_on_save_using_tsserver/
 local organize_imports = function()
-  local client = vim.lsp.get_clients({ name = 'tsgo', bufnr = 0 })[1]
+  local client = vim.lsp.get_clients({ name = 'ts_ls', bufnr = 0 })[1]
 
   client:exec_cmd({
     title = 'organize_imports',
@@ -188,21 +188,7 @@ end
 vim.api.nvim_create_user_command('OrganizeImports', organize_imports, {})
 
 -- Setup TypeScript lsp
--- vim.lsp.config('ts_ls', {
---   settings = {
---     typescript = {
---       tsserver = {
---         enabled = true,
---         maxTsServerMemory = 16384,
---       },
---     },
---   },
---   on_attach = on_attach,
---   capabilities = capabilities,
--- })
-
--- Setup tsgo
-vim.lsp.config('tsgo', {
+vim.lsp.config('ts_ls', {
   settings = {
     typescript = {
       tsserver = {
@@ -224,11 +210,11 @@ require('mason').setup()
 -- Note: `nvim-lspconfig` needs to be in 'runtimepath' by the time you set up mason-lspconfig.nvim
 require('mason-lspconfig').setup {
   ensure_installed = {
-    'tsgo',
+    'ts_ls',
     'lua_ls',
   },
   automatic_enable = {
-    'tsgo',
+    'ts_ls',
     'lua_ls',
   },
 }
