@@ -68,3 +68,22 @@ class Presenter {
 }
 ```
 
+## 9. Internationalization
+
+All UI messaging must be defined in `<feature>.messages.ts` files for internationalization support. Never hardcode user-facing strings directly in components.
+
+- Add descriptive JSDoc comments for translator context
+- Use ICU format placeholders (`{0}`, `{1}`) instead of template literals
+- Always interpolate, never concatenate strings
+- Use ICU messageformat for times, dates, and numbers
+
+```typescript
+export const OnboardingMessages = {
+  /** A heading welcoming a user by their name.
+   * @param name The user's preferred name.
+   */
+  welcomeByName: (name: string): string => 'Welcome, {0}!',
+};
+```
+
+See: https://docs.canva.tech/common/internationalization/how--to-guides/frontend/
