@@ -87,3 +87,23 @@ export const OnboardingMessages = {
 ```
 
 See: https://docs.canva.tech/common/internationalization/how--to-guides/frontend/
+
+## 10. Functional Testing Best Practices
+
+- **Use auto-retrying assertions**: Prefer `await expect(element).toBeVisible()` over `expect(await element.isVisible()).toBeTruthy()`
+- **Use synchronous locators**: Avoid `.all()` which snapshots DOM state; use `.nth(index)` instead
+- **Avoid NOOP locators**: Don't create page objects with the same locator as the parent
+- **Avoid redundant waits**: Playwright handles implicit waits; only add explicit waits for navigation or async network calls
+- **Return components, not helpers**: Let consumers decide actions instead of cluttering page objects with specialized methods
+
+```typescript
+// ❌ Flaky - single-time assertion
+expect(await element.isVisible()).toBeTruthy();
+const elements = await page.allElements().all();
+
+// ✅ Stable - auto-retry + synchronous locators
+await expect(element).toBeVisible();
+await page.elements.nth(index).click();
+```
+
+See: https://docs.canva.tech/frontend/testing/functional-tests/framework/best-practices/
