@@ -39,6 +39,7 @@ create_symlink "$DOTFILES/config/kitty" "$HOME/.config/kitty"
 create_symlink "$DOTFILES/config/nvim" "$HOME/.config/nvim"
 create_symlink "$DOTFILES/config/lazygit" "$HOME/.config/lazygit"
 create_symlink "$DOTFILES/config/amp" "$HOME/.config/amp"
+create_symlink "$DOTFILES/config/agents" "$HOME/.agents"
 
 # macOS-only configs
 if [ "$OS" = "Darwin" ]; then

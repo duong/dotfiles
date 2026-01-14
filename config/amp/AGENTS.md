@@ -39,15 +39,7 @@ Use this format: `{username}-{JIRA-ID}-{short-description}`
 
 Example: `duong-MARAU-170-fix-switch-guideline-fols`
 
-## 7. Commands
-1. `pnpm fin` runs a11y storybook tests, jest tests, lint files with taz and typechecking
-1. `pnpm lint:deps:fix` fixes dependency and import issues and regenerates tsconfig.json files
-1. `pnpm test` runs all unit tests and you can also add a path to run specific tests
-1. `taz check` runs all linters and formatters
-1. `taz check --fix` fixes all linting and formatting issues
-1. `pnpm lint:ts:types:changed` checks types only on changed files
-
-## 8. Dependency Injection Best Practices
+## 7. Dependency Injection Best Practices
 
 - **"New is glue"**: Avoid using `new` to create dependencies inside classes/functions. Instead, inject dependencies via constructor or function parameters
 - **Invert control when complexity grows**: Start simple, refactor to DI when code evolves and tight coupling causes maintenance issues
@@ -68,7 +60,7 @@ class Presenter {
 }
 ```
 
-## 9. Internationalization
+## 8. Internationalization
 
 All UI messaging must be defined in `<feature>.messages.ts` files for internationalization support. Never hardcode user-facing strings directly in components.
 
@@ -88,7 +80,7 @@ export const OnboardingMessages = {
 
 See: https://docs.canva.tech/common/internationalization/how--to-guides/frontend/
 
-## 10. Functional Testing Best Practices
+## 9. Functional Testing Best Practices
 
 - **Use auto-retrying assertions**: Prefer `await expect(element).toBeVisible()` over `expect(await element.isVisible()).toBeTruthy()`
 - **Use synchronous locators**: Avoid `.all()` which snapshots DOM state; use `.nth(index)` instead

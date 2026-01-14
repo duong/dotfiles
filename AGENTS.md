@@ -26,6 +26,7 @@ time zsh -i -c exit   # Test shell startup time
 │   ├── kitty/          # Kitty terminal
 │   ├── lazygit/        # Git TUI
 │   ├── amp/            # Amp AI config
+│   ├── agents/skills/  # Agent skills (symlinked to ~/.agents)
 │   ├── starship.toml   # Prompt config
 │   ├── aerospace/      # macOS window manager
 │   ├── sketchybar/     # macOS status bar

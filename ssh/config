@@ -1,3 +1,13 @@
+## -- START ROO -- ##
+## DO NOT EDIT: Added by the roo installer (https://github.com/Canva/roo)
+Include ~/.ssh/roo.d/*.conf
+## -- END ROO -- ##
+
+## --- BEGIN ANSIBLE-MANAGED CODER --- ##
+# DO NOT EDIT: Added by macOS Ansible: https://canv.am/ansible-macos
+Include /Users/duong/.ssh/config.d/coder_v3.conf
+## --- END ANSIBLE-MANAGED CODER --- ##
+
 host i-*.*
         ProxyCommand bash -c 'ssh-ssm.sh $(echo %h|cut -d'.' -f1) %r $(echo %h|/usr/bin/cut -d'.' -f2-)'
         StrictHostKeyChecking no

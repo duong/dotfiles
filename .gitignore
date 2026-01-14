@@ -1,2 +1,3 @@
-config/amp/commands/dbquery.md
+**/dbquery
 .env.local
+**/glean/mcp.json
