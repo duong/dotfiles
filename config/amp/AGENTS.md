@@ -82,6 +82,8 @@ See: https://docs.canva.tech/common/internationalization/how--to-guides/frontend
 
 ## 9. Functional Testing Best Practices
 
+**For comprehensive rules, read:** `~/work/canva/web/.cursor/rules/web-functional-test-best-practices.mdc`
+
 - **Use auto-retrying assertions**: Prefer `await expect(element).toBeVisible()` over `expect(await element.isVisible()).toBeTruthy()`
 - **Use synchronous locators**: Avoid `.all()` which snapshots DOM state; use `.nth(index)` instead
 - **Avoid NOOP locators**: Don't create page objects with the same locator as the parent

@@ -12,7 +12,7 @@ Validation and quality check commands for the Canva monorepo.
 | Command | Description |
 |---------|-------------|
 | `pnpm fin` | Runs a11y storybook tests, jest tests, taz linting, and typechecking |
-| `pnpm fin --only types` | Runs TypeScript typechecking only |
+| `pnpm fin --only types` | Runs TypeScript typechecking only (run from `~/work/canva/web`) |
 | `pnpm fin --only a11y_storybook` | Runs a11y storybook tests only |
 | `pnpm test` | Runs all unit tests (run from `~/work/canva/web`) |
 | `taz check` | Runs all linters and formatters |
