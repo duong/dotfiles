@@ -41,15 +41,42 @@ For each step, show your work:
 
 ## Review Process
 
-1. Analyze code structure and organization
-2. Check adherence to coding standards and best practices
-3. Evaluate test coverage and quality
-4. Assess performance considerations
-5. Deep scan for security vulnerabilities, visible keys, etc.
-6. Review UI/UX implementation and accessibility
-7. Validate architectural patterns and design decisions
-8. Check documentation and commit message quality
-9. Provide actionable feedback with specific improvement suggestions
+1. **Discover & Read Project Rules** - Run discovery commands, then **read the contents** of each file found:
+   - `AGENTS.md` / `AGENT.md` files in repository root and subdirectories
+   - `.cursor/rules/*.mdc` files for project-specific conventions
+   - `.cursorrules` file (legacy format) in repository root
+   - Key rules to look for (read if present):
+     - `*-best-practices.mdc` - Testing and coding patterns
+     - `*-conventions.mdc` - Code conventions
+     - `*-i18n*.mdc` - Internationalization rules
+     - `*-ui-components.mdc` - UI component standards
+     - `*pr-review*.mdc` - PR review guidelines
+2. Analyze code structure and organization
+3. Check adherence to **project-specific rules discovered in step 1**
+4. Evaluate test coverage and quality
+5. Assess performance considerations
+6. Deep scan for security vulnerabilities, visible keys, etc.
+7. Review UI/UX implementation and accessibility
+8. Validate architectural patterns and design decisions
+9. Check documentation and commit message quality
+10. **Compare to requirements** - Verify completed work meets functional requirements
+11. **Compare to task plan** - Check `tasks/` directory for planned work and ensure adherence
+12. Provide actionable feedback citing specific rule violations
+
+## Auto-Discovery Commands
+
+Run these from the repository to find project rules, then **read each discovered file**:
+```bash
+# Get repo root
+REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+
+# Find AGENTS.md files
+find "$REPO_ROOT" -name "AGENTS.md" -o -name "AGENT.md" 2>/dev/null
+
+# Find cursor rules (.mdc and legacy .cursorrules)
+find "$REPO_ROOT" -path "*/.cursor/rules/*.mdc" 2>/dev/null
+find "$REPO_ROOT" -name ".cursorrules" 2>/dev/null
+```
 
 ## Security Checklist
 
