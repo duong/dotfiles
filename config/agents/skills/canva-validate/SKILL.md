@@ -1,11 +1,11 @@
 ---
 name: canva-validate
-description: Runs Canva monorepo validation commands - pnpm fin, taz check, pnpm test, a11y storybook tests, typechecking, linting, and dependency fixes. Use when asked to lint, typecheck, test, run storybook, fix imports, or validate code in the Canva monorepo.
+description: Runs Canva monorepo validation commands - pnpm fin, taz check, pnpm test, a11y storybook tests, typechecking, linting, and dependency fixes. Run before committing/pushing. Use when asked to lint, typecheck, test, run storybook, fix imports, or validate code in the Canva monorepo.
 ---
 
 # Canva Validation Commands
 
-Validation and quality check commands for the Canva monorepo.
+Validation and quality check commands for the Canva monorepo. Run before committing/pushing.
 
 ## Commands
 
