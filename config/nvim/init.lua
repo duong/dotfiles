@@ -212,12 +212,68 @@ require('mason-lspconfig').setup {
   ensure_installed = {
     'ts_ls',
     'lua_ls',
+    'jdtls',
   },
   automatic_enable = {
     'ts_ls',
     'lua_ls',
+    -- jdtls configured manually below for Canva monorepo
   },
 }
+
+-- Configure jdtls for Canva monorepo with pomgen
+local function get_git_root()
+  local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
+  if vim.v.shell_error == 0 and git_root then
+    return git_root
+  end
+  return nil
+end
+
+vim.lsp.config('jdtls', {
+  root_dir = function(bufnr, on_dir)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    -- Use git root for Canva monorepo (where pom.xml lives)
+    local git_root = get_git_root()
+    if git_root then
+      on_dir(git_root)
+    else
+      -- Fallback to directory containing pom.xml or build.gradle
+      local root = vim.fs.dirname(vim.fs.find({ 'pom.xml', 'build.gradle', '.git' }, {
+        upward = true,
+        path = vim.fs.dirname(fname),
+      })[1])
+      on_dir(root)
+    end
+  end,
+  cmd = {
+    vim.fn.expand('~/.local/share/nvim/mason/bin/jdtls'),
+    '--jvm-arg=-Xms4G',
+    '--jvm-arg=-Xmx12G',
+    '--jvm-arg=-XX:+UseG1GC',
+    '--jvm-arg=-XX:+UseStringDeduplication',
+    '-configuration', vim.fn.expand('~/.cache/jdtls/config'),
+    '-data', vim.fn.expand('~/.cache/jdtls/workspace'),
+  },
+  settings = {
+    java = {
+      import = {
+        exclusions = {
+          '**/target/**',
+          '**/bazel-bin/**',
+          '**/bazel-out/**',
+          '**/bazel-canva/**',
+          '**/bazel-testlogs/**',
+          '**/node_modules/**',
+          '**/.metadata/**',
+        },
+      },
+    },
+  },
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+vim.lsp.enable('jdtls')
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
