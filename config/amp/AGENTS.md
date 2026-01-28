@@ -101,3 +101,21 @@ await page.elements.nth(index).click();
 ```
 
 See: https://docs.canva.tech/frontend/testing/functional-tests/framework/best-practices/
+
+## 10. Auto-Generated Files
+
+When making changes that affect dependencies (e.g., removing imports, adding/removing service dependencies), the following files may be auto-generated or auto-updated:
+
+- `BUILD.bazel` - Bazel build definitions (1:1 mapping with tsconfig.json, never manually edit)
+- `tsconfig.json` - TypeScript project references and module signatures
+
+**Do not discard changes to these files** without first verifying whether they are legitimate auto-generated updates caused by your changes.
+
+To validate if changes are auto-generated, run:
+```bash
+pnpm lint:deps:fix
+```
+
+If the command regenerates the same changes, they are legitimate and should be included in your commit. Only discard changes if you are certain they are unrelated stale modifications from a previous task.
+
+See: https://docs.canva.tech/frontend/code-architecture/project-structure/
